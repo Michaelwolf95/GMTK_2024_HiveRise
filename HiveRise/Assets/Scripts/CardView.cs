@@ -7,7 +7,6 @@ namespace HiveRise
 	/// 
 	public class CardView : MonoBehaviour
 	{
-
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void OnStartDragging()

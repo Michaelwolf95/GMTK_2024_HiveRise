@@ -8,6 +8,8 @@ namespace HiveRise
 	/// 
 	public class HandController : MonoBehaviour
 	{
+		public static HandController instance => GameManager.instance.handController;
+		
 		private CardView currentDragCard = null;
 
 		[SerializeField] // ToDo: Make this unserialized later?
