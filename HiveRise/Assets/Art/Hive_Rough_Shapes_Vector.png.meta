@@ -139,6 +139,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -383,7 +409,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Hive_Rough_Shapes_Vector_0: -4727785230328530462
+      Hive_Rough_Shapes_Vector_1: -4397814253954165036
+      Hive_Rough_Shapes_Vector_10: -4833730459885497735
+      Hive_Rough_Shapes_Vector_2: 6871024004465920100
+      Hive_Rough_Shapes_Vector_3: -769331716892323024
+      Hive_Rough_Shapes_Vector_4: 7987202321715266305
+      Hive_Rough_Shapes_Vector_5: -7646028433029420165
+      Hive_Rough_Shapes_Vector_6: 9008149265197751486
+      Hive_Rough_Shapes_Vector_7: 7682744709563974287
+      Hive_Rough_Shapes_Vector_8: 5183568613456190026
+      Hive_Rough_Shapes_Vector_9: 4601381159074562364
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
