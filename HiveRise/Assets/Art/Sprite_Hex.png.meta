@@ -148,12 +148,12 @@ TextureImporter:
       name: Sprite_Hex_Frame
       rect:
         serializedVersion: 2
-        x: 12
-        y: 141
-        width: 105
-        height: 92
+        x: 3
+        y: 139
+        width: 108
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -166,15 +166,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Hex_Base
+      name: Sprite_Hex_Yellow
       rect:
         serializedVersion: 2
-        x: 130
-        y: 130
-        width: 113
-        height: 114
+        x: 121
+        y: 128
+        width: 116
+        height: 116
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -190,12 +190,12 @@ TextureImporter:
       name: Sprite_Hex_Mask
       rect:
         serializedVersion: 2
-        x: 12
-        y: 25
-        width: 105
-        height: 92
+        x: 3
+        y: 23
+        width: 108
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -203,6 +203,69 @@ TextureImporter:
       bones: []
       spriteID: 0654f3dcbc932cf44a7d105a3b4d0a26
       internalID: 7644508964077841834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Hex_Pink
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 129
+        width: 116
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 822b9e93085149145a936923957842a5
+      internalID: -2034334160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Hex_Blue
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 11
+        width: 116
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d7dcbc77385974d8daebefed72b13b
+      internalID: -1195131456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Hex_Purple
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 12
+        width: 116
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c742e81504b9d06419972da31c93750d
+      internalID: -1535677976
       vertices: []
       indices: 
       edges: []
@@ -218,9 +281,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sprite_Hex_Base: -8523427821724400591
+      Sprite_Hex_Blue: -1195131456
       Sprite_Hex_Frame: -98883410
       Sprite_Hex_Mask: 7644508964077841834
+      Sprite_Hex_Pink: -2034334160
+      Sprite_Hex_Purple: -1535677976
+      Sprite_Hex_Yellow: -8523427821724400591
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
