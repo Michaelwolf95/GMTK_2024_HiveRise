@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace HiveRise
 {
@@ -22,7 +23,7 @@ namespace HiveRise
 
 		//-///////////////////////////////////////////////////////////
 		/// 
-		private void SetAllCollidersEnabled(bool argEnabled)
+		public void SetAllCollidersEnabled(bool argEnabled)
 		{
 			foreach (HexCell hexCell in hexCells)
 			{
@@ -30,5 +31,37 @@ namespace HiveRise
 			}
 		}
 		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public bool DoesPieceOverlapColliders(List<Collider2D> argColliders)
+		{
+			foreach (HexCell cell in hexCells)
+			{
+				if (cell.DoesCellOverlapColliders(argColliders))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public List<Collider2D> GetAllColliders()
+		{
+			List<Collider2D> colliders = new List<Collider2D>();
+			foreach (HexCell cell in hexCells)
+			{
+				colliders.Add(cell.collider);
+			}
+			return colliders;
+		}
+		
+		// //-///////////////////////////////////////////////////////////
+		// /// 
+		// public bool CheckForOverlap(PieceView argOtherPieceView)
+		// {
+		// 	
+		// }
 	}
 }

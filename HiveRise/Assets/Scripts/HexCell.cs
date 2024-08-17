@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace HiveRise
@@ -30,6 +31,30 @@ namespace HiveRise
 		public void SetColliderEnabled(bool argEnabled)
 		{
 			collider.enabled = argEnabled;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public bool DoesCellOverlapColliders(List<Collider2D> argOtherColliders)
+		{
+			bool result = false;
+
+			bool wasColliderEnabled = collider.enabled;
+			collider.enabled = true;
+			List<Collider2D> overlapResults = new List<Collider2D>();
+			if (collider.Overlap(overlapResults) > 0)
+			{
+				foreach (Collider2D otherCollider in argOtherColliders)
+				{
+					if (overlapResults.Contains(otherCollider))
+					{
+						result = true;
+					}
+				}
+			}
+
+			collider.enabled = wasColliderEnabled;
+			return result;
 		}
 	}
 }

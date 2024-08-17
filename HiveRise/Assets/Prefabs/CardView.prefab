@@ -81,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 5441839306859317014}
   pieceContainer: {fileID: 51638638525479687}
-  linkedPieceView: {fileID: 4988496426809135125}
+  _linkedPieceView: {fileID: 4988496426809135125}
 --- !u!61 &6889689019570804377
 BoxCollider2D:
   m_ObjectHideFlags: 0

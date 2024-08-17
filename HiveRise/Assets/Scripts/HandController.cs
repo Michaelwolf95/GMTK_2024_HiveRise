@@ -12,17 +12,32 @@ namespace HiveRise
 	public class HandController : MonoBehaviour
 	{
 		public static HandController instance => GameManager.instance.handController;
-		
-		public CardView currentDragCard { get; private set; }
 
 		[SerializeField] private List<CardView> _currentCardsInHand = new List<CardView>();
 		public List<CardView> currentCardsInHand => _currentCardsInHand;
 
 		[SerializeField] private SplineContainer handCurveSpline = null;
+		[SerializeField] private Transform _handContainer = null;
+		public Transform handContainer => _handContainer;
+
+		private List<CardView> pendingPlacementCardViews = new List<CardView>();
 		
 		public const float CARD_MOVE_SPEED = 25f;
 		public const float CARD_ROTATION_SPEED = 20f;
+
+		// ToDo: Make this a config param?
+		public const int MAX_CARDS_PER_PLAY = 3;
 		
+		public CardView currentDragCard { get; private set; }
+		private bool didCurrentDragCardStartInHand = false;
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void Awake()
+		{
+			//currentCardsInHand = new HashSet<CardView>(_currentCardsInHand);
+		}
+
 		//-///////////////////////////////////////////////////////////
 		/// 
 		private void Update()
@@ -37,7 +52,6 @@ namespace HiveRise
 		{
 			if (currentDragCard != null)
 			{
-				//Debug.Log("Update Drag!");
 				// Update movement
 				currentDragCard.UpdateDrag(Input.mousePosition);
 			}
@@ -68,6 +82,11 @@ namespace HiveRise
 						Quaternion targetRotation = Quaternion.AngleAxis(Vector2.SignedAngle(Vector2.up, upVector), Vector3.forward);
 						// Rotate the object by setting its rotation
 						currentCardsInHand[i].transform.rotation = Quaternion.RotateTowards(currentCardsInHand[i].transform.rotation, targetRotation, HandController.CARD_ROTATION_SPEED * Time.deltaTime);
+
+						if (currentCardsInHand[i].isCardMode == false)
+						{
+							currentCardsInHand[i].CheckForStateChange();
+						}
 					}
 				}
 			}
@@ -84,27 +103,65 @@ namespace HiveRise
 
 		//-///////////////////////////////////////////////////////////
 		/// 
-		public void StartDraggingCard(CardView argCardView)
+		public void TryStartDraggingCard(CardView argCardView)
 		{
-			if (currentDragCard == null)
+			if (currentDragCard == null && pendingPlacementCardViews.Count < 3)
 			{
+				didCurrentDragCardStartInHand = currentCardsInHand.Contains(currentDragCard);
 				currentDragCard = argCardView;
 				currentDragCard.OnStartDragging();
 				
-				Debug.Log($"Start Dragging! {argCardView.name}".RichText(Color.cyan));
+				//Debug.Log($"Start Dragging! {argCardView.name}".RichText(Color.cyan));
 			}
 		}
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
-		public void StopDraggingCard(CardView argCardView)
+		public void TryStopDraggingCard(CardView argCardView)
 		{
-			if (currentDragCard != null)
+			if (currentDragCard != null && currentDragCard == argCardView)
 			{
+				//Debug.Log($"Stop Dragging! {argCardView.name}".RichText(Color.cyan));
 				currentDragCard.OnStopDragging();
-				currentDragCard = null;
+
+				if (IsPointWithinHandContainer(currentDragCard.transform.position))
+				{
+					// Add back to hand if it wasn't already.
+					if (currentCardsInHand.Contains(currentDragCard) == false)
+					{
+						currentCardsInHand.Add(currentDragCard);
+					}
+					if (pendingPlacementCardViews.Contains(currentDragCard))
+					{
+						pendingPlacementCardViews.Remove(currentDragCard);
+						GameBoardController.instance.RemovePendingCard(currentDragCard);
+					}
+				}
+				else
+				{
+					if (GameBoardController.instance.IsPieceValid(currentDragCard.linkedPieceView))
+					{
+						if (currentCardsInHand.Contains(currentDragCard))
+						{
+							currentCardsInHand.Remove(currentDragCard);
+						}
+						if (pendingPlacementCardViews.Contains(currentDragCard) == false)
+						{
+							pendingPlacementCardViews.Add(currentDragCard);
+							GameBoardController.instance.PlacePendingCard(currentDragCard);
+						}
+					
+						OnCardPlacedAsPendingPiece(currentDragCard);
+					}
+					else
+					{
+						// ToDo: Update as invalid placement state.
+					}
+				}
+
 				
-				Debug.Log($"Start Dragging! {argCardView.name}".RichText(Color.cyan));
+				currentDragCard = null;
+				didCurrentDragCardStartInHand = false;
 			}
 		}
 
@@ -118,6 +175,24 @@ namespace HiveRise
 
 #endregion //Dragging
 
+#region Pending Cards
+
+		//-///////////////////////////////////////////////////////////
+		///
+		private void OnCardPlacedAsPendingPiece(CardView argCardView)
+		{
+			argCardView.OnLinkedPiecePlaced();
+
+			if (didCurrentDragCardStartInHand)
+			{
+				// ToDo: Show rotation gizmo, etc.
+			}
+			
+			// ToDo: Tint cards, etc.
+		}
+
+#endregion // Pending Cards
+		
 #region Debug
 
 		//-///////////////////////////////////////////////////////////
