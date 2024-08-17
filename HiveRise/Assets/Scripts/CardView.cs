@@ -7,6 +7,8 @@ namespace HiveRise
 	/// 
 	public class CardView : MonoBehaviour
 	{
+		private bool isBeingDragged = false;
+		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void OnStartDragging()
@@ -25,7 +27,10 @@ namespace HiveRise
 		/// 
 		private void OnMouseDown()
 		{
-			
+			if (HandController.instance.currentDragCard == null)
+			{
+				HandController.instance.StartDraggingCard(this);
+			}
 		}
 		
 		//-///////////////////////////////////////////////////////////
