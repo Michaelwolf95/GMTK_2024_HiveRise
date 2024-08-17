@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 76698177639929979}
   - component: {fileID: 2397548626368538787}
   - component: {fileID: 6889689019570804377}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CardView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1513130925
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &4457433299039946169

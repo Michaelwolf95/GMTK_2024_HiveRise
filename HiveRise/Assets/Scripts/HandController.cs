@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MichaelWolfGames;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -19,6 +20,9 @@ namespace HiveRise
 
 		[SerializeField] private SplineContainer handCurveSpline = null;
 		
+		public const float CARD_MOVE_SPEED = 25f;
+		public const float CARD_ROTATION_SPEED = 20f;
+		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		private void Update()
@@ -33,8 +37,9 @@ namespace HiveRise
 		{
 			if (currentDragCard != null)
 			{
+				//Debug.Log("Update Drag!");
 				// Update movement
-				
+				currentDragCard.UpdateDrag(Input.mousePosition);
 			}
 		}
 		
@@ -46,22 +51,33 @@ namespace HiveRise
 			//int div = (numCardsInHand % 2 == 0) ? numCardsInHand : numCardsInHand + 1;
 			for (int i = 0; i < currentCardsInHand.Count; i++)
 			{
-				//float t = (numCardsInHand % 2 == 0)? (((float) i) / (numCardsInHand)) : (((float) i + 1) / (numCardsInHand + 1));
-				float t = (((float) i + 1) / (numCardsInHand + 1));
-				float3 pos;
-				float3 tangentVector;
-				float3 up;
-				if(handCurveSpline.Evaluate(t, out pos, out tangentVector, out up))
+				if (currentCardsInHand[i].isBeingDragged == false)
 				{
-					//Debug.Log($"{i}/{numCardsInHand}: {t}, {pos}");
-					currentCardsInHand[i].transform.position = new Vector3(pos.x, pos.y, pos.z);
+					//float t = (numCardsInHand % 2 == 0)? (((float) i) / (numCardsInHand)) : (((float) i + 1) / (numCardsInHand + 1));
+					float t = (((float) i + 1) / (numCardsInHand + 1));
+					float3 pos;
+					float3 tangentVector;
+					float3 up;
+					if(handCurveSpline.Evaluate(t, out pos, out tangentVector, out up))
+					{
+						//Debug.Log($"{i}/{numCardsInHand}: {t}, {pos}");
+						Vector3 targetPos = new Vector3(pos.x, pos.y, pos.z);
+						currentCardsInHand[i].transform.position = Vector3.MoveTowards(currentCardsInHand[i].transform.position, targetPos, CARD_MOVE_SPEED * Time.deltaTime);
 
-					Vector3 upVector = new Vector3(up.x, up.y, up.z);
-
-					// Rotate the object by setting its rotation
-					currentCardsInHand[i].transform.rotation = Quaternion.AngleAxis(Vector2.SignedAngle(Vector2.up, upVector), Vector3.forward);
+						Vector3 upVector = new Vector3(up.x, up.y, up.z);
+						Quaternion targetRotation = Quaternion.AngleAxis(Vector2.SignedAngle(Vector2.up, upVector), Vector3.forward);
+						// Rotate the object by setting its rotation
+						currentCardsInHand[i].transform.rotation = Quaternion.RotateTowards(currentCardsInHand[i].transform.rotation, targetRotation, HandController.CARD_ROTATION_SPEED * Time.deltaTime);
+					}
 				}
 			}
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public Quaternion GetDefaultCardRotation()
+		{
+			return handCurveSpline.transform.rotation;
 		}
 
 #region Dragging
@@ -74,8 +90,22 @@ namespace HiveRise
 			{
 				currentDragCard = argCardView;
 				currentDragCard.OnStartDragging();
+				
+				Debug.Log($"Start Dragging! {argCardView.name}".RichText(Color.cyan));
 			}
-			
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void StopDraggingCard(CardView argCardView)
+		{
+			if (currentDragCard != null)
+			{
+				currentDragCard.OnStopDragging();
+				currentDragCard = null;
+				
+				Debug.Log($"Start Dragging! {argCardView.name}".RichText(Color.cyan));
+			}
 		}
 
 #endregion //Dragging

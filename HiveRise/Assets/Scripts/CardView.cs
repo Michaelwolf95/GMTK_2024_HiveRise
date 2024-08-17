@@ -1,4 +1,5 @@
 ﻿using System;
+using MichaelWolfGames;
 using UnityEngine;
 
 namespace HiveRise
@@ -7,20 +8,21 @@ namespace HiveRise
 	/// 
 	public class CardView : MonoBehaviour
 	{
-		private bool isBeingDragged = false;
+		public bool isBeingDragged { get; private set; }
+		
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void OnStartDragging()
 		{
-			
+			isBeingDragged = true;
 		}
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void OnStopDragging()
 		{
-			
+			isBeingDragged = false;
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -32,12 +34,27 @@ namespace HiveRise
 				HandController.instance.StartDraggingCard(this);
 			}
 		}
-		
+
+		private void OnMouseUp()
+		{
+			if (isBeingDragged)
+			{
+				HandController.instance.StopDraggingCard(this);
+			}
+		}
+
 		//-///////////////////////////////////////////////////////////
 		/// 
-		private void UpdateDrag(Vector2 mousePos)
+		public void UpdateDrag(Vector2 mousePos)
 		{
+			Vector3 worldPoint = Camera.main.ScreenToWorldPoint(mousePos);
+			worldPoint.z = transform.position.z;
+			transform.position = worldPoint;
 			
+			//transform.position = Vector3.MoveTowards(transform.position, worldPoint, )
+			
+			transform.rotation = Quaternion.RotateTowards(transform.rotation, HandController.instance.GetDefaultCardRotation(), HandController.CARD_ROTATION_SPEED * Time.deltaTime);
+			// ToDo: Transition when dragged onto board
 		}
 	}
 }
