@@ -1,0 +1,19 @@
+# Root .gitignore
+
+*.DS_STORE
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/appinfo_log.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/bootstrap_log.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/cloud_log.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/compat_log.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/configstore_log.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/connection_log.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/content_log.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/parental_log.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/shader_log.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/stderr.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/systemaudiomanager.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/systemdisplaymanager.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/systemdockmanager.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/systemmanager.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/systemperfmanager.txt
+WaxHeart_Prototype_Project/SteamSDK/tools/ContentBuilder/builder/logs/workshop_log.txt
