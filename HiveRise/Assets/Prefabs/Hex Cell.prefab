@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0637c5f6e140473e9d1801c9f897d776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 5718858919084336997}
   _outlineSpriteRenderer: {fileID: 7175876781823464323}
   _mainSpriteRenderer: {fileID: 4571027480253870066}
   _gimbal: {fileID: 3792301409590039691}

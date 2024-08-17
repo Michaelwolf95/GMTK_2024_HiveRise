@@ -7,6 +7,9 @@ namespace HiveRise
 	/// 
 	public class HexCell : MonoBehaviour
 	{
+		[SerializeField] private PolygonCollider2D _collider = null;
+		public PolygonCollider2D collider => _collider;
+		
 		[SerializeField] private SpriteRenderer _outlineSpriteRenderer = null;
 		public SpriteRenderer outlineSpriteRenderer => _outlineSpriteRenderer;
 		
@@ -20,6 +23,13 @@ namespace HiveRise
 		private void Update()
 		{
 			_gimbal.transform.rotation = Quaternion.identity;
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetColliderEnabled(bool argEnabled)
+		{
+			collider.enabled = argEnabled;
 		}
 	}
 }
