@@ -9,7 +9,9 @@ namespace HiveRise
 	public class CardView : MonoBehaviour
 	{
 		public bool isBeingDragged { get; private set; }
-		
+
+		[SerializeField] private CanvasGroup canvasGroup = null;
+		[SerializeField] private PieceView pieceView = null;
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -55,6 +57,13 @@ namespace HiveRise
 			
 			transform.rotation = Quaternion.RotateTowards(transform.rotation, HandController.instance.GetDefaultCardRotation(), HandController.CARD_ROTATION_SPEED * Time.deltaTime);
 			// ToDo: Transition when dragged onto board
+
+			if (HandController.instance.IsPointWithinHandContainer(this.transform.position) == false)
+			{
+				
+			}
 		}
+		
+		
 	}
 }

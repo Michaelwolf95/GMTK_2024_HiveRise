@@ -108,6 +108,14 @@ namespace HiveRise
 			}
 		}
 
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public bool IsPointWithinHandContainer(Vector3 argWorldPoint)
+		{
+			Vector2 screenPoint = CameraRigController.instance.mainCamera.WorldToScreenPoint(argWorldPoint);
+			return RectTransformUtility.RectangleContainsScreenPoint(UIManager.instance.handContainerRect, screenPoint, CameraRigController.instance.mainCamera);
+		}
+
 #endregion //Dragging
 
 #region Debug
