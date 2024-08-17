@@ -1479,6 +1479,7 @@ GameObject:
   - component: {fileID: 1166909723}
   - component: {fileID: 1166909722}
   - component: {fileID: 1166909721}
+  - component: {fileID: 1166909725}
   m_Layer: 0
   m_Name: Hive_Rough_Shapes_Vector_7
   m_TagString: Untagged
@@ -1653,6 +1654,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1166909725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166909720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 67273556
+      Data2: 1316425110
+      Data3: 223166353
+      Data4: -1055071121
+    Path: event:/SFX/SFX_Tet_Bump
+  Event: 
+  PlayEvent: 9
+  StopEvent: 10
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1303181611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,6 +1697,7 @@ GameObject:
   - component: {fileID: 1303181614}
   - component: {fileID: 1303181613}
   - component: {fileID: 1303181612}
+  - component: {fileID: 1303181616}
   m_Layer: 0
   m_Name: Hive_Rough_Shapes_Vector_1
   m_TagString: Untagged
@@ -1846,6 +1879,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1303181616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303181611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 67273556
+      Data2: 1316425110
+      Data3: 223166353
+      Data4: -1055071121
+    Path: event:/SFX/SFX_Tet_Bump
+  Event: 
+  PlayEvent: 9
+  StopEvent: 10
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1459281884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2042,6 +2106,7 @@ GameObject:
   - component: {fileID: 1694564853}
   - component: {fileID: 1694564852}
   - component: {fileID: 1694564851}
+  - component: {fileID: 1694564855}
   m_Layer: 0
   m_Name: Hive_Rough_Shapes_Vector_2
   m_TagString: Untagged
@@ -2224,6 +2289,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1694564855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694564850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 67273556
+      Data2: 1316425110
+      Data3: 223166353
+      Data4: -1055071121
+    Path: event:/SFX/SFX_Tet_Bump
+  Event: 
+  PlayEvent: 9
+  StopEvent: 10
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1767592640
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,6 +2656,7 @@ GameObject:
   - component: {fileID: 1814806314}
   - component: {fileID: 1814806313}
   - component: {fileID: 1814806312}
+  - component: {fileID: 1814806316}
   m_Layer: 0
   m_Name: Hive_Rough_Shapes_Vector_3
   m_TagString: Untagged
@@ -2739,6 +2836,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1814806316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814806311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 67273556
+      Data2: 1316425110
+      Data3: 223166353
+      Data4: -1055071121
+    Path: event:/SFX/SFX_Tet_Bump
+  Event: 
+  PlayEvent: 9
+  StopEvent: 10
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1835030871
 GameObject:
   m_ObjectHideFlags: 0
@@ -3319,6 +3447,7 @@ GameObject:
   - component: {fileID: 1972636021}
   - component: {fileID: 1972636020}
   - component: {fileID: 1972636019}
+  - component: {fileID: 1972636024}
   m_Layer: 0
   m_Name: Hive_Rough_Shapes_Vector_0
   m_TagString: Untagged
@@ -3590,6 +3719,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1972636024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972636018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 67273556
+      Data2: 1316425110
+      Data3: 223166353
+      Data4: -1055071121
+    Path: event:/SFX/SFX_Tet_Bump
+  Event: 
+  PlayEvent: 9
+  StopEvent: 10
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2114316749
 GameObject:
   m_ObjectHideFlags: 0
@@ -3797,6 +3957,7 @@ GameObject:
   - component: {fileID: 2114502920}
   - component: {fileID: 2114502919}
   - component: {fileID: 2114502918}
+  - component: {fileID: 2114502922}
   m_Layer: 0
   m_Name: Hive_Rough_Shapes_Vector_5
   m_TagString: Untagged
@@ -3968,6 +4129,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2114502922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114502917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 67273556
+      Data2: 1316425110
+      Data3: 223166353
+      Data4: -1055071121
+    Path: event:/SFX/SFX_Tet_Bump
+  Event: 
+  PlayEvent: 9
+  StopEvent: 10
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
