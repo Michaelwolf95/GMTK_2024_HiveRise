@@ -36,12 +36,23 @@ namespace HiveRise
 	//-///////////////////////////////////////////////////////////
 	/// 
 	[Serializable]
+	public enum ScoreMultiplier
+	{
+		Normal = 0,
+		Double = 1,
+		Tripple = 2,
+	}
+	
+	//-///////////////////////////////////////////////////////////
+	/// 
+	[Serializable]
 	public class CardData
 	{
 		public int pieceShapeID = 0;
 		public CardRarity rarity;
 		public PieceColor color;
 		public WeightType weightType;
+		public ScoreMultiplier ScoreMultiplier;
 		public bool sticky;
 
 		public PieceShapeData pieceData => CardDefinitions.instance.GetPieceDataForID(pieceShapeID);

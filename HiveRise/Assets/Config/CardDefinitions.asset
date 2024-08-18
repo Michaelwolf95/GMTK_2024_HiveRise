@@ -18,12 +18,26 @@ MonoBehaviour:
     pieceShapeID: 0
     pieceShapeSprite: {fileID: 0}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: 6f9e1069fb8761b439a83da3429e34e8, type: 3}
+    shapePointValue: 4
   - pieceName: J
     pieceShapeID: 1
     pieceShapeSprite: {fileID: 0}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: 2241dff9358365148b43f50ff8162def, type: 3}
+    shapePointValue: 4
   - pieceName: I4
     pieceShapeID: 2
     pieceShapeSprite: {fileID: 0}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: fa26b3eca208cd543912124abf2b3390, type: 3}
-  shopCards: []
+    shapePointValue: 4
+  - pieceName: U
+    pieceShapeID: 3
+    pieceShapeSprite: {fileID: 0}
+    pieceViewPrefab: {fileID: 3377259213405375527, guid: 0aa315de2381efe478c86f3b19430c29, type: 3}
+    shapePointValue: 4
+  shopCards:
+  - pieceShapeID: 3
+    rarity: 1
+    color: 0
+    weightType: 0
+    ScoreMultiplier: 0
+    sticky: 0

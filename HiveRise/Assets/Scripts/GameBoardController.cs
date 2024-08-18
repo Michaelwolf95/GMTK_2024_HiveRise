@@ -127,14 +127,14 @@ namespace HiveRise
 		{
 			StartCoroutine(CoApplyAllPendingPieces());
 		}
-		
-		//-///////////////////////////////////////////////////////////
-		/// 
-		public void ApplyPiece(PieceView argPieceView)
-		{
-			allPieceViewsOnBoard.Add(argPieceView);
-			argPieceView.SetPhysical(true);
-		}
+		//
+		// //-///////////////////////////////////////////////////////////
+		// /// 
+		// public void ApplyPiece(PieceView argPieceView)
+		// {
+		// 	allPieceViewsOnBoard.Add(argPieceView);
+		// 	argPieceView.SetPhysical(true);
+		// }
 
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -198,6 +198,10 @@ namespace HiveRise
 				if (pieceView != argPieceView)
 				{
 					// ToDo: Apply sticky rule
+
+					// var joint = argPieceView.gameObject.AddComponent<FixedJoint2D>();
+					// joint. = pieceView.rigidbody2D;
+
 				}
 			}
 		}
@@ -213,7 +217,8 @@ namespace HiveRise
 			if (hit.collider != null)
 			{
 				currentTowerHeight = hit.point.y - heightTracker.transform.position.y;
-				
+				FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Height", currentTowerHeight);
+
 				heightTracker.SetCurrentHeight(currentTowerHeight);
 			}
 		}
