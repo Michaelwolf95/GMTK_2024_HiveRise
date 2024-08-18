@@ -19,8 +19,14 @@ namespace HiveRise
 		[SerializeField] private CardDefinitions _cardDefinitions = null;
 		public CardDefinitions cardDefinitions => _cardDefinitions;
 		
+		[SerializeField] private ProgressionConfig _progressionConfig = null;
+		public ProgressionConfig progressionConfig => _progressionConfig;
+		
 		[SerializeField] private AudioHooks _audioHooks = null;
 		public AudioHooks audioHooks => _audioHooks;
+		
+		public int currentHoneyCount { get; set; }
+		public int currentProgressionTierIndex { get; set; }
 		
 		public const int MAX_CARDS_PER_PLAY = 3;
 		public const int MAX_CARDS_IN_HAND = 5;
@@ -47,6 +53,8 @@ namespace HiveRise
 		/// 
 		private void StartNewRun()
 		{
+			currentHoneyCount = 0;
+			currentProgressionTierIndex = 0;
 			deckController.InitDeckForNewRun();
 			StartNewGame();
 		}
@@ -74,7 +82,15 @@ namespace HiveRise
 		/// 
 		private void OnGameWon()
 		{
-			// ToDo: UI popup for winning the game.
+			currentProgressionTierIndex++;
+			if (currentProgressionTierIndex > progressionConfig.progressionTiers.Length)
+			{
+				OnRunComplete();
+			}
+			else
+			{
+				// ToDo: UI popup for winning the game.
+			}
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -103,8 +119,14 @@ namespace HiveRise
 		/// 
 		public float GetCurrentTargetHeight()
 		{
-			// ToDo: Get this from a config file.
-			return 100f;
+			return progressionConfig.GetHeightRequirementForTierIndex(currentProgressionTierIndex);
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void OnRunComplete()
+		{
+			// ToDo: UI popup for winning the run.
 		}
 		
 #endregion //High-Level Game Logic

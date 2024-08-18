@@ -57,6 +57,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4fab0fecf384b94d98fc9c078815cc9, type: 3}
+--- !u!114 &41018047903806681 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3764182917306623149, guid: a4fab0fecf384b94d98fc9c078815cc9, type: 3}
+  m_PrefabInstance: {fileID: 3795595335591006324}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0637c5f6e140473e9d1801c9f897d776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &775131248788264433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4498383658483991941, guid: a4fab0fecf384b94d98fc9c078815cc9, type: 3}
@@ -134,6 +145,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8878792803062758772, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
+      propertyPath: _hexCells.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8878792803062758772, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
+      propertyPath: '_hexCells.Array.data[3]'
+      value: 
+      objectReference: {fileID: 41018047903806681}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
