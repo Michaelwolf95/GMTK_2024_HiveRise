@@ -29,6 +29,7 @@ namespace HiveRise
 		public CardData pieceCardData { get; private set; }
 		
 		private Vector2 clickStartPos = Vector2.zero;
+		private const float MIN_DRAG_PIXEL_DIST = 10f;
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -109,7 +110,7 @@ namespace HiveRise
 			{
 				return;
 			}
-			if (isBeingDragged == false && Vector2.Distance(Input.mousePosition, clickStartPos) > 20)
+			if (isBeingDragged == false && Vector2.Distance(Input.mousePosition, clickStartPos) > MIN_DRAG_PIXEL_DIST)
 			{
 				if (HandController.instance.currentDragCard == null)
 				{

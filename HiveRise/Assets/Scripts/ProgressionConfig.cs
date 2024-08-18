@@ -24,7 +24,7 @@ namespace HiveRise
 		public float GetHeightRequirementForTierIndex(int argTierIndex)
 		{
 			float height = 0f;
-			for (int i = 0; i < argTierIndex; i++)
+			for (int i = 0; i < argTierIndex + 1; i++)
 			{
 				height += progressionTiers[i].heightRequirement;
 			}

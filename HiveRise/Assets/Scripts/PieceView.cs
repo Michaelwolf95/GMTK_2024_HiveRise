@@ -98,7 +98,7 @@ namespace HiveRise
 			HashSet<PieceView> uniquePieces = new HashSet<PieceView>();
 			foreach (HexCell cell in hexCells)
 			{
-				Collider2D[] colliders = Physics2D.OverlapCircleAll(cell.transform.position, 0.5f);
+				Collider2D[] colliders = Physics2D.OverlapCircleAll(cell.transform.position, 0.6f);
 				foreach (Collider2D c in colliders)
 				{
 					if (c.attachedRigidbody != null)
