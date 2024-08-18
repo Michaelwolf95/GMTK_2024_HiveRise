@@ -18,6 +18,9 @@ namespace HiveRise
 		
 		[SerializeField] private CardDefinitions _cardDefinitions = null;
 		public CardDefinitions cardDefinitions => _cardDefinitions;
+
+		[SerializeField] private ShopCardDefinitions _shopCardDefinitions = null;
+		public ShopCardDefinitions shopCardDefinitions => _shopCardDefinitions;
 		
 		[SerializeField] private ProgressionConfig _progressionConfig = null;
 		public ProgressionConfig progressionConfig => _progressionConfig;
