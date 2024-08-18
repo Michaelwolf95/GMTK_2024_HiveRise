@@ -28,18 +28,18 @@ MonoBehaviour:
     Path: event:/SFX/Card/SFX_Card_Place
   cardDiscard:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1926734764
+      Data2: 1161022389
+      Data3: 232658314
+      Data4: -1758462493
+    Path: event:/SFX/Card/SFX_Card_Discard
   cardShuffle:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1866088861
+      Data2: 1314728970
+      Data3: 1392247190
+      Data4: 1787197403
+    Path: event:/SFX/Card/SFX_Card_Shuffle
   pieceBump:
     Guid:
       Data1: 67273556
@@ -56,11 +56,11 @@ MonoBehaviour:
     Path: event:/SFX/Tet/SFX_Tet_Stick
   piecePaint:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1207911675
+      Data2: 1233630573
+      Data3: 1881978752
+      Data4: 166428737
+    Path: event:/SFX/Tet/SFX_Tet_Paint
   pieceRotate:
     Guid:
       Data1: 1487953893
@@ -98,11 +98,11 @@ MonoBehaviour:
     Path: event:/SFX/Shop/SFX_Shop_Payout
   winGame:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1004579862
+      Data2: 1121731035
+      Data3: 641896103
+      Data4: -1930805110
+    Path: event:/UI/UI_Win
   loseGame:
     Guid:
       Data1: 0
