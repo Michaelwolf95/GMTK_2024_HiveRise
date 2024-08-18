@@ -12,6 +12,11 @@ namespace HiveRise
 	{
 		[SerializeField] private CanvasGroup canvasGroup;
 		[SerializeField] private Button closeButton;
+		[Space]
+		[SerializeField] private Button removeCardButton;
+		[SerializeField] private TextMeshProUGUI removeCardCostText;
+		[SerializeField] private int removeCardCost = 10;
+		[Space]
 		[SerializeField] private ShopCardView[] shopCards;
 		
 
@@ -25,6 +30,16 @@ namespace HiveRise
 			{
 				HideMenu();
 			});
+			
+			removeCardButton.onClick.AddListener((() =>
+			{
+				if (GameManager.instance.currentHoneyCount >= removeCardCost)
+				{
+					GameManager.instance.SpendHoney(removeCardCost);
+					UIManager.instance.ShowDeckPreviewMenu(DeckPreviewMode.RemoveCard);
+					removeCardButton.interactable = false;
+				}
+			}));
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -52,6 +67,9 @@ namespace HiveRise
 		/// 
 		public void InitNewShop()
 		{
+			removeCardButton.interactable = true;
+			removeCardCostText.text = removeCardCost.ToString();
+			
 			foreach (ShopCardView shopCardView in shopCards)
 			{
 				ShopCardData data = ShopCardDefinitions.instance.GetRandomShopCardData(shopCardView.rarity);

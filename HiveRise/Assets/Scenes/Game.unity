@@ -319,10 +319,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6956352515302085112, guid: 186462d97809efe4f93bd4eb49cc4a97, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7468409299115052694, guid: 186462d97809efe4f93bd4eb49cc4a97, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -416,62 +412,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 113222118890202117, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
-      propertyPath: _initialDeckCardsData.Array.data[1].pieceShapeID
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 113222118890202117, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
-      propertyPath: _initialDeckCardsData.Array.data[2].pieceShapeID
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 113222118890202117, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
-      propertyPath: _initialDeckCardsData.Array.data[3].pieceShapeID
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 113222118890202117, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
-      propertyPath: _initialDeckCardsData.Array.data[4].pieceShapeID
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 113222118890202117, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
-      propertyPath: _initialDeckCardsData.Array.data[5].pieceShapeID
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 113222118890202117, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
-      propertyPath: _initialDeckCardsData.Array.data[6].pieceShapeID
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 113222118890202117, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
-      propertyPath: _initialDeckCardsData.Array.data[7].pieceShapeID
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 113222118890202117, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
-      propertyPath: _initialDeckCardsData.Array.data[8].pieceShapeID
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 113222118890202117, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
-      propertyPath: _initialDeckCardsData.Array.data[9].pieceShapeID
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 113222118890202117, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
-      propertyPath: _initialDeckCardsData.Array.data[10].pieceShapeID
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 113222118890202117, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
-      propertyPath: _initialDeckCardsData.Array.data[11].pieceShapeID
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 113222118890202117, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
-      propertyPath: _initialDeckCardsData.Array.data[12].pieceShapeID
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 113222118890202117, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
-      propertyPath: _initialDeckCardsData.Array.data[13].pieceShapeID
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 113222118890202117, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
-      propertyPath: _initialDeckCardsData.Array.data[14].pieceShapeID
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2505132883188008554, guid: 4d8a752313f682b4c97ee9755f24b71f, type: 3}
       propertyPath: m_Name
       value: MANAGERS

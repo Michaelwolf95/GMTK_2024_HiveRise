@@ -22,6 +22,7 @@ namespace HiveRise
 		[SerializeField] private TextMeshProUGUI deckCounter = null;
 		[SerializeField] private TextMeshProUGUI deckCounter2 = null;
 		[SerializeField] private string deckCounterFormatString = "{0}/{1}";
+		[SerializeField] private Button deckCounterButton;
 		[Space]
 		[SerializeField] private ShopMenu shopMenu;
 		[SerializeField] private DeckPreviewMenu deckPreviewMenu;
@@ -38,6 +39,18 @@ namespace HiveRise
 			
 			shopMenu.gameObject.SetActive(false);
 			deckPreviewMenu.gameObject.SetActive(false);
+			
+			deckCounterButton.onClick.AddListener((() =>
+			{
+				if(isMenuOpen)
+				{
+					ShowDeckPreviewMenu(DeckPreviewMode.Preview);
+				}
+				else
+				{
+					deckPreviewMenu.DismissMenu();
+				}
+			}));
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -110,7 +123,7 @@ namespace HiveRise
 		/// 
 		public void OnShopMenuClosed()
 		{
-			shopMenu.HideMenu();
+			//shopMenu.HideMenu();
 			isMenuOpen = false;
 		}
 		

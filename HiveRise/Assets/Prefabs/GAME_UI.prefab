@@ -1308,6 +1308,7 @@ MonoBehaviour:
   deckCounter: {fileID: 8622671946008067825}
   deckCounter2: {fileID: 4981125827712096333}
   deckCounterFormatString: '{0}/{1}'
+  deckCounterButton: {fileID: 7564745654862376970}
   shopMenu: {fileID: 4215805370096065785}
   deckPreviewMenu: {fileID: 5988136084504594386}
 --- !u!1 &5193892634406827644
@@ -2630,6 +2631,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5438404874097392214, guid: e620a712c7085dc4fbd915ed4023a79d, type: 3}
   m_PrefabInstance: {fileID: 2132115664685257000}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7564745654862376970 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8461608328284086562, guid: e620a712c7085dc4fbd915ed4023a79d, type: 3}
+  m_PrefabInstance: {fileID: 2132115664685257000}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2890900631792686603
 PrefabInstance:
   m_ObjectHideFlags: 0

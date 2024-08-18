@@ -70,55 +70,7 @@ MonoBehaviour:
     weightType: 0
     scoreMultiplier: 0
     sticky: 0
-  - pieceShapeID: 0
-    rarity: 0
-    color: 1
-    weightType: 0
-    scoreMultiplier: 0
-    sticky: 0
-  - pieceShapeID: 0
-    rarity: 0
-    color: 2
-    weightType: 0
-    scoreMultiplier: 0
-    sticky: 0
-  - pieceShapeID: 0
-    rarity: 0
-    color: 3
-    weightType: 0
-    scoreMultiplier: 0
-    sticky: 0
   - pieceShapeID: 1
-    rarity: 0
-    color: 0
-    weightType: 0
-    scoreMultiplier: 0
-    sticky: 0
-  - pieceShapeID: 1
-    rarity: 0
-    color: 1
-    weightType: 0
-    scoreMultiplier: 0
-    sticky: 0
-  - pieceShapeID: 1
-    rarity: 0
-    color: 2
-    weightType: 0
-    scoreMultiplier: 0
-    sticky: 0
-  - pieceShapeID: 1
-    rarity: 0
-    color: 3
-    weightType: 0
-    scoreMultiplier: 0
-    sticky: 0
-  - pieceShapeID: 2
-    rarity: 0
-    color: 0
-    weightType: 0
-    scoreMultiplier: 0
-    sticky: 0
-  - pieceShapeID: 2
     rarity: 0
     color: 1
     weightType: 0
@@ -130,25 +82,73 @@ MonoBehaviour:
     weightType: 0
     scoreMultiplier: 0
     sticky: 0
-  - pieceShapeID: 2
+  - pieceShapeID: 3
     rarity: 0
     color: 3
     weightType: 0
     scoreMultiplier: 0
     sticky: 0
-  - pieceShapeID: 3
+  - pieceShapeID: 4
     rarity: 0
     color: 0
     weightType: 0
     scoreMultiplier: 0
     sticky: 0
-  - pieceShapeID: 3
+  - pieceShapeID: 5
     rarity: 0
     color: 1
     weightType: 0
     scoreMultiplier: 0
     sticky: 0
-  - pieceShapeID: 3
+  - pieceShapeID: 6
+    rarity: 0
+    color: 2
+    weightType: 0
+    scoreMultiplier: 0
+    sticky: 0
+  - pieceShapeID: 7
+    rarity: 0
+    color: 3
+    weightType: 0
+    scoreMultiplier: 0
+    sticky: 0
+  - pieceShapeID: 8
+    rarity: 0
+    color: 0
+    weightType: 0
+    scoreMultiplier: 0
+    sticky: 0
+  - pieceShapeID: 9
+    rarity: 0
+    color: 1
+    weightType: 0
+    scoreMultiplier: 0
+    sticky: 0
+  - pieceShapeID: 10
+    rarity: 0
+    color: 2
+    weightType: 0
+    scoreMultiplier: 0
+    sticky: 0
+  - pieceShapeID: 11
+    rarity: 0
+    color: 3
+    weightType: 0
+    scoreMultiplier: 0
+    sticky: 0
+  - pieceShapeID: 0
+    rarity: 0
+    color: 0
+    weightType: 0
+    scoreMultiplier: 0
+    sticky: 0
+  - pieceShapeID: 1
+    rarity: 0
+    color: 1
+    weightType: 0
+    scoreMultiplier: 0
+    sticky: 0
+  - pieceShapeID: 2
     rarity: 0
     color: 2
     weightType: 0

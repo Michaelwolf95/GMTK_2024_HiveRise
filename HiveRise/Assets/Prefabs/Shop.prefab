@@ -339,6 +339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 0}
   closeButton: {fileID: 612519603917618861}
+  removeCardButton: {fileID: 6370329457975977632}
+  removeCardCostText: {fileID: 7312411839707538625}
+  removeCardCost: 10
   shopCards:
   - {fileID: 826642733943504733}
   - {fileID: 619198653879854787}
