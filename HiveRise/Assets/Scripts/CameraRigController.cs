@@ -79,18 +79,22 @@ namespace HiveRise
 					onReachedHeight.InvokeNullCheck();
 					onReachedHeight = null;
 				}
-				return;
+			}
+			else
+			{
+				if (currentPositionHeight > targetHeight)
+				{
+					speed = moveFromMainMenuSpeed;
+				}
+
+				currentPositionHeight = Mathf.SmoothDamp(currentPositionHeight, targetHeight, ref camVelocity, 1f, speed);
+				//currentPositionHeight = Mathf.MoveTowards(currentPositionHeight, targetHeight, speed * Time.deltaTime);
+
+				_mainCameraContainer.localPosition = new Vector3(0f, currentPositionHeight, 0f);
 			}
 			
-			if (currentPositionHeight > targetHeight)
-			{
-				speed = moveFromMainMenuSpeed;
-			}
-
-			currentPositionHeight = Mathf.SmoothDamp(currentPositionHeight, targetHeight, ref camVelocity, 1f, speed);
-			//currentPositionHeight = Mathf.MoveTowards(currentPositionHeight, targetHeight, speed * Time.deltaTime);
-
-			_mainCameraContainer.localPosition = new Vector3(0f, currentPositionHeight, 0f);
+			
+			FMODUnity.RuntimeManager.StudioSystem.setParameterByName("CameraHeight", _mainCameraContainer.localPosition.y);
 		}
 
 		//-///////////////////////////////////////////////////////////
