@@ -24,6 +24,8 @@ namespace HiveRise
 		[Space]
 		[SerializeField] private ShopMenu shopMenu;
 		
+		public bool isMenuOpen { get; private set; }
+		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		protected override void Awake()

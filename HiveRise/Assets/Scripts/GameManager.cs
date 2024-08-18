@@ -191,7 +191,8 @@ namespace HiveRise
 		/// 
 		public bool CanDragCards()
 		{
-			return GameBoardController.instance.isAnimatingPlacingPieces == false;
+			return GameBoardController.instance.isAnimatingPlacingPieces == false 
+			       && UIManager.instance.isMenuOpen == false;
 		}
 
 #region Economy

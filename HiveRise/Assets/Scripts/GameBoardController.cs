@@ -45,6 +45,8 @@ namespace HiveRise
 			
 			heightTracker.SetCurrentHeight(currentTowerHeight);
 			CameraRigController.instance.SetCurrentHeight(currentTowerHeight);
+
+			AudioHooks.instance.cardShuffle.PlayOneShot();
 		}
 		
 		//-///////////////////////////////////////////////////////////

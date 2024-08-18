@@ -5,7 +5,7 @@ using FMODUnity;
 using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
-namespace WaxHeart
+namespace HiveRise
 {
 	//-///////////////////////////////////////////////////////////
 	/// 
