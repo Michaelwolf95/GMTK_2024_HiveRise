@@ -41,7 +41,13 @@ namespace HiveRise
 		public void OnPendingPiecePlaced()
 		{
 			UpdatePlacementTrackerLabel();
-
+			submitButton.interactable = GameBoardController.instance.CanAllPendingPiecesBeApplied();
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void OnPendingPieceUpdated()
+		{
 			submitButton.interactable = GameBoardController.instance.CanAllPendingPiecesBeApplied();
 		}
 

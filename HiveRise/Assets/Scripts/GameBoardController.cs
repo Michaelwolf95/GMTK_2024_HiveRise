@@ -58,6 +58,16 @@ namespace HiveRise
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
+		public void OnPieceRotated(CardView argCardView)
+		{
+			Physics2D.SyncTransforms();
+			bool valid = IsPieceValid(argCardView.linkedPieceView);
+			argCardView.SetPieceValidState(valid);
+			UIManager.instance.OnPendingPieceUpdated();
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
 		public bool AreAllPendingPiecesValid()
 		{
 			foreach (CardView cardView in HandController.instance.pendingPlacementCardViews)
@@ -142,8 +152,24 @@ namespace HiveRise
 			
 			// ToDo: Wait for a coroutine of effects.
 			
-			// ToDo: Wait for physics to settle.
+			// Wait for physics to settle.
 			yield return new WaitForSeconds(1f);
+			bool settled = false;
+			while (settled == false)
+			{
+				settled = true;
+				foreach (PieceView pieceView in allPieceViewsOnBoard)
+				{
+					//pieceView.rigidbody2D.IsSleeping()
+					if (pieceView.rigidbody2D.velocity.sqrMagnitude > 0.1f || pieceView.rigidbody2D.angularVelocity > 0.1f)
+					{
+						settled = false;
+						break;
+					}
+				}
+				yield return new WaitForSeconds(0.5f);
+			}
+			
 			// ToDo: Wait for height tracker to finish moving?
 			CalculateCurrentTowerHeight();
 			
@@ -158,6 +184,14 @@ namespace HiveRise
 			allPieceViewsOnBoard.Add(argPieceView);
 			argPieceView.SetPhysical(true);
 			yield return new WaitForSeconds(0.15f);
+
+			foreach (PieceView pieceView in allPieceViewsOnBoard)
+			{
+				if (pieceView != argPieceView)
+				{
+					// ToDo: Apply sticky rule
+				}
+			}
 		}
 		
 #region Height Tracking

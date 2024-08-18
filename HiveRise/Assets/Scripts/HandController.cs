@@ -142,10 +142,7 @@ namespace HiveRise
 				didCurrentDragCardStartInHand = currentCardsInHand.Contains(currentDragCard);
 				currentDragCard.OnStartDragging();
 
-				foreach (CardView cardView in pendingPlacementCardViews)
-				{
-					cardView.SetRotationGizmoShown(false);
-				}
+				ClearAllRotationGizmos();
 			}
 		}
 		
@@ -174,6 +171,7 @@ namespace HiveRise
 				{
 					if (GameBoardController.instance.IsPieceValid(currentDragCard.linkedPieceView))
 					{
+						currentDragCard.SetPieceValidState(true);
 						if (currentCardsInHand.Contains(currentDragCard))
 						{
 							currentCardsInHand.Remove(currentDragCard);
@@ -181,14 +179,17 @@ namespace HiveRise
 						if (pendingPlacementCardViews.Contains(currentDragCard) == false)
 						{
 							pendingPlacementCardViews.Add(currentDragCard);
-							GameBoardController.instance.PlacePendingCard(currentDragCard);
+							//GameBoardController.instance.PlacePendingCard(currentDragCard);
 						}
-					
+						GameBoardController.instance.PlacePendingCard(currentDragCard);
+						
 						OnCardPlacedAsPendingPiece(currentDragCard);
 					}
 					else
 					{
 						// ToDo: Update as invalid placement state.
+						currentDragCard.SetPieceValidState(false);
+						UIManager.instance.OnPendingPieceUpdated();
 					}
 				}
 				
@@ -215,13 +216,11 @@ namespace HiveRise
 		{
 			argCardView.OnLinkedPiecePlaced();
 
-			Debug.Log(didCurrentDragCardStartInHand);
 			if (didCurrentDragCardStartInHand)
 			{
 				// Show rotation gizmo, etc.
 				argCardView.SetRotationGizmoShown(true);
 			}
-			//argCardView.SetRotationGizmoShown(true);
 			
 			// ToDo: Tint cards if full, etc.
 		}

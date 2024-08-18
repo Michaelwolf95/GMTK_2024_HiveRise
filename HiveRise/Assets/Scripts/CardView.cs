@@ -70,6 +70,8 @@ namespace HiveRise
 		{
 			isBeingDragged = true;
 			SetRotationGizmoShown(false);
+			
+			linkedPieceView.SetAllCollidersEnabled(false);
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -83,6 +85,10 @@ namespace HiveRise
 		/// 
 		private void OnMouseDown()
 		{
+			// if (IsShowingRotationGizmo())
+			// {
+			// 	return;
+			// }
 			clickStartPos = Input.mousePosition;
 		}
 
@@ -90,6 +96,10 @@ namespace HiveRise
 		/// 
 		private void OnMouseDrag()
 		{
+			// if (IsShowingRotationGizmo())
+			// {
+			// 	return;
+			// }
 			if (isBeingDragged == false && Vector2.Distance(Input.mousePosition, clickStartPos) > 20)
 			{
 				if (HandController.instance.currentDragCard == null)
@@ -103,13 +113,20 @@ namespace HiveRise
 		/// 
 		private void OnMouseUp()
 		{
+			// if (IsShowingRotationGizmo())
+			// {
+			// 	return;
+			// }
 			if (isBeingDragged)
 			{
 				HandController.instance.TryStopDraggingCard(this);
 			}
 			else if (isPendingPlacement)
 			{
-				SetRotationGizmoShown(true);
+				if (IsShowingRotationGizmo() == false)
+				{
+					SetRotationGizmoShown(true);
+				}
 			}
 		}
 
@@ -172,6 +189,7 @@ namespace HiveRise
 
 				isPendingPlacement = false;
 				SetRotationGizmoShown(false);
+				SetPieceValidState(true);
 			}
 			else
 			{
@@ -212,14 +230,23 @@ namespace HiveRise
 			}
 			rotationGizmoCanvasGroup.gameObject.SetActive(argShow);
 		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private bool IsShowingRotationGizmo()
+		{
+			return rotationGizmoCanvasGroup.gameObject.activeSelf;
+		}
 
 		//-///////////////////////////////////////////////////////////
 		/// 
 		private void RotatePieceLeft()
 		{
-			if (rotationGizmoCanvasGroup.gameObject.activeSelf)
+			if (IsShowingRotationGizmo())
 			{
 				linkedPieceView.transform.Rotate(new Vector3(0f, 0f, 30f), Space.Self);
+				
+				GameBoardController.instance.OnPieceRotated(this);
 			}
 		}
 
@@ -227,14 +254,27 @@ namespace HiveRise
 		/// 
 		private void RotatePieceRight()
 		{
-			if (rotationGizmoCanvasGroup.gameObject.activeSelf)
+			if (IsShowingRotationGizmo())
 			{
 				linkedPieceView.transform.Rotate(new Vector3(0f, 0f, -30f), Space.Self);
+				
+				GameBoardController.instance.OnPieceRotated(this);
 			}
 		}
 
 #endregion //Rotation Gizmo
 
+#region Valid State
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetPieceValidState(bool argIsValid)
+		{
+			linkedPieceView.SetValidState(argIsValid);
+		}
+
+#endregion //Valid State
+		
 #region Debug
 
 		//-///////////////////////////////////////////////////////////

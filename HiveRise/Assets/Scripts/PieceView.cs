@@ -71,6 +71,16 @@ namespace HiveRise
 			return colliders;
 		}
 		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetValidState(bool argValid)
+		{
+			foreach (HexCell cell in hexCells)
+			{
+				cell.SetValidState(argValid);
+			}
+		}
+		
 		// //-///////////////////////////////////////////////////////////
 		// /// 
 		// public bool CheckForOverlap(PieceView argOtherPieceView)
