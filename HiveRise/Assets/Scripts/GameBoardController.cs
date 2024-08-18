@@ -14,10 +14,23 @@ namespace HiveRise
 		[SerializeField] private List<Collider2D> environmentColliders = null;
 		
 		[SerializeField] private Transform pieceContainer = null;
+		[Space]
+		[SerializeField] private HeightTracker _heightTracker = null;
+		public HeightTracker heightTracker => _heightTracker;
 
 		private List<PieceView> allPieceViewsOnBoard = new List<PieceView>();
-		private List<PieceView> pendingPieceViews = new List<PieceView>();
-		
+		//private List<PieceView> pendingPieceViews = new List<PieceView>();
+
+		public float currentTowerHeight { get; private set; }
+
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void OnNewGameStarted()
+		{
+			heightTracker.SetTargetHeight(GameManager.instance.GetCurrentTargetHeight());
+		}
+
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public bool IsPieceValid(PieceView argPieceView)
@@ -30,14 +43,21 @@ namespace HiveRise
 			{
 				checkColliders.AddRange(pieceView.GetAllColliders());
 			}
-			
-			foreach (PieceView pieceView in pendingPieceViews)
+
+			foreach (CardView cardView in HandController.instance.pendingPlacementCardViews)
 			{
-				if (pieceView != argPieceView)
+				if (cardView.linkedPieceView != argPieceView)
 				{
-					checkColliders.AddRange(pieceView.GetAllColliders());
+					checkColliders.AddRange(cardView.linkedPieceView.GetAllColliders());
 				}
 			}
+			// foreach (PieceView pieceView in pendingPieceViews)
+			// {
+			// 	if (pieceView != argPieceView)
+			// 	{
+			// 		checkColliders.AddRange(pieceView.GetAllColliders());
+			// 	}
+			// }
 			bool result = argPieceView.DoesPieceOverlapColliders(checkColliders) == false;
 			return result;
 		}
@@ -47,9 +67,10 @@ namespace HiveRise
 		/// 
 		public bool AreAllPendingPiecesValid()
 		{
-			foreach (PieceView pieceView in pendingPieceViews)
+			foreach (CardView cardView in HandController.instance.pendingPlacementCardViews)
+			//foreach (PieceView pieceView in pendingPieceViews)
 			{
-				if (IsPieceValid(pieceView) == false)
+				if (IsPieceValid(cardView.linkedPieceView) == false)
 				{
 					return false;
 				}
@@ -61,15 +82,15 @@ namespace HiveRise
 		/// 
 		public int GetNumPendingPieces()
 		{
-			return pendingPieceViews.Count;
+			return HandController.instance.pendingPlacementCardViews.Count;
 		}
 
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public bool CanAllPendingPiecesBeApplied()
 		{
-			return pendingPieceViews.Count <= GameManager.MAX_CARDS_PER_PLAY
-			       && pendingPieceViews.Count > 0
+			return HandController.instance.pendingPlacementCardViews.Count <= GameManager.MAX_CARDS_PER_PLAY
+			       && HandController.instance.pendingPlacementCardViews.Count > 0
 			       && AreAllPendingPiecesValid();
 		}
 		
@@ -77,43 +98,27 @@ namespace HiveRise
 		/// 
 		public void PlacePendingCard(CardView argCardView)
 		{
-			if (pendingPieceViews.Contains(argCardView.linkedPieceView) == false)
-			{
-				pendingPieceViews.Add(argCardView.linkedPieceView);
-				argCardView.transform.SetParent(pieceContainer);
-				argCardView.linkedPieceView.SetAllCollidersEnabled(true);
+			argCardView.transform.SetParent(pieceContainer);
+			argCardView.linkedPieceView.SetAllCollidersEnabled(true);
 
-				UIManager.instance.OnPendingPiecePlaced();
-			}
+			UIManager.instance.OnPendingPiecePlaced();
 		}
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void RemovePendingCard(CardView argCardView)
 		{
-			if (pendingPieceViews.Contains(argCardView.linkedPieceView))
-			{
-				pendingPieceViews.Remove(argCardView.linkedPieceView);
-				argCardView.transform.SetParent(HandController.instance.handContainer);
-				argCardView.linkedPieceView.SetAllCollidersEnabled(false);
+			argCardView.transform.SetParent(HandController.instance.handContainer);
+			argCardView.linkedPieceView.SetAllCollidersEnabled(false);
 				
-				UIManager.instance.OnPendingPieceReturnedToHand();
-			}
+			UIManager.instance.OnPendingPieceReturnedToHand();
 		}
 
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void ApplyAllPendingPieces()
 		{
-			foreach (PieceView pieceView in pendingPieceViews)
-			{
-				ApplyPiece(pieceView);
-			}
-			pendingPieceViews.Clear();
-			HandController.instance.ClearPendingPlacementCardViews();
-			
-			//ToDo: Make this wait for a coroutine of effects.
-			GameManager.instance.OnPiecePlacementFinished();
+			StartCoroutine(CoApplyAllPendingPieces());
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -124,19 +129,60 @@ namespace HiveRise
 			argPieceView.SetPhysical(true);
 		}
 
-		// //-///////////////////////////////////////////////////////////
-		// /// 
-		// private IEnumerator CoApplyAllPendingPieces()
-		// {
-		// 	
-		// }
-		//
-		// //-///////////////////////////////////////////////////////////
-		// /// 
-		// private IEnumerator CoApplyPiece()
-		// {
-		// 	
-		// }
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private IEnumerator CoApplyAllPendingPieces()
+		{
+			List<PieceView> placedPieceViews = new List<PieceView>();
+			foreach (CardView cardView in HandController.instance.pendingPlacementCardViews)
+			{
+				cardView.linkedPieceView.transform.SetParent(pieceContainer);
+				placedPieceViews.Add(cardView.linkedPieceView);
+			}
+			HandController.instance.ClearPendingPlacementCardViews();
+
+			foreach (PieceView pieceView in placedPieceViews)
+			{
+				yield return StartCoroutine(CoApplyPiece(pieceView));
+			}
+			//pendingPieceViews.Clear();
+			
+			// ToDo: Wait for a coroutine of effects.
+			
+			// ToDo: Wait for physics to settle.
+			yield return new WaitForSeconds(1f);
+			// ToDo: Wait for height tracker to finish moving?
+			CalculateCurrentTowerHeight();
+			
+			GameManager.instance.OnPiecePlacementFinished();
+		}
 		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private IEnumerator CoApplyPiece(PieceView argPieceView)
+		{
+			// ToDo: Wait for effects.
+			allPieceViewsOnBoard.Add(argPieceView);
+			argPieceView.SetPhysical(true);
+			yield return new WaitForSeconds(0.15f);
+		}
+		
+#region Height Tracking
+
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void CalculateCurrentTowerHeight()
+		{
+			RaycastHit2D hit = Physics2D.BoxCast(new Vector2(0, 9999f), new Vector2(10f, 1f), 0f, Vector2.down);
+			if (hit.collider != null)
+			{
+				currentTowerHeight = hit.point.y - heightTracker.transform.position.y;
+				
+				heightTracker.SetCurrentHeight(currentTowerHeight);
+			}
+		}
+
+#endregion // Height Tracking
 	}
 }

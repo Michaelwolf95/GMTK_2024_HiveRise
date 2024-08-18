@@ -24,6 +24,21 @@ namespace HiveRise
 
 		//-///////////////////////////////////////////////////////////
 		/// 
+		private void Start()
+		{
+			// ToDo: Change this to work in menu flow.
+			StartNewGame();
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void StartNewGame()
+		{
+			GameBoardController.instance.OnNewGameStarted();
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
 		public void PlayPendingPieces()
 		{
 			if (GameBoardController.instance.CanAllPendingPiecesBeApplied())
@@ -43,6 +58,14 @@ namespace HiveRise
 			// ToDo: Draw more cards
 			
 			// ToDo: Reset everything.
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public float GetCurrentTargetHeight()
+		{
+			// ToDo: Get this from a config file.
+			return 100f;
 		}
 	}
 }

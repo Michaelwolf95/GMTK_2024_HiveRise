@@ -196,10 +196,11 @@ namespace HiveRise
 		///
 		public void ClearPendingPlacementCardViews()
 		{
-			 // Assumes that the pieces have been removed.
+			 // !!! NOTE: This assumes that the pieces have been removed.
 			 foreach (CardView cardView in pendingPlacementCardViews)
 			 {
-				 Destroy(cardView);
+				 // ToDo: Pool these?
+				 Destroy(cardView.gameObject);
 			 }
 			 pendingPlacementCardViews.Clear();
 		}
