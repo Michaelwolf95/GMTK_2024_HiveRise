@@ -18,7 +18,7 @@ namespace HiveRise
 		public void SetPhysical(bool argIsPhysical)
 		{
 			rigidbody2D.isKinematic = !argIsPhysical;
-			SetAllCollidersEnabled(false);
+			SetAllCollidersEnabled(argIsPhysical);
 		}
 
 		//-///////////////////////////////////////////////////////////

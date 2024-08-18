@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using MichaelWolfGames;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace HiveRise
 		
 		[SerializeField] private Transform pieceContainer = null;
 
-		private List<PieceView> allPieceViews = new List<PieceView>();
+		private List<PieceView> allPieceViewsOnBoard = new List<PieceView>();
 		private List<PieceView> pendingPieceViews = new List<PieceView>();
 		
 		//-///////////////////////////////////////////////////////////
@@ -25,7 +26,7 @@ namespace HiveRise
 			List<Collider2D> checkColliders = new List<Collider2D>();
 			checkColliders.Add(foundationCollider);
 			checkColliders.AddRange(environmentColliders);
-			foreach (PieceView pieceView in allPieceViews)
+			foreach (PieceView pieceView in allPieceViewsOnBoard)
 			{
 				checkColliders.AddRange(pieceView.GetAllColliders());
 			}
@@ -41,6 +42,37 @@ namespace HiveRise
 			return result;
 		}
 		
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public bool AreAllPendingPiecesValid()
+		{
+			foreach (PieceView pieceView in pendingPieceViews)
+			{
+				if (IsPieceValid(pieceView) == false)
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public int GetNumPendingPieces()
+		{
+			return pendingPieceViews.Count;
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public bool CanAllPendingPiecesBeApplied()
+		{
+			return pendingPieceViews.Count <= GameManager.MAX_CARDS_PER_PLAY
+			       && pendingPieceViews.Count > 0
+			       && AreAllPendingPiecesValid();
+		}
+		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void PlacePendingCard(CardView argCardView)
@@ -50,6 +82,8 @@ namespace HiveRise
 				pendingPieceViews.Add(argCardView.linkedPieceView);
 				argCardView.transform.SetParent(pieceContainer);
 				argCardView.linkedPieceView.SetAllCollidersEnabled(true);
+
+				UIManager.instance.OnPendingPiecePlaced();
 			}
 		}
 		
@@ -62,14 +96,47 @@ namespace HiveRise
 				pendingPieceViews.Remove(argCardView.linkedPieceView);
 				argCardView.transform.SetParent(HandController.instance.handContainer);
 				argCardView.linkedPieceView.SetAllCollidersEnabled(false);
+				
+				UIManager.instance.OnPendingPieceReturnedToHand();
 			}
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void ApplyAllPendingPieces()
+		{
+			foreach (PieceView pieceView in pendingPieceViews)
+			{
+				ApplyPiece(pieceView);
+			}
+			pendingPieceViews.Clear();
+			HandController.instance.ClearPendingPlacementCardViews();
+			
+			//ToDo: Make this wait for a coroutine of effects.
+			GameManager.instance.OnPiecePlacementFinished();
 		}
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void ApplyPiece(PieceView argPieceView)
 		{
-			
+			allPieceViewsOnBoard.Add(argPieceView);
+			argPieceView.SetPhysical(true);
 		}
+
+		// //-///////////////////////////////////////////////////////////
+		// /// 
+		// private IEnumerator CoApplyAllPendingPieces()
+		// {
+		// 	
+		// }
+		//
+		// //-///////////////////////////////////////////////////////////
+		// /// 
+		// private IEnumerator CoApplyPiece()
+		// {
+		// 	
+		// }
+		
 	}
 }

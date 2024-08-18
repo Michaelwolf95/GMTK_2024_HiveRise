@@ -20,13 +20,13 @@ namespace HiveRise
 		[SerializeField] private Transform _handContainer = null;
 		public Transform handContainer => _handContainer;
 
-		private List<CardView> pendingPlacementCardViews = new List<CardView>();
+		public List<CardView> pendingPlacementCardViews { get; set; }
 		
 		public const float CARD_MOVE_SPEED = 25f;
 		public const float CARD_ROTATION_SPEED = 20f;
 
 		// ToDo: Make this a config param?
-		public const int MAX_CARDS_PER_PLAY = 3;
+		
 		
 		public CardView currentDragCard { get; private set; }
 		private bool didCurrentDragCardStartInHand = false;
@@ -35,6 +35,7 @@ namespace HiveRise
 		/// 
 		private void Awake()
 		{
+			pendingPlacementCardViews = new List<CardView>();
 			//currentCardsInHand = new HashSet<CardView>(_currentCardsInHand);
 		}
 
@@ -105,7 +106,7 @@ namespace HiveRise
 		/// 
 		public void TryStartDraggingCard(CardView argCardView)
 		{
-			if (currentDragCard == null && pendingPlacementCardViews.Count < 3)
+			if (currentDragCard == null && pendingPlacementCardViews.Count < GameManager.MAX_CARDS_PER_PLAY)
 			{
 				didCurrentDragCardStartInHand = currentCardsInHand.Contains(currentDragCard);
 				currentDragCard = argCardView;
@@ -189,6 +190,18 @@ namespace HiveRise
 			}
 			
 			// ToDo: Tint cards, etc.
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		///
+		public void ClearPendingPlacementCardViews()
+		{
+			 // Assumes that the pieces have been removed.
+			 foreach (CardView cardView in pendingPlacementCardViews)
+			 {
+				 Destroy(cardView);
+			 }
+			 pendingPlacementCardViews.Clear();
 		}
 
 #endregion // Pending Cards

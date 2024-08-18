@@ -646,8 +646,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4846883397350507301}
   - {fileID: 71968207269185774}
+  - {fileID: 4846883397350507301}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6741661316827025409
@@ -663,6 +663,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handContainerRect: {fileID: 5422519234178719146}
+  submitButton: {fileID: 4874680702883714940}
+  placementTrackerLabel: {fileID: 1502396418925698573}
+  placementTrackerFormatString: '{0}/{1} PLACED'
 --- !u!1 &5193892634406827644
 GameObject:
   m_ObjectHideFlags: 0

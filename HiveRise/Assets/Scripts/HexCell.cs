@@ -9,7 +9,7 @@ namespace HiveRise
 	public class HexCell : MonoBehaviour
 	{
 		[SerializeField] private PolygonCollider2D _collider = null;
-		public PolygonCollider2D collider => _collider;
+		public new PolygonCollider2D collider => _collider;
 		
 		[SerializeField] private SpriteRenderer _outlineSpriteRenderer = null;
 		public SpriteRenderer outlineSpriteRenderer => _outlineSpriteRenderer;
