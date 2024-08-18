@@ -126,7 +126,7 @@ namespace HiveRise
 		public bool CanAllPendingPiecesBeApplied()
 		{
 			return HandController.instance.pendingPlacementCardViews.Count <= GameManager.MAX_CARDS_PER_PLAY
-			       && HandController.instance.pendingPlacementCardViews.Count > 0
+			       && HandController.instance.pendingPlacementCardViews.Count >= GameManager.instance.minValidPiecesToScore
 			       && AreAllPendingPiecesValid();
 		}
 		
@@ -272,7 +272,7 @@ namespace HiveRise
 		/// 
 		private void TempFreezeAllPieces()
 		{
-			Debug.Log("Start Temp Freeze!".RichText(Color.cyan));
+			//Debug.Log("Start Temp Freeze!".RichText(Color.cyan));
 			foreach (PieceView pieceView in allPieceViewsOnBoard)
 			{
 				pieceView.TempFreezeConstraints();
@@ -283,7 +283,7 @@ namespace HiveRise
 		/// 
 		private void ReleaseTempFreezeAllPieces()
 		{
-			Debug.Log("Release Temp Freeze!".RichText(Color.cyan));
+			//Debug.Log("Release Temp Freeze!".RichText(Color.cyan));
 			foreach (PieceView pieceView in allPieceViewsOnBoard)
 			{
 				pieceView.ReleaseTempFreezeConstraints();
@@ -317,7 +317,6 @@ namespace HiveRise
 		{
 			int score = 0;
 			List<PieceView> scoredPieces = pieceViewsAddedPerGame[pieceViewsAddedPerGame.Count - 1];
-			Debug.Log(scoredPieces.Count);
 			foreach (PieceView pieceView in scoredPieces)
 			{
 				if (IsPieceValidForScoring(pieceView))
@@ -340,10 +339,15 @@ namespace HiveRise
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
-		public bool IsPieceValidForScoring(PieceView argPieceView)
+		private bool IsPieceValidForScoring(PieceView argPieceView)
 		{
-			// ToDo: Check for valid for scoring.
-			return true;
+			if (argPieceView.transform.position.y > foundationRoot.transform.position.y)
+			{
+				// NOTE: This creates a false-positive for stacks off to the side that are off the foundation.
+				return true;
+			}
+			
+			return false;
 		}
 
 #endregion // Progress Tracking

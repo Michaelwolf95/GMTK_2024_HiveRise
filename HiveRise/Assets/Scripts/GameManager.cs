@@ -28,6 +28,10 @@ namespace HiveRise
 		[SerializeField] private AudioHooks _audioHooks = null;
 		public AudioHooks audioHooks => _audioHooks;
 		
+		[Header("Rules")]
+		[SerializeField] private int _minValidPiecesToScore = 3;
+		public int minValidPiecesToScore => _minValidPiecesToScore;
+		
 		public int currentHoneyCount { get; set; }
 		public int currentProgressionTierIndex { get; set; }
 		
