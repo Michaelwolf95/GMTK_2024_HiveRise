@@ -14,10 +14,8 @@ namespace HiveRise
 		public bool isCardMode { get; private set; }
 		public bool isPendingPlacement { get; set; }
 
-		[SerializeField] private CanvasGroup cardCanvasGroup = null;
-		[SerializeField] private Image cardImage = null;
-		[SerializeField] private Color[] cardTintColors = null;
-		[SerializeField] private TextMeshProUGUI cardTextLabel = null;
+		[SerializeField] private CardUIView _cardUIView = null;
+		public CardUIView cardUIView => _cardUIView;
 		[Space]
 		[SerializeField] private GameObject pieceContainer = null;
 		[Space]
@@ -55,9 +53,10 @@ namespace HiveRise
 			linkedPieceView = Instantiate(CardDefinitions.instance.GetPiecePrefabForID(argCardData.pieceShapeID),pieceContainer.transform);
 			linkedPieceView.SetPieceCardData(argCardData);
 
-			cardImage.sprite = CardDefinitions.instance.GetPieceDataForID(argCardData.pieceShapeID).pieceShapeSprite;
-			cardImage.color = cardTintColors[(int) argCardData.color];
-			cardTextLabel.text = argCardData.GetCardDescriptionForData();
+			cardUIView.SetData(argCardData);
+			// cardImage.sprite = CardDefinitions.instance.GetPieceDataForID(argCardData.pieceShapeID).pieceShapeSprite;
+			// cardImage.color = cardTintColors[(int) argCardData.color];
+			// cardTextLabel.text = argCardData.GetCardDescriptionForData();
 			
 			Init();
 		}
@@ -207,7 +206,8 @@ namespace HiveRise
 				pieceContainer.gameObject.SetActive(false);
 				
 				// ToDo: Fade this
-				cardCanvasGroup.alpha = 1f;
+				//cardCanvasGroup.alpha = 1f;
+				cardUIView.canvasGroup.alpha = 1f;
 
 				isPendingPlacement = false;
 				SetRotationGizmoShown(false);
@@ -218,7 +218,8 @@ namespace HiveRise
 				pieceContainer.gameObject.SetActive(true);
 				
 				// ToDo: Fade this
-				cardCanvasGroup.alpha = 0f;
+				//cardCanvasGroup.alpha = 0f;
+				cardUIView.canvasGroup.alpha = 0f;
 			}
 		}
 		

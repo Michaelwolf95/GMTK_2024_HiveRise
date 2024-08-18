@@ -16,6 +16,8 @@ namespace HiveRise
 		[SerializeField] private Button submitButton = null;
 		[SerializeField] private TextMeshProUGUI placementTrackerLabel = null;
 		[SerializeField] private string placementTrackerFormatString = "{0}/{1} PLACED";
+		[Space]
+		[SerializeField] private ShopMenu shopMenu;
 		
 		//-///////////////////////////////////////////////////////////
 		/// 

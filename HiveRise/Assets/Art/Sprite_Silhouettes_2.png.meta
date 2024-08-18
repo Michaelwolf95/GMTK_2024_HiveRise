@@ -420,7 +420,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sprite_Silhouettes_2_0: 7112665840260772778
+      Sprite_Silhouettes_2_1: 1851550974820915398
+      Sprite_Silhouettes_2_10: 1447907786314441125
+      Sprite_Silhouettes_2_11: 5037029371866058863
+      Sprite_Silhouettes_2_2: 711765329000188108
+      Sprite_Silhouettes_2_3: -152766548025172416
+      Sprite_Silhouettes_2_4: 5724081253759730153
+      Sprite_Silhouettes_2_5: -8419461669732555461
+      Sprite_Silhouettes_2_6: 5402656772885679511
+      Sprite_Silhouettes_2_7: -7638843633541133810
+      Sprite_Silhouettes_2_8: -8435209661474572290
+      Sprite_Silhouettes_2_9: -605257141057812606
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
