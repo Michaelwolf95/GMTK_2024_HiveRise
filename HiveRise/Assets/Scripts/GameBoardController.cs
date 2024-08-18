@@ -57,7 +57,7 @@ namespace HiveRise
 			// Lock all pieces
 			foreach (PieceView pieceView in allPieceViewsOnBoard)
 			{
-				pieceView.SetFrozen(true);
+				pieceView.SetPermanentlyFrozen(true);
 			}
 		}
 		
@@ -134,6 +134,9 @@ namespace HiveRise
 		/// 
 		public void PlacePendingCard(CardView argCardView)
 		{
+			// ToDo: Check this??
+			TempFreezeAllPieces();
+			
 			argCardView.transform.SetParent(pieceContainer);
 			
 			// ToDo: Is this necessary?
@@ -159,6 +162,8 @@ namespace HiveRise
 		/// 
 		public void ApplyAllPendingPieces()
 		{
+			ReleaseTempFreezeAllPieces();
+			
 			StartCoroutine(CoApplyAllPendingPieces());
 		}
 		//
@@ -260,6 +265,28 @@ namespace HiveRise
 						pieceView.TryStickToPiece(nearbyPiece);
 					}
 				}
+			}
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void TempFreezeAllPieces()
+		{
+			Debug.Log("Start Temp Freeze!".RichText(Color.cyan));
+			foreach (PieceView pieceView in allPieceViewsOnBoard)
+			{
+				pieceView.TempFreezeConstraints();
+			}
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void ReleaseTempFreezeAllPieces()
+		{
+			Debug.Log("Release Temp Freeze!".RichText(Color.cyan));
+			foreach (PieceView pieceView in allPieceViewsOnBoard)
+			{
+				pieceView.ReleaseTempFreezeConstraints();
 			}
 		}
 		

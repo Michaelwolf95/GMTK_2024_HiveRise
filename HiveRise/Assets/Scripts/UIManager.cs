@@ -18,6 +18,7 @@ namespace HiveRise
 		[SerializeField] private TextMeshProUGUI placementTrackerLabel = null;
 		[SerializeField] private string placementTrackerFormatString = "{0}/{1} PLACED";
 		[Space]
+		[SerializeField] private GameObject honeyCounterContainer = null;
 		[SerializeField] private TextMeshProUGUI honeyCounter = null;
 		[SerializeField] private TextMeshProUGUI deckCounter = null;
 		[SerializeField] private TextMeshProUGUI deckCounter2 = null;
@@ -109,6 +110,7 @@ namespace HiveRise
 		public void SetHoneyCount(int argCount)
 		{
 			honeyCounter.text = argCount.ToString();
+			shopMenu.SetHoneyCount(argCount);
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -116,6 +118,7 @@ namespace HiveRise
 		public void ShowShopMenu(Action argOnDismiss = null)
 		{
 			shopMenu.ShowMenu(argOnDismiss);
+			honeyCounterContainer.gameObject.SetActive(false);
 			isMenuOpen = true;
 		}
 		
@@ -124,6 +127,7 @@ namespace HiveRise
 		public void OnShopMenuClosed()
 		{
 			//shopMenu.HideMenu();
+			honeyCounterContainer.gameObject.SetActive(true);
 			isMenuOpen = false;
 		}
 		

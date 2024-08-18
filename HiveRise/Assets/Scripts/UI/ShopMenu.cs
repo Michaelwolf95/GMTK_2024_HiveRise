@@ -12,6 +12,7 @@ namespace HiveRise
 	{
 		[SerializeField] private CanvasGroup canvasGroup;
 		[SerializeField] private Button closeButton;
+		[SerializeField] private TextMeshProUGUI currentMoneyCountLabel;
 		[Space]
 		[SerializeField] private Button removeCardButton;
 		[SerializeField] private TextMeshProUGUI removeCardCostText;
@@ -46,6 +47,7 @@ namespace HiveRise
 		/// 
 		public void ShowMenu(Action argOnDismiss = null)
 		{
+			
 			onDismiss = argOnDismiss;
 			gameObject.SetActive(true);
 			InitNewShop();
@@ -78,5 +80,11 @@ namespace HiveRise
 			}
 		}
 		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetHoneyCount(int argCount)
+		{
+			currentMoneyCountLabel.text = argCount.ToString();
+		}
 	}
 }

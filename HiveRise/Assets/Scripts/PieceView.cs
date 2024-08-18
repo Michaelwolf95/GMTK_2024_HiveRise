@@ -15,7 +15,7 @@ namespace HiveRise
 		public HexCell[] hexCells => _hexCells;
 
 		public CardData pieceCardData { get; private set; }
-		public bool isFrozen { get; private set; }
+		public bool isPermanentlyFrozen { get; private set; }
 
 		private List<Joint2D> currentStickJoints = new List<Joint2D>();
 		private List<PieceView> currentAttachedPieces = new List<PieceView>();
@@ -48,9 +48,33 @@ namespace HiveRise
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
-		public void SetFrozen(bool argIsFrozen)
+		public void TempFreezeConstraints()
 		{
-			isFrozen = argIsFrozen;
+			FreezeConstraints(true);
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void ReleaseTempFreezeConstraints()
+		{
+			if (!isPermanentlyFrozen)
+			{
+				FreezeConstraints(false);
+			}
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetPermanentlyFrozen(bool argIsFrozen)
+		{
+			isPermanentlyFrozen = argIsFrozen;
+			FreezeConstraints(argIsFrozen);
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void FreezeConstraints(bool argIsFrozen)
+		{
 			if (argIsFrozen)
 			{
 				rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;

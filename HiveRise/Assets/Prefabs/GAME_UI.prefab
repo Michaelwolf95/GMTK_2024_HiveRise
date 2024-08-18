@@ -1304,6 +1304,7 @@ MonoBehaviour:
   submitButton: {fileID: 4874680702883714940}
   placementTrackerLabel: {fileID: 1502396418925698573}
   placementTrackerFormatString: '{0}/{1} PLACED'
+  honeyCounterContainer: {fileID: 4518247777395604320}
   honeyCounter: {fileID: 7202863478652366499}
   deckCounter: {fileID: 8622671946008067825}
   deckCounter2: {fileID: 4981125827712096333}

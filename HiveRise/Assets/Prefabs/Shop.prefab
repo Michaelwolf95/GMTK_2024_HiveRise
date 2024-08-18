@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 8102448404152083563}
   - component: {fileID: 7374371635645909473}
   - component: {fileID: 4119553631727095910}
+  - component: {fileID: 1459946715071319278}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -337,10 +338,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeab6aed623b4073a234f19a9ef19125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 0}
+  canvasGroup: {fileID: 1459946715071319278}
   closeButton: {fileID: 612519603917618861}
+  currentMoneyCountLabel: {fileID: 4388858638868121437}
   removeCardButton: {fileID: 6370329457975977632}
-  removeCardCostText: {fileID: 7312411839707538625}
+  removeCardCostText: {fileID: 4076189194735813559}
   removeCardCost: 10
   shopCards:
   - {fileID: 826642733943504733}
@@ -410,6 +412,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &1459946715071319278
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331749877585077088}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &742776839829881885
 GameObject:
   m_ObjectHideFlags: 0
