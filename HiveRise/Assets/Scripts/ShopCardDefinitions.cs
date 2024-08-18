@@ -29,6 +29,10 @@ namespace HiveRise
 		public ShopCardData GetRandomShopCardData(CardRarity argRarity)
 		{
 			List<ShopCardData> set = shopCards.Where(x => x.cardData.rarity == argRarity).ToList();
+			if (set.Count <= 0 && argRarity != CardRarity.Common)
+			{
+				return GetRandomShopCardData(CardRarity.Common);
+			}
 			return set[UnityEngine.Random.Range(0, set.Count)];
 		}
 		

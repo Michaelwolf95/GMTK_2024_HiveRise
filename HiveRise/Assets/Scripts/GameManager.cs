@@ -49,6 +49,13 @@ namespace HiveRise
 			StartNewRun();
 		}
 
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void Update()
+		{
+			UpdateDebugKeys();
+		}
+
 #region High-Level Game Logic
 
 		
@@ -59,6 +66,7 @@ namespace HiveRise
 			currentHoneyCount = 0;
 			currentProgressionTierIndex = 0;
 			deckController.InitDeckForNewRun();
+			UIManager.instance.SetHoneyCount(currentHoneyCount);
 			StartNewGame();
 		}
 		
@@ -93,6 +101,13 @@ namespace HiveRise
 			else
 			{
 				// ToDo: UI popup for winning the game.
+				
+				// ToDo: Animate this before showing shop
+				AddHoney(GameBoardController.instance.CalculateHoneyScore());
+				
+				
+				UIManager.instance.ShowShopMenu();
+				
 			}
 		}
 
@@ -171,5 +186,44 @@ namespace HiveRise
 		{
 			return GameBoardController.instance.isAnimatingPlacingPieces == false;
 		}
+
+#region Economy
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void AddHoney(int argCount)
+		{
+			currentHoneyCount += argCount;
+			UIManager.instance.SetHoneyCount(currentHoneyCount);
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SpendHoney(int argCount)
+		{
+			currentHoneyCount -= argCount;
+			UIManager.instance.SetHoneyCount(currentHoneyCount);
+		}
+
+#endregion //Economy
+
+#region Debug
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void UpdateDebugKeys()
+		{
+			bool control = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || 
+			               Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand);
+			if (control)
+			{
+				if (Input.GetKeyDown(KeyCode.W))
+				{
+					OnGameWon();
+				}
+			}
+		}
+
+#endregion //Debug
 	}
 }

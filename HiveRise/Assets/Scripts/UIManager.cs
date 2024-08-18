@@ -1,4 +1,5 @@
-﻿using MichaelWolfGames;
+﻿using System;
+using MichaelWolfGames;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,8 @@ namespace HiveRise
 		[SerializeField] private TextMeshProUGUI placementTrackerLabel = null;
 		[SerializeField] private string placementTrackerFormatString = "{0}/{1} PLACED";
 		[Space]
+		[SerializeField] private TextMeshProUGUI honeyCounter = null;
+		[Space]
 		[SerializeField] private ShopMenu shopMenu;
 		
 		//-///////////////////////////////////////////////////////////
@@ -26,6 +29,8 @@ namespace HiveRise
 			base.Awake();
 			submitButton.onClick.AddListener(OnSubmitButtonPressed);
 			submitButton.interactable = false;
+			
+			shopMenu.gameObject.SetActive(false);
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -68,6 +73,26 @@ namespace HiveRise
 			placementTrackerLabel.text = string.Format(placementTrackerFormatString, GameBoardController.instance.GetNumPendingPieces(), GameManager.MAX_CARDS_PER_PLAY);
 		}
 		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetHoneyCount(int argCount)
+		{
+			honeyCounter.text = argCount.ToString();
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void ShowShopMenu(Action argOnDismiss = null)
+		{
+			shopMenu.ShowMenu(argOnDismiss);
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void DismissShopMenu()
+		{
+			shopMenu.HideMenu();
+		}
 		
 	}
 }

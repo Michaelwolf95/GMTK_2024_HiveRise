@@ -231,7 +231,7 @@ namespace HiveRise
 			}
 		}
 		
-#region Height Tracking
+#region Progress Tracking
 
 		
 		//-///////////////////////////////////////////////////////////
@@ -249,7 +249,14 @@ namespace HiveRise
 				CameraRigController.instance.SetCurrentHeight(currentTowerHeight);
 			}
 		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public int CalculateHoneyScore()
+		{
+			return 10;
+		}
 
-#endregion // Height Tracking
+#endregion // Progress Tracking
 	}
 }

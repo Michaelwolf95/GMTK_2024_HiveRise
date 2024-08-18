@@ -70,6 +70,7 @@ namespace HiveRise
 			if (cardData != null)
 			{
 				CardView cardView = Instantiate(CardDefinitions.instance.cardViewPrefab, handContainer);
+				cardView.transform.rotation = GetDefaultCardRotation();
 				cardView.SetData(cardData);
 				currentCardsInHand.Add(cardView);
 				return cardView;
@@ -111,7 +112,7 @@ namespace HiveRise
 						currentCardsInHand[i].transform.position = Vector3.MoveTowards(currentCardsInHand[i].transform.position, targetPos, CARD_MOVE_SPEED * Time.deltaTime);
 
 						Vector3 upVector = new Vector3(up.x, up.y, up.z);
-						Quaternion targetRotation = Quaternion.AngleAxis(Vector2.SignedAngle(Vector2.up, upVector), Vector3.forward);
+						Quaternion targetRotation = Quaternion.AngleAxis(Vector2.SignedAngle(Vector2.left, upVector), Vector3.forward);
 						// Rotate the object by setting its rotation
 						currentCardsInHand[i].transform.rotation = Quaternion.RotateTowards(currentCardsInHand[i].transform.rotation, targetRotation, HandController.CARD_ROTATION_SPEED * Time.deltaTime);
 
@@ -128,7 +129,8 @@ namespace HiveRise
 		/// 
 		public Quaternion GetDefaultCardRotation()
 		{
-			return handCurveSpline.transform.rotation;
+			//return handCurveSpline.transform.rotation;
+			return Quaternion.identity;
 		}
 
 
