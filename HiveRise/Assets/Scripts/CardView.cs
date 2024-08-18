@@ -86,6 +86,9 @@ namespace HiveRise
 			Vector3 pos = transform.position;
 			pos.z = GameBoardController.instance.transform.position.z + GameBoardController.SELECTED_PIECE_Z_POS;
 			transform.position = pos;
+			
+			Vector3 mouseWorldPoint = CameraRigController.instance.mainCamera.ScreenToWorldPoint(Input.mousePosition);
+			dragStartWorldSpaceOffset = mouseWorldPoint - transform.position;
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -164,7 +167,7 @@ namespace HiveRise
             worldPoint.z = transform.position.z;
 			if (isCardMode)
 			{
-                transform.position = worldPoint;
+                transform.position = worldPoint + (Vector3)dragStartWorldSpaceOffset;
                 
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, HandController.instance.GetDefaultCardRotation(), HandController.CARD_ROTATION_SPEED * Time.deltaTime);
                 // ToDo: Transition when dragged onto board
@@ -173,7 +176,7 @@ namespace HiveRise
 			}
 			else
 			{
-				transform.position = worldPoint;
+				transform.position = worldPoint + (Vector3)dragStartWorldSpaceOffset;
 				transform.rotation = HandController.instance.GetDefaultCardRotation();
 				
 				CheckForStateChange();
@@ -213,6 +216,10 @@ namespace HiveRise
 				// ToDo: Fade this
 				//cardCanvasGroup.alpha = 1f;
 				cardUIView.canvasGroup.alpha = 1f;
+				
+				Vector3 pos = transform.position;
+				pos.z = HandController.instance.handContainer.position.z;
+				transform.position = pos;
 
 				isPendingPlacement = false;
 				SetRotationGizmoShown(false);
@@ -258,9 +265,12 @@ namespace HiveRise
 			}
 			rotationGizmoCanvasGroup.gameObject.SetActive(argShow);
 
-			Vector3 pos = transform.localPosition;
-			pos.z = (argShow)? GameBoardController.SELECTED_PIECE_Z_POS : GameBoardController.PENDING_PIECE_Z_POS;
-			transform.localPosition = pos;
+			if (isCardMode == false)
+			{
+				Vector3 pos = transform.localPosition;
+				pos.z = (argShow)? GameBoardController.SELECTED_PIECE_Z_POS : GameBoardController.PENDING_PIECE_Z_POS;
+				transform.localPosition = pos;
+			}
 		}
 		
 		//-///////////////////////////////////////////////////////////

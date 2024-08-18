@@ -161,7 +161,6 @@ namespace HiveRise
 				currentDragCard = argCardView;
 				didCurrentDragCardStartInHand = currentCardsInHand.Contains(currentDragCard);
 				
-				//dragStartWorldSpaceOffset
 				
 				currentDragCard.OnStartDragging();
 

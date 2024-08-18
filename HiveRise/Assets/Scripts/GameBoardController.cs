@@ -141,7 +141,8 @@ namespace HiveRise
 		public bool CanAllPendingPiecesBeApplied()
 		{
 			return HandController.instance.pendingPlacementCardViews.Count <= GameManager.MAX_CARDS_PER_PLAY
-			       && HandController.instance.pendingPlacementCardViews.Count >= GameManager.instance.minValidPiecesToScore
+			       && (HandController.instance.pendingPlacementCardViews.Count >= GameManager.instance.minValidPiecesToScore 
+			           || HandController.instance.currentCardsInHand.Count < GameManager.instance.minValidPiecesToScore)
 			       && AreAllPendingPiecesValid();
 		}
 		
@@ -155,9 +156,9 @@ namespace HiveRise
 			argCardView.transform.SetParent(pieceContainer);
 			
 			// Set pos
-			Vector3 pos = argCardView.transform.localPosition;
-			pos.z = PENDING_PIECE_Z_POS;
-			argCardView.transform.localPosition = pos;
+			Vector3 pos = argCardView.transform.position;
+			pos.z = this.transform.position.z + PENDING_PIECE_Z_POS;
+			argCardView.transform.position = pos;
 			
 			// ToDo: Is this necessary?
 			// This is necessary for checking overlaps between colliders!
