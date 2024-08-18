@@ -34,7 +34,14 @@ namespace HiveRise
 		private List<CardUIView> cardViews = new List<CardUIView>();
 
 		private DeckPreviewMode menuMode = DeckPreviewMode.Preview;
-		
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void Awake()
+		{
+			closeButton.onClick.AddListener(DismissMenu);
+		}
+
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void ShowMenu(DeckPreviewMode argMode)

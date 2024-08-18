@@ -27,7 +27,9 @@ namespace HiveRise
 		public CardData pieceCardData { get; private set; }
 		
 		private Vector2 clickStartPos = Vector2.zero;
-		private const float MIN_DRAG_PIXEL_DIST = 10f;
+		private Vector2 dragStartWorldSpaceOffset = Vector2.zero;
+		private const float MIN_DRAG_PIXEL_DIST = 5f;
+		
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -79,8 +81,11 @@ namespace HiveRise
 		{
 			isBeingDragged = true;
 			SetRotationGizmoShown(false);
-			
 			linkedPieceView.SetAllCollidersEnabled(false);
+			
+			Vector3 pos = transform.position;
+			pos.z = GameBoardController.instance.transform.position.z + GameBoardController.SELECTED_PIECE_Z_POS;
+			transform.position = pos;
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -252,6 +257,10 @@ namespace HiveRise
 				HandController.instance.ClearAllRotationGizmos();
 			}
 			rotationGizmoCanvasGroup.gameObject.SetActive(argShow);
+
+			Vector3 pos = transform.localPosition;
+			pos.z = (argShow)? GameBoardController.SELECTED_PIECE_Z_POS : GameBoardController.PENDING_PIECE_Z_POS;
+			transform.localPosition = pos;
 		}
 		
 		//-///////////////////////////////////////////////////////////

@@ -27,6 +27,9 @@ namespace HiveRise
 
 		public bool isAnimatingPlacingPieces { get; private set; }
 
+		public const float PENDING_PIECE_Z_POS = -5f;
+		public const float SELECTED_PIECE_Z_POS = -6f;
+
 #region Events
 		
 		//-///////////////////////////////////////////////////////////
@@ -63,6 +66,18 @@ namespace HiveRise
 		
 #endregion //Events
 
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void RefreshValidStateOfPendingPieces()
+		{
+			foreach (CardView cardView in HandController.instance.pendingPlacementCardViews)
+			{
+				bool valid = IsPieceValid(cardView.linkedPieceView);
+				cardView.SetPieceValidState(valid);
+			}
+		}
+		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public bool IsPieceValid(PieceView argPieceView)
@@ -87,7 +102,6 @@ namespace HiveRise
 			return result;
 		}
 		
-		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void OnPieceRotated(CardView argCardView)
@@ -95,6 +109,7 @@ namespace HiveRise
 			Physics2D.SyncTransforms();
 			bool valid = IsPieceValid(argCardView.linkedPieceView);
 			argCardView.SetPieceValidState(valid);
+			RefreshValidStateOfPendingPieces();
 			UIManager.instance.OnPendingPieceUpdated();
 			
 			AudioHooks.instance.pieceRotate.PlayOneShot();
@@ -138,6 +153,11 @@ namespace HiveRise
 			TempFreezeAllPieces();
 			
 			argCardView.transform.SetParent(pieceContainer);
+			
+			// Set pos
+			Vector3 pos = argCardView.transform.localPosition;
+			pos.z = PENDING_PIECE_Z_POS;
+			argCardView.transform.localPosition = pos;
 			
 			// ToDo: Is this necessary?
 			// This is necessary for checking overlaps between colliders!

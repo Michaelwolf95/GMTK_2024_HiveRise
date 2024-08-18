@@ -161,6 +161,8 @@ namespace HiveRise
 				currentDragCard = argCardView;
 				didCurrentDragCardStartInHand = currentCardsInHand.Contains(currentDragCard);
 				
+				//dragStartWorldSpaceOffset
+				
 				currentDragCard.OnStartDragging();
 
 				ClearAllRotationGizmos();
@@ -212,6 +214,7 @@ namespace HiveRise
 						currentDragCard.SetPieceValidState(false);
 						UIManager.instance.OnPendingPieceUpdated();
 					}
+					GameBoardController.instance.RefreshValidStateOfPendingPieces();
 				}
 				
 				currentDragCard = null;

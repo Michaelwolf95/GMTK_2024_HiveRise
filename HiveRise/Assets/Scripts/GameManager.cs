@@ -67,7 +67,6 @@ namespace HiveRise
 		/// 
 		private void StartNewRun()
 		{
-			
 			currentHoneyCount = 0;
 			currentProgressionTierIndex = 0;
 			deckController.InitDeckForNewRun();
@@ -82,7 +81,7 @@ namespace HiveRise
 		private void StartNewGame()
 		{
 			deckController.InitDeckForNewGame();
-			UIManager.instance.UpdateDeckTrackerLabel();
+			UIManager.instance.OnStartNewGame();
 			
 			// ToDo: Reset everything for new game.
 			GameBoardController.instance.OnNewGameStarted();
