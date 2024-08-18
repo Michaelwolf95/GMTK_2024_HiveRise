@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2678474519805603986}
   - component: {fileID: 8546987344707606043}
+  - component: {fileID: 113222118890202117}
   m_Layer: 0
   m_Name: MANAGERS
   m_TagString: Untagged
@@ -45,3 +46,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handController: {fileID: 0}
+  _deckController: {fileID: 113222118890202117}
+  _cardDefinitions: {fileID: 11400000, guid: 3e3f36f186befa04fbc73f304879466d, type: 2}
+--- !u!114 &113222118890202117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2505132883188008554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f79961a2ae463eb7c7cbec127dd96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialDeckCardsData:
+  - pieceShapeID: 0
+    rarity: 0
+    color: 0
+    weightType: 0
+    sticky: 0
+  - pieceShapeID: 0
+    rarity: 0
+    color: 1
+    weightType: 0
+    sticky: 0
+  - pieceShapeID: 0
+    rarity: 0
+    color: 2
+    weightType: 0
+    sticky: 0
+  - pieceShapeID: 0
+    rarity: 0
+    color: 3
+    weightType: 0
+    sticky: 0
+  - pieceShapeID: 1
+    rarity: 0
+    color: 0
+    weightType: 0
+    sticky: 0
+  - pieceShapeID: 1
+    rarity: 0
+    color: 1
+    weightType: 0
+    sticky: 0
+  - pieceShapeID: 1
+    rarity: 0
+    color: 2
+    weightType: 0
+    sticky: 0
+  - pieceShapeID: 1
+    rarity: 0
+    color: 3
+    weightType: 0
+    sticky: 0

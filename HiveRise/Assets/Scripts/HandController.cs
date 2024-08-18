@@ -24,9 +24,6 @@ namespace HiveRise
 		
 		public const float CARD_MOVE_SPEED = 25f;
 		public const float CARD_ROTATION_SPEED = 20f;
-
-		// ToDo: Make this a config param?
-		
 		
 		public CardView currentDragCard { get; private set; }
 		private bool didCurrentDragCardStartInHand = false;
@@ -36,7 +33,6 @@ namespace HiveRise
 		private void Awake()
 		{
 			pendingPlacementCardViews = new List<CardView>();
-			//currentCardsInHand = new HashSet<CardView>(_currentCardsInHand);
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -47,6 +43,45 @@ namespace HiveRise
 			UpdateCardHandPositions();
 		}
 
+#region Drawing
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void OnNewTurnStarted()
+		{
+			DrawCards(GameManager.MAX_CARDS_IN_HAND - currentCardsInHand.Count);
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void DrawCards(int numCards)
+		{
+			for (int i = 0; i < numCards; i++)
+			{
+				TryDrawCard();
+			}
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public CardView TryDrawCard()
+		{
+			CardData cardData = DeckController.instance.DrawCard();
+			if (cardData != null)
+			{
+				CardView cardView = Instantiate(CardDefinitions.instance.cardViewPrefab, handContainer);
+				cardView.SetData(cardData);
+				currentCardsInHand.Add(cardView);
+				return cardView;
+			}
+			return null;
+		}
+		
+
+#endregion // Drawing
+		
+#region Dragging
+		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		private void UpdateCurrentDrag()
@@ -63,17 +98,13 @@ namespace HiveRise
 		private void UpdateCardHandPositions()
 		{
 			int numCardsInHand = currentCardsInHand.Count;
-			//int div = (numCardsInHand % 2 == 0) ? numCardsInHand : numCardsInHand + 1;
 			for (int i = 0; i < currentCardsInHand.Count; i++)
 			{
 				if (currentCardsInHand[i].isBeingDragged == false)
 				{
-					//float t = (numCardsInHand % 2 == 0)? (((float) i) / (numCardsInHand)) : (((float) i + 1) / (numCardsInHand + 1));
 					float t = (((float) i + 1) / (numCardsInHand + 1));
-					float3 pos;
-					float3 tangentVector;
-					float3 up;
-					if(handCurveSpline.Evaluate(t, out pos, out tangentVector, out up))
+					float3 pos, up;
+					if(handCurveSpline.Evaluate(t, out pos, out _, out up))
 					{
 						//Debug.Log($"{i}/{numCardsInHand}: {t}, {pos}");
 						Vector3 targetPos = new Vector3(pos.x, pos.y, pos.z);
@@ -100,7 +131,6 @@ namespace HiveRise
 			return handCurveSpline.transform.rotation;
 		}
 
-#region Dragging
 
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -111,8 +141,6 @@ namespace HiveRise
 				didCurrentDragCardStartInHand = currentCardsInHand.Contains(currentDragCard);
 				currentDragCard = argCardView;
 				currentDragCard.OnStartDragging();
-				
-				//Debug.Log($"Start Dragging! {argCardView.name}".RichText(Color.cyan));
 			}
 		}
 		
@@ -122,7 +150,6 @@ namespace HiveRise
 		{
 			if (currentDragCard != null && currentDragCard == argCardView)
 			{
-				//Debug.Log($"Stop Dragging! {argCardView.name}".RichText(Color.cyan));
 				currentDragCard.OnStopDragging();
 
 				if (IsPointWithinHandContainer(currentDragCard.transform.position))

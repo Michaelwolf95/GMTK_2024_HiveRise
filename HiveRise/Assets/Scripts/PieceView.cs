@@ -13,6 +13,20 @@ namespace HiveRise
 		[SerializeField] private HexCell[] _hexCells = null;
 		public HexCell[] hexCells => _hexCells;
 
+		public CardData pieceCardData { get; private set; }
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetPieceCardData(CardData argCardData)
+		{
+			pieceCardData = argCardData;
+
+			foreach (HexCell hexCell in hexCells)
+			{
+				hexCell.SetColor(argCardData.color);
+			}
+		}
+		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void SetPhysical(bool argIsPhysical)

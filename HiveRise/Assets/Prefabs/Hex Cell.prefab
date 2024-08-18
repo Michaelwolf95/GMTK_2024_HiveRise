@@ -137,6 +137,15 @@ MonoBehaviour:
   _outlineSpriteRenderer: {fileID: 7175876781823464323}
   _mainSpriteRenderer: {fileID: 4571027480253870066}
   _gimbal: {fileID: 3792301409590039691}
+  colorConfigs:
+  - mainSprite: {fileID: -8523427821724400591, guid: 3c4615093ac9ad540acef96ca83bc7be, type: 3}
+    outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  - mainSprite: {fileID: -1195131456, guid: 3c4615093ac9ad540acef96ca83bc7be, type: 3}
+    outlineColor: {r: 0, g: 0.18542242, b: 1, a: 1}
+  - mainSprite: {fileID: -2034334160, guid: 3c4615093ac9ad540acef96ca83bc7be, type: 3}
+    outlineColor: {r: 1, g: 0, b: 0.80166054, a: 1}
+  - mainSprite: {fileID: -1535677976, guid: 3c4615093ac9ad540acef96ca83bc7be, type: 3}
+    outlineColor: {r: 0.56523514, g: 0, b: 1, a: 1}
 --- !u!60 &5718858919084336997
 PolygonCollider2D:
   m_ObjectHideFlags: 0

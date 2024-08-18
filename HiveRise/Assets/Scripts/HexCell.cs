@@ -6,6 +6,15 @@ namespace HiveRise
 {
 	//-///////////////////////////////////////////////////////////
 	/// 
+	[Serializable]
+	public class HexCellColorConfig
+	{
+		public Sprite mainSprite;
+		public Color outlineColor;
+	}
+	
+	//-///////////////////////////////////////////////////////////
+	/// 
 	public class HexCell : MonoBehaviour
 	{
 		[SerializeField] private PolygonCollider2D _collider = null;
@@ -19,6 +28,17 @@ namespace HiveRise
 		
 		[SerializeField] private Transform _gimbal = null;
 
+		[SerializeField] private HexCellColorConfig[] colorConfigs = null;
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetColor(PieceColor argPieceColor)
+		{
+			HexCellColorConfig config =colorConfigs[(int)argPieceColor];
+			mainSpriteRenderer.sprite = config.mainSprite;
+			outlineSpriteRenderer.color = config.outlineColor;
+		}
+		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		private void Update()

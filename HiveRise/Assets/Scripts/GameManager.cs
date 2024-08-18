@@ -13,7 +13,14 @@ namespace HiveRise
 		[SerializeField] private HandController _handController = null;
 		public HandController handController => _handController;
 		
+		[SerializeField] private DeckController _deckController = null;
+		public DeckController deckController => _deckController;
+		
+		[SerializeField] private CardDefinitions _cardDefinitions = null;
+		public CardDefinitions cardDefinitions => _cardDefinitions;
+		
 		public const int MAX_CARDS_PER_PLAY = 3;
+		public const int MAX_CARDS_IN_HAND = 5;
 
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -27,6 +34,17 @@ namespace HiveRise
 		private void Start()
 		{
 			// ToDo: Change this to work in menu flow.
+			StartNewRun();
+		}
+
+#region High-Level Game Logic
+
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void StartNewRun()
+		{
+			deckController.InitDeckForNewRun();
 			StartNewGame();
 		}
 		
@@ -34,9 +52,58 @@ namespace HiveRise
 		/// 
 		private void StartNewGame()
 		{
+			deckController.InitDeckForNewGame();
+			
+			// ToDo: Reset everything for new game.
 			GameBoardController.instance.OnNewGameStarted();
+			
+			StartNewTurn();
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void StartNewTurn()
+		{
+			HandController.instance.OnNewTurnStarted();
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void OnGameWon()
+		{
+			
 		}
 
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void OnGameLost()
+		{
+			// ToDo: UI popup for losing the run.
+		}
+		
+		private bool IsGameWon()
+		{
+			return GameBoardController.instance.currentTowerHeight >= GetCurrentTargetHeight();
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private bool IsGameLost()
+		{
+			// ToDo: Check if deck is empty?
+			return true;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public float GetCurrentTargetHeight()
+		{
+			// ToDo: Get this from a config file.
+			return 100f;
+		}
+		
+#endregion //High-Level Game Logic
+		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void PlayPendingPieces()
@@ -54,18 +121,19 @@ namespace HiveRise
 		public void OnPiecePlacementFinished()
 		{
 			// ToDo: Evaluate game state.
-			
-			// ToDo: Draw more cards
-			
-			// ToDo: Reset everything.
+			if (IsGameWon())
+			{
+				OnGameWon();
+			}
+			else if (IsGameLost())
+			{
+				OnGameLost();
+			}
+			else
+			{
+				StartNewTurn();
+			}
 		}
-
-		//-///////////////////////////////////////////////////////////
-		/// 
-		public float GetCurrentTargetHeight()
-		{
-			// ToDo: Get this from a config file.
-			return 100f;
-		}
+		
 	}
 }

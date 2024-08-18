@@ -17,13 +17,34 @@ namespace HiveRise
 		[SerializeField] private PieceView _linkedPieceView = null;
 		public PieceView linkedPieceView => _linkedPieceView;
 		
+		public CardData pieceCardData { get; private set; }
+		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		private void Awake()
 		{
-			Init();
+			//Init();
 		}
 
+		
+#region Initialization
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetData(CardData argCardData)
+		{
+			pieceCardData = argCardData;
+			
+			if (_linkedPieceView != null)
+			{
+				Destroy(_linkedPieceView.gameObject);
+			}
+			_linkedPieceView = Instantiate(CardDefinitions.instance.GetPiecePrefabForID(argCardData.pieceShapeID),pieceContainer.transform);
+			linkedPieceView.SetPieceCardData(argCardData);
+			
+			Init();
+		}
+		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		private void Init()
@@ -31,6 +52,8 @@ namespace HiveRise
 			SetCardMode(true);
 			linkedPieceView.SetPhysical(false);
 		}
+
+#endregion //Initialization
 
 #region Interaction
 
@@ -162,7 +185,7 @@ namespace HiveRise
 		{
 			if (isBeingDragged)
 			{
-				UnityEditor.Handles.Label(transform.position, $"{HandController.instance.IsPointWithinHandContainer(this.transform.position)}");
+				//UnityEditor.Handles.Label(transform.position, $"{HandController.instance.IsPointWithinHandContainer(this.transform.position)}");
 			}
 		}
 

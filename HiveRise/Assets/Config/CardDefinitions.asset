@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4c08a1a7a6430b99dd41545e4e8087, type: 3}
+  m_Name: CardDefinitions
+  m_EditorClassIdentifier: 
+  _cardViewPrefab: {fileID: 2397548626368538787, guid: 16a1f0fe51ef08a4f9fd15b4ba02d7b1, type: 3}
+  pieceShapeDefinitions:
+  - pieceName: V
+    pieceShapeID: 0
+    pieceShapeSprite: {fileID: 0}
+    pieceViewPrefab: {fileID: 3377259213405375527, guid: 6f9e1069fb8761b439a83da3429e34e8, type: 3}
+  - pieceName: J
+    pieceShapeID: 1
+    pieceShapeSprite: {fileID: 0}
+    pieceViewPrefab: {fileID: 3377259213405375527, guid: 2241dff9358365148b43f50ff8162def, type: 3}
+  - pieceName: I4
+    pieceShapeID: 2
+    pieceShapeSprite: {fileID: 0}
+    pieceViewPrefab: {fileID: 3377259213405375527, guid: fa26b3eca208cd543912124abf2b3390, type: 3}
+  shopCards: []
