@@ -41,7 +41,7 @@ namespace HiveRise
 			currentPositionHeight = Mathf.MoveTowards(currentPositionHeight, currentHeight, moveSpeed * Time.deltaTime);
 
 			heightBarRoot.transform.localPosition = new Vector3(0f, currentPositionHeight, 0f);
-			currentHeightLabel.text = ((int) currentPositionHeight).ToString();
+			currentHeightLabel.text = (currentPositionHeight).ToString("F1");
 			
 		}
 	}

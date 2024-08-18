@@ -23,6 +23,8 @@ namespace HiveRise
 
 		public float currentTowerHeight { get; private set; }
 
+		public bool isAnimatingPlacingPieces { get; private set; }
+
 
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -101,6 +103,9 @@ namespace HiveRise
 		public void PlacePendingCard(CardView argCardView)
 		{
 			argCardView.transform.SetParent(pieceContainer);
+			
+			// ToDo: Is this necessary?
+			// This is necessary for checking overlaps between colliders!
 			argCardView.linkedPieceView.SetAllCollidersEnabled(true);
 
 			UIManager.instance.OnPendingPiecePlaced();
@@ -135,6 +140,8 @@ namespace HiveRise
 		/// 
 		private IEnumerator CoApplyAllPendingPieces()
 		{
+			isAnimatingPlacingPieces = true;
+			
 			List<PieceView> placedPieceViews = new List<PieceView>();
 			foreach (CardView cardView in HandController.instance.pendingPlacementCardViews)
 			{
@@ -172,7 +179,8 @@ namespace HiveRise
 			
 			// ToDo: Wait for height tracker to finish moving?
 			CalculateCurrentTowerHeight();
-			
+
+			isAnimatingPlacingPieces = false;
 			GameManager.instance.OnPiecePlacementFinished();
 		}
 		

@@ -256,6 +256,7 @@ namespace HiveRise
 		{
 			if (IsShowingRotationGizmo())
 			{
+				
 				linkedPieceView.transform.Rotate(new Vector3(0f, 0f, -30f), Space.Self);
 				
 				GameBoardController.instance.OnPieceRotated(this);

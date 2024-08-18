@@ -136,7 +136,7 @@ namespace HiveRise
 		/// 
 		public void TryStartDraggingCard(CardView argCardView)
 		{
-			if (currentDragCard == null && (pendingPlacementCardViews.Contains(argCardView) || pendingPlacementCardViews.Count < GameManager.MAX_CARDS_PER_PLAY))
+			if (GameManager.instance.CanDragCards() && currentDragCard == null && (pendingPlacementCardViews.Contains(argCardView) || pendingPlacementCardViews.Count < GameManager.MAX_CARDS_PER_PLAY))
 			{
 				currentDragCard = argCardView;
 				didCurrentDragCardStartInHand = currentCardsInHand.Contains(currentDragCard);

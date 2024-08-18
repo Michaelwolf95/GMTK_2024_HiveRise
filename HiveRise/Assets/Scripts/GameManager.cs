@@ -71,7 +71,7 @@ namespace HiveRise
 		/// 
 		private void OnGameWon()
 		{
-			
+			// ToDo: UI popup for winning the game.
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -80,7 +80,9 @@ namespace HiveRise
 		{
 			// ToDo: UI popup for losing the run.
 		}
-		
+
+		//-///////////////////////////////////////////////////////////
+		/// 
 		private bool IsGameWon()
 		{
 			return GameBoardController.instance.currentTowerHeight >= GetCurrentTargetHeight();
@@ -90,8 +92,8 @@ namespace HiveRise
 		/// 
 		private bool IsGameLost()
 		{
-			// ToDo: Check if deck is empty?
-			return true;
+			// Check if deck is empty?
+			return deckController.GetNumRemainingInDeck() <= 0;
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -134,6 +136,12 @@ namespace HiveRise
 				StartNewTurn();
 			}
 		}
-		
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public bool CanDragCards()
+		{
+			return GameBoardController.instance.isAnimatingPlacingPieces == false;
+		}
 	}
 }
