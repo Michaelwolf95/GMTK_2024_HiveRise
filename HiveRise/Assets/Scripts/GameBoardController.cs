@@ -25,17 +25,37 @@ namespace HiveRise
 
 		public bool isAnimatingPlacingPieces { get; private set; }
 
-
+#region Events
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void OnNewRunStarted()
+		{
+			currentTowerHeight = 0f;
+		}
+		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void OnNewGameStarted()
 		{
 			heightTracker.SetTargetHeight(GameManager.instance.GetCurrentTargetHeight());
 			
-			currentTowerHeight = 0f;
 			heightTracker.SetCurrentHeight(currentTowerHeight);
 			CameraRigController.instance.SetCurrentHeight(currentTowerHeight);
 		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void OnGameWon()
+		{
+			// Lock all pieces
+			foreach (PieceView pieceView in allPieceViewsOnBoard)
+			{
+				pieceView.SetFrozen(true);
+			}
+		}
+		
+#endregion //Events
 
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -230,6 +250,8 @@ namespace HiveRise
 				}
 			}
 		}
+		
+
 		
 #region Progress Tracking
 

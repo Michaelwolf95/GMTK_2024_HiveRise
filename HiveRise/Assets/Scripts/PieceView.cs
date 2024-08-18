@@ -15,9 +15,11 @@ namespace HiveRise
 		public HexCell[] hexCells => _hexCells;
 
 		public CardData pieceCardData { get; private set; }
+		public bool isFrozen { get; private set; }
 
 		private List<Joint2D> currentStickJoints = new List<Joint2D>();
 		private List<PieceView> currentAttachedPieces = new List<PieceView>();
+		
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -42,6 +44,21 @@ namespace HiveRise
 			// {
 			// 	//hexCell.gameObject.layer = (argIsPhysical)? 0 : 6;
 			// }
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetFrozen(bool argIsFrozen)
+		{
+			isFrozen = argIsFrozen;
+			if (argIsFrozen)
+			{
+				rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+			}
+			else
+			{
+				rigidbody2D.constraints = RigidbodyConstraints2D.None;
+			}
 		}
 
 		//-///////////////////////////////////////////////////////////

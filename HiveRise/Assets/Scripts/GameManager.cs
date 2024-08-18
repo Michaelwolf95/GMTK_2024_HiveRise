@@ -67,6 +67,7 @@ namespace HiveRise
 			currentProgressionTierIndex = 0;
 			deckController.InitDeckForNewRun();
 			UIManager.instance.SetHoneyCount(currentHoneyCount);
+			GameBoardController.instance.OnNewRunStarted();
 			StartNewGame();
 		}
 		
@@ -75,6 +76,7 @@ namespace HiveRise
 		private void StartNewGame()
 		{
 			deckController.InitDeckForNewGame();
+			UIManager.instance.UpdateDeckTrackerLabel();
 			
 			// ToDo: Reset everything for new game.
 			GameBoardController.instance.OnNewGameStarted();
@@ -87,6 +89,7 @@ namespace HiveRise
 		private void StartNewTurn()
 		{
 			HandController.instance.OnNewTurnStarted();
+			UIManager.instance.UpdateDeckTrackerLabel();
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -100,13 +103,17 @@ namespace HiveRise
 			}
 			else
 			{
+				GameBoardController.instance.OnGameWon();
+				
 				// ToDo: UI popup for winning the game.
 				
 				// ToDo: Animate this before showing shop
 				AddHoney(GameBoardController.instance.CalculateHoneyScore());
 				
-				
-				UIManager.instance.ShowShopMenu();
+				UIManager.instance.ShowShopMenu((() =>
+				{
+					StartNewGame();
+				}));
 				
 			}
 		}

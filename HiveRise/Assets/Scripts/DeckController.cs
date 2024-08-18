@@ -50,5 +50,12 @@ namespace HiveRise
 		{
 			return activeDeckCardsData.Count;
 		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public int GetTotalCardsInDeck()
+		{
+			return deckCardsData.Count;
+		}
 	}
 }

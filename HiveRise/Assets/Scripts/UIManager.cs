@@ -19,6 +19,8 @@ namespace HiveRise
 		[SerializeField] private string placementTrackerFormatString = "{0}/{1} PLACED";
 		[Space]
 		[SerializeField] private TextMeshProUGUI honeyCounter = null;
+		[SerializeField] private TextMeshProUGUI deckCounter = null;
+		[SerializeField] private string deckCounterFormatString = "{0}/{1}";
 		[Space]
 		[SerializeField] private ShopMenu shopMenu;
 		
@@ -40,6 +42,9 @@ namespace HiveRise
 			if (GameBoardController.instance.CanAllPendingPiecesBeApplied())
 			{
 				GameManager.instance.PlayPendingPieces();
+				
+				UpdatePlacementTrackerLabel();
+				submitButton.interactable = GameBoardController.instance.CanAllPendingPiecesBeApplied();
 			}
 		}
 
@@ -71,6 +76,13 @@ namespace HiveRise
 		private void UpdatePlacementTrackerLabel()
 		{
 			placementTrackerLabel.text = string.Format(placementTrackerFormatString, GameBoardController.instance.GetNumPendingPieces(), GameManager.MAX_CARDS_PER_PLAY);
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void UpdateDeckTrackerLabel()
+		{
+			deckCounter.text = string.Format(deckCounterFormatString, DeckController.instance.GetNumRemainingInDeck(), DeckController.instance.GetTotalCardsInDeck());
 		}
 		
 		//-///////////////////////////////////////////////////////////
