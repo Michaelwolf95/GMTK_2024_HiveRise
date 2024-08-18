@@ -92,3 +92,28 @@ fmod_editor.log
 # Jetbrains Rider .idea files
 **/.idea
 #**/Plugins/Editor/
+
+# Itch.io Publish Tools
+# Ignore the [Bb]uilds filter for bash files
+!/Builds/
+/Builds/*
+!/Builds/WebGL/
+/Builds/WebGL/*
+!/Builds/Windows/
+/Builds/Windows/*
+!/Builds/Mac/
+/Builds/Mac/*
+
+
+!/Builds/**/Butler_Publish.sh
+!/Builds/**/Butler_Publish.command
+!/Builds/**/buildnumber.txt
+
+# For config manual in bash file
+!/Builds/**/Butler_Publish_Manual.sh
+!/Builds/**/Butler_Publish_Manual_RC.sh
+!/Builds/**/Butler_Publish_Manual.command
+!/Builds/**/Butler_Publish_Manual_RC.command
+!/Builds/**/Butler_Test.command
+
+
