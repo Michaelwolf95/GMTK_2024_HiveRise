@@ -58,7 +58,13 @@ namespace HiveRise
 		{
 			for (int i = 0; i < numCards; i++)
 			{
-				TryDrawCard();
+				if (TryDrawCard() != null)
+				{
+					this.InvokeAction((() =>
+					{
+						AudioHooks.instance.cardDraw.PlayOneShot();
+					}), i * 0.1f);
+				}
 			}
 		}
 		
@@ -78,6 +84,16 @@ namespace HiveRise
 			return null;
 		}
 		
+		//-///////////////////////////////////////////////////////////
+		///
+		public void ClearCurrentCards()
+		{
+			foreach (CardView cardView in currentCardsInHand)
+			{
+				Destroy(cardView.gameObject);
+			}
+			currentCardsInHand.Clear();
+		}
 
 #endregion // Drawing
 		

@@ -21,7 +21,10 @@ namespace HiveRise
 		/// 
 		private void Awake()
 		{
-			closeButton.onClick.AddListener(HideMenu);
+			closeButton.onClick.AddListener(()=>
+			{
+				HideMenu();
+			});
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -31,6 +34,8 @@ namespace HiveRise
 			onDismiss = argOnDismiss;
 			gameObject.SetActive(true);
 			InitNewShop();
+			
+			AudioHooks.instance.shopOpen.PlayOneShot();
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -38,8 +43,9 @@ namespace HiveRise
 		public void HideMenu()
 		{
 			gameObject.SetActive(false);
-			
+			UIManager.instance.OnShopMenuClosed();
 			onDismiss.InvokeNullCheck();
+			AudioHooks.instance.shopClose.PlayOneShot();
 		}
 		
 		//-///////////////////////////////////////////////////////////

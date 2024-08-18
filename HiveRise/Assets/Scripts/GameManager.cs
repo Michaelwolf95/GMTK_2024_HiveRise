@@ -63,9 +63,11 @@ namespace HiveRise
 		/// 
 		private void StartNewRun()
 		{
+			
 			currentHoneyCount = 0;
 			currentProgressionTierIndex = 0;
 			deckController.InitDeckForNewRun();
+			HandController.instance.ClearCurrentCards();
 			UIManager.instance.SetHoneyCount(currentHoneyCount);
 			GameBoardController.instance.OnNewRunStarted();
 			StartNewGame();
@@ -96,6 +98,8 @@ namespace HiveRise
 		/// 
 		private void OnGameWon()
 		{
+			HandController.instance.ClearCurrentCards();
+			
 			currentProgressionTierIndex++;
 			if (currentProgressionTierIndex > progressionConfig.progressionTiers.Length)
 			{
@@ -110,11 +114,12 @@ namespace HiveRise
 				// ToDo: Animate this before showing shop
 				AddHoney(GameBoardController.instance.CalculateHoneyScore());
 				
+				AudioHooks.instance.moneyPayout.PlayOneShot();
+				
 				UIManager.instance.ShowShopMenu((() =>
 				{
 					StartNewGame();
 				}));
-				
 			}
 		}
 

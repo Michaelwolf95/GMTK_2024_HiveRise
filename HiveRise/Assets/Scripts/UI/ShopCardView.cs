@@ -38,6 +38,8 @@ namespace HiveRise
 				DeckController.instance.deckCardsData.Add(shopCardData.cardData);
 
 				cardView.canvasGroup.interactable = false;
+				
+				AudioHooks.instance.shopBuy.PlayOneShot();
 			}
 		}
 		

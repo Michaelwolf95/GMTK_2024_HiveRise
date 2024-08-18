@@ -101,13 +101,47 @@ namespace HiveRise
 		public void ShowShopMenu(Action argOnDismiss = null)
 		{
 			shopMenu.ShowMenu(argOnDismiss);
+			isMenuOpen = true;
 		}
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
-		public void DismissShopMenu()
+		public void OnShopMenuClosed()
 		{
 			shopMenu.HideMenu();
+			isMenuOpen = false;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void ShowRunLostMenu()
+		{
+			// ToDo: Open this menu
+			isMenuOpen = true;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void OnRunLostMenuClosed()
+		{
+			// ToDo: Close this menu
+			isMenuOpen = false;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void ShowDeckPreviewMenu(DeckPreviewMode argPreviewMode)
+		{
+			// ToDo: Open this menu
+			isMenuOpen = true;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void OnDeckPreviewMenuClosed()
+		{
+			// ToDo: Close this menu
+			isMenuOpen = false;
 		}
 		
 	}

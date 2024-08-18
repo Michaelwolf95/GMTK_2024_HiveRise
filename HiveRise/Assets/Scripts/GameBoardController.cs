@@ -138,6 +138,8 @@ namespace HiveRise
 			argCardView.linkedPieceView.SetAllCollidersEnabled(true);
 
 			UIManager.instance.OnPendingPiecePlaced();
+			
+			AudioHooks.instance.cardPlace.PlayOneShot();
 		}
 		
 		//-///////////////////////////////////////////////////////////
