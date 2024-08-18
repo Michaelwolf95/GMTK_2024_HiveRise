@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace HiveRise
@@ -85,6 +86,30 @@ namespace HiveRise
 			{
 				cell.SetValidState(argValid);
 			}
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public HashSet<PieceView> GetNearbyPieces()
+		{
+			HashSet<PieceView> uniquePieces = new HashSet<PieceView>();
+			foreach (HexCell cell in hexCells)
+			{
+				Collider2D[] colliders = Physics2D.OverlapCircleAll(cell.transform.position, 0.5f);
+				foreach (Collider2D c in colliders)
+				{
+					if (c.attachedRigidbody != null)
+					{
+						var piece = c.attachedRigidbody.GetComponent<PieceView>();
+						if (piece != null && piece != this)
+						{
+							uniquePieces.Add(piece);
+						}
+					}
+				}
+			}
+
+			return uniquePieces;
 		}
 		
 		// //-///////////////////////////////////////////////////////////

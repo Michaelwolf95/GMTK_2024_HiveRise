@@ -63,7 +63,7 @@ namespace HiveRise
 		/// 
 		private void UpdatePlacementTrackerLabel()
 		{
-			placementTrackerLabel.text = string.Format(placementTrackerFormatString, HandController.instance.pendingPlacementCardViews.Count, GameManager.MAX_CARDS_PER_PLAY);
+			placementTrackerLabel.text = string.Format(placementTrackerFormatString, GameBoardController.instance.GetNumPendingPieces(), GameManager.MAX_CARDS_PER_PLAY);
 		}
 		
 		

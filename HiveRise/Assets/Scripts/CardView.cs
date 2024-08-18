@@ -85,10 +85,10 @@ namespace HiveRise
 		/// 
 		private void OnMouseDown()
 		{
-			// if (IsShowingRotationGizmo())
-			// {
-			// 	return;
-			// }
+			if (isCardMode == false && IsScreenPointOverLinkedPiece(Input.mousePosition) == false)
+			{
+				return;
+			}
 			clickStartPos = Input.mousePosition;
 		}
 
@@ -96,10 +96,10 @@ namespace HiveRise
 		/// 
 		private void OnMouseDrag()
 		{
-			// if (IsShowingRotationGizmo())
-			// {
-			// 	return;
-			// }
+			if (isCardMode == false && IsScreenPointOverLinkedPiece(Input.mousePosition) == false)
+			{
+				return;
+			}
 			if (isBeingDragged == false && Vector2.Distance(Input.mousePosition, clickStartPos) > 20)
 			{
 				if (HandController.instance.currentDragCard == null)
@@ -113,10 +113,6 @@ namespace HiveRise
 		/// 
 		private void OnMouseUp()
 		{
-			// if (IsShowingRotationGizmo())
-			// {
-			// 	return;
-			// }
 			if (isBeingDragged)
 			{
 				HandController.instance.TryStopDraggingCard(this);
@@ -128,6 +124,22 @@ namespace HiveRise
 					SetRotationGizmoShown(true);
 				}
 			}
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private bool IsScreenPointOverLinkedPiece(Vector2 argScreenPoint)
+		{
+			Vector3 worldPoint = CameraRigController.instance.mainCamera.ScreenToWorldPoint(argScreenPoint);
+			foreach (HexCell cell in linkedPieceView.hexCells)
+			{
+				float dist = Vector2.Distance(cell.transform.position, worldPoint);
+				if (dist <= 0.7f)
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		//-///////////////////////////////////////////////////////////

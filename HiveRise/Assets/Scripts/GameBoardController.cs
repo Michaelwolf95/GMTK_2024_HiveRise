@@ -193,15 +193,14 @@ namespace HiveRise
 			argPieceView.SetPhysical(true);
 			yield return new WaitForSeconds(0.15f);
 
-			foreach (PieceView pieceView in allPieceViewsOnBoard)
+			HashSet<PieceView> nearbyPieces = argPieceView.GetNearbyPieces();
+			foreach (PieceView nearbyPiece in nearbyPieces)
 			{
-				if (pieceView != argPieceView)
+				if (nearbyPiece.pieceCardData.color == argPieceView.pieceCardData.color)
 				{
-					// ToDo: Apply sticky rule
-
-					// var joint = argPieceView.gameObject.AddComponent<FixedJoint2D>();
-					// joint. = pieceView.rigidbody2D;
-
+					// Stick!
+					FixedJoint2D joint = argPieceView.gameObject.AddComponent<FixedJoint2D>();
+					joint.connectedBody = nearbyPiece.rigidbody2D;
 				}
 			}
 		}
