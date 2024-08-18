@@ -272,6 +272,7 @@ namespace HiveRise
 		public void SetPieceValidState(bool argIsValid)
 		{
 			linkedPieceView.SetValidState(argIsValid);
+			linkedPieceView.SetAllCollidersEnabled(argIsValid == false);
 		}
 
 #endregion //Valid State

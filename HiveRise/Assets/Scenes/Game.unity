@@ -1997,10 +1997,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GAME_BOARD
       objectReference: {fileID: 0}
-    - target: {fileID: 6459512707570428039, guid: 976113c974a6cee49922b3c37ae96868, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6517801072139395245, guid: 976113c974a6cee49922b3c37ae96868, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

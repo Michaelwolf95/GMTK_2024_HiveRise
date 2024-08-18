@@ -34,17 +34,17 @@ namespace HiveRise
 			rigidbody2D.isKinematic = !argIsPhysical;
 			SetAllCollidersEnabled(argIsPhysical);
 			
-			foreach (HexCell hexCell in hexCells)
-			{
-				hexCell.gameObject.layer = (argIsPhysical)? 0 : 6;
-			}
+			// foreach (HexCell hexCell in hexCells)
+			// {
+			// 	//hexCell.gameObject.layer = (argIsPhysical)? 0 : 6;
+			// }
 		}
 
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void SetAllCollidersEnabled(bool argEnabled)
 		{
-			Debug.Log(argEnabled);
+			//Debug.Log(argEnabled);
 			foreach (HexCell hexCell in hexCells)
 			{
 				hexCell.SetColliderEnabled(argEnabled);

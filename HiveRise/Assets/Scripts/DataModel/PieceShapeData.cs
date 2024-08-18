@@ -13,5 +13,6 @@ namespace HiveRise
 		public int pieceShapeID = 0;
 		public Sprite pieceShapeSprite;
 		public PieceView pieceViewPrefab;
+		public int shapePointValue = 4;
 	}
 }
