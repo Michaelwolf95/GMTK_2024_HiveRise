@@ -464,6 +464,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -850
       objectReference: {fileID: 0}
+    - target: {fileID: 2391757340722821135, guid: d3e9a63d2375b344b86281f169600f70, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2642311420735015181, guid: d3e9a63d2375b344b86281f169600f70, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -889,6 +893,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6741661316827025409, guid: d3e9a63d2375b344b86281f169600f70, type: 3}
+      propertyPath: mainMenuCanvasGroup
+      value: 
+      objectReference: {fileID: 4981947257398173961}
+    - target: {fileID: 6741661316827025409, guid: d3e9a63d2375b344b86281f169600f70, type: 3}
       propertyPath: mainMenuStartButton
       value: 
       objectReference: {fileID: 51971483}
@@ -1140,6 +1148,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 976113c974a6cee49922b3c37ae96868, type: 3}
+--- !u!225 &4981947257398173961 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 4597006055057284584, guid: 976113c974a6cee49922b3c37ae96868, type: 3}
+  m_PrefabInstance: {fileID: 4981947257398173960}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MichaelWolfGames;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace HiveRise
 {
@@ -86,9 +87,15 @@ namespace HiveRise
 					StartNewRun();
 				}), 0.5f);
 			});
-			
 		}
 		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void OnGameOverScreenRetryPressed()
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		}
+
 		//-///////////////////////////////////////////////////////////
 		/// 
 		private void StartNewRun()
@@ -145,10 +152,14 @@ namespace HiveRise
 				
 				AudioHooks.instance.moneyPayout.PlayOneShot();
 				
-				UIManager.instance.ShowShopMenu((() =>
+				CameraRigController.instance.SetCurrentHeight(GameBoardController.instance.currentTowerHeight, (() =>
 				{
-					StartNewGame();
+					UIManager.instance.ShowShopMenu((() =>
+					{
+						StartNewGame();
+					}));
 				}));
+				
 			}
 		}
 
@@ -157,6 +168,7 @@ namespace HiveRise
 		private void OnGameLost()
 		{
 			// ToDo: UI popup for losing the run.
+			UIManager.instance.ShowRunLostMenu();
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -262,6 +274,10 @@ namespace HiveRise
 				if (Input.GetKeyDown(KeyCode.W))
 				{
 					OnGameWon();
+				}
+				if (Input.GetKeyDown(KeyCode.L))
+				{
+					OnGameLost();
 				}
 			}
 		}

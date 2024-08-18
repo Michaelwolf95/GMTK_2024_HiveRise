@@ -876,6 +876,7 @@ GameObject:
   - component: {fileID: 4407201039063432890}
   - component: {fileID: 817258517521041967}
   - component: {fileID: 6590574900567009102}
+  - component: {fileID: 7017119663018833537}
   m_Layer: 5
   m_Name: Game Over Panel
   m_TagString: Untagged
@@ -943,6 +944,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &7017119663018833537
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391757340722821135}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2506787637967844552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1725,6 +1738,10 @@ MonoBehaviour:
   shopMenu: {fileID: 4215805370096065785}
   deckPreviewMenu: {fileID: 5988136084504594386}
   mainMenuStartButton: {fileID: 0}
+  gameOverScreenCanvasGroup: {fileID: 7017119663018833537}
+  retryButton: {fileID: 3007322004661638323}
+  gameOverScreenTextLabel: {fileID: 4125575642353926089}
+  gameOverScreenTextFormatString: Your hive was {0}m tall
 --- !u!1 &5047566391682917486
 GameObject:
   m_ObjectHideFlags: 0

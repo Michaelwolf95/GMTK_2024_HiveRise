@@ -31,7 +31,13 @@ namespace HiveRise
 		[SerializeField] private ShopMenu shopMenu;
 		[SerializeField] private DeckPreviewMenu deckPreviewMenu;
 		[Header("MainMenu")]
+		[SerializeField] private CanvasGroup mainMenuCanvasGroup;
 		[SerializeField] private Button mainMenuStartButton;
+		[Header("Game Over")]
+		[SerializeField] private CanvasGroup gameOverScreenCanvasGroup;
+		[SerializeField] private Button retryButton;
+		[SerializeField] private TextMeshProUGUI gameOverScreenTextLabel;
+		[SerializeField] private string gameOverScreenTextFormatString = "Your hive was {0}m tall";
 		
 		public bool isMenuOpen { get; private set; }
 		
@@ -61,7 +67,17 @@ namespace HiveRise
 			mainMenuStartButton.onClick.AddListener((() =>
 			{
 				GameManager.instance.OnMainMenuStartPressed();
+				
+				this.InvokeAction((() =>
+				{
+					mainMenuCanvasGroup.gameObject.SetActive(false);
+				}), 1f);
 			}));
+			
+			retryButton.onClick.AddListener(() =>
+			{
+				GameManager.instance.OnGameOverScreenRetryPressed();
+			});
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -168,6 +184,11 @@ namespace HiveRise
 		{
 			// ToDo: Open this menu
 			isMenuOpen = true;
+			gameOverScreenCanvasGroup.gameObject.SetActive(true);
+
+			gameOverScreenTextLabel.text = string.Format(gameOverScreenTextFormatString, GameBoardController.instance.currentTowerHeight.ToString("F1"));
+			
+			AudioHooks.instance.loseGame.PlayOneShot();
 		}
 		
 		//-///////////////////////////////////////////////////////////
