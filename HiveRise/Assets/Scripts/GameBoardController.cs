@@ -23,6 +23,8 @@ namespace HiveRise
 
 		public float currentTowerHeight { get; private set; }
 
+		public bool isAnimatingPlacingPieces { get; private set; }
+
 
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -51,13 +53,6 @@ namespace HiveRise
 					checkColliders.AddRange(cardView.linkedPieceView.GetAllColliders());
 				}
 			}
-			// foreach (PieceView pieceView in pendingPieceViews)
-			// {
-			// 	if (pieceView != argPieceView)
-			// 	{
-			// 		checkColliders.AddRange(pieceView.GetAllColliders());
-			// 	}
-			// }
 			bool result = argPieceView.DoesPieceOverlapColliders(checkColliders) == false;
 			return result;
 		}
@@ -65,10 +60,19 @@ namespace HiveRise
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
+		public void OnPieceRotated(CardView argCardView)
+		{
+			Physics2D.SyncTransforms();
+			bool valid = IsPieceValid(argCardView.linkedPieceView);
+			argCardView.SetPieceValidState(valid);
+			UIManager.instance.OnPendingPieceUpdated();
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
 		public bool AreAllPendingPiecesValid()
 		{
 			foreach (CardView cardView in HandController.instance.pendingPlacementCardViews)
-			//foreach (PieceView pieceView in pendingPieceViews)
 			{
 				if (IsPieceValid(cardView.linkedPieceView) == false)
 				{
@@ -99,6 +103,9 @@ namespace HiveRise
 		public void PlacePendingCard(CardView argCardView)
 		{
 			argCardView.transform.SetParent(pieceContainer);
+			
+			// ToDo: Is this necessary?
+			// This is necessary for checking overlaps between colliders!
 			argCardView.linkedPieceView.SetAllCollidersEnabled(true);
 
 			UIManager.instance.OnPendingPiecePlaced();
@@ -133,11 +140,14 @@ namespace HiveRise
 		/// 
 		private IEnumerator CoApplyAllPendingPieces()
 		{
+			isAnimatingPlacingPieces = true;
+			
 			List<PieceView> placedPieceViews = new List<PieceView>();
 			foreach (CardView cardView in HandController.instance.pendingPlacementCardViews)
 			{
 				cardView.linkedPieceView.transform.SetParent(pieceContainer);
 				placedPieceViews.Add(cardView.linkedPieceView);
+				cardView.OnLinkedPiecePlayed();
 			}
 			HandController.instance.ClearPendingPlacementCardViews();
 
@@ -149,11 +159,28 @@ namespace HiveRise
 			
 			// ToDo: Wait for a coroutine of effects.
 			
-			// ToDo: Wait for physics to settle.
+			// Wait for physics to settle.
 			yield return new WaitForSeconds(1f);
+			bool settled = false;
+			while (settled == false)
+			{
+				settled = true;
+				foreach (PieceView pieceView in allPieceViewsOnBoard)
+				{
+					//pieceView.rigidbody2D.IsSleeping()
+					if (pieceView.rigidbody2D.velocity.sqrMagnitude > 0.1f || pieceView.rigidbody2D.angularVelocity > 0.1f)
+					{
+						settled = false;
+						break;
+					}
+				}
+				yield return new WaitForSeconds(0.5f);
+			}
+			
 			// ToDo: Wait for height tracker to finish moving?
 			CalculateCurrentTowerHeight();
-			
+
+			isAnimatingPlacingPieces = false;
 			GameManager.instance.OnPiecePlacementFinished();
 		}
 		
@@ -165,6 +192,14 @@ namespace HiveRise
 			allPieceViewsOnBoard.Add(argPieceView);
 			argPieceView.SetPhysical(true);
 			yield return new WaitForSeconds(0.15f);
+
+			foreach (PieceView pieceView in allPieceViewsOnBoard)
+			{
+				if (pieceView != argPieceView)
+				{
+					// ToDo: Apply sticky rule
+				}
+			}
 		}
 		
 #region Height Tracking

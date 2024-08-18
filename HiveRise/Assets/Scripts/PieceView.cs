@@ -33,12 +33,18 @@ namespace HiveRise
 		{
 			rigidbody2D.isKinematic = !argIsPhysical;
 			SetAllCollidersEnabled(argIsPhysical);
+			
+			foreach (HexCell hexCell in hexCells)
+			{
+				hexCell.gameObject.layer = (argIsPhysical)? 0 : 6;
+			}
 		}
 
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void SetAllCollidersEnabled(bool argEnabled)
 		{
+			Debug.Log(argEnabled);
 			foreach (HexCell hexCell in hexCells)
 			{
 				hexCell.SetColliderEnabled(argEnabled);
@@ -69,6 +75,16 @@ namespace HiveRise
 				colliders.Add(cell.collider);
 			}
 			return colliders;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetValidState(bool argValid)
+		{
+			foreach (HexCell cell in hexCells)
+			{
+				cell.SetValidState(argValid);
+			}
 		}
 		
 		// //-///////////////////////////////////////////////////////////

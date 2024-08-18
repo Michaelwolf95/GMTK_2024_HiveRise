@@ -48,6 +48,7 @@ MonoBehaviour:
   _handController: {fileID: 0}
   _deckController: {fileID: 113222118890202117}
   _cardDefinitions: {fileID: 11400000, guid: 3e3f36f186befa04fbc73f304879466d, type: 2}
+  _audioHooks: {fileID: 11400000, guid: 22bdaf0d7c42cfc4987631ea4a711311, type: 2}
 --- !u!114 &113222118890202117
 MonoBehaviour:
   m_ObjectHideFlags: 0

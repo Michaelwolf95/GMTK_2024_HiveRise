@@ -136,11 +136,13 @@ namespace HiveRise
 		/// 
 		public void TryStartDraggingCard(CardView argCardView)
 		{
-			if (currentDragCard == null && pendingPlacementCardViews.Count < GameManager.MAX_CARDS_PER_PLAY)
+			if (GameManager.instance.CanDragCards() && currentDragCard == null && (pendingPlacementCardViews.Contains(argCardView) || pendingPlacementCardViews.Count < GameManager.MAX_CARDS_PER_PLAY))
 			{
-				didCurrentDragCardStartInHand = currentCardsInHand.Contains(currentDragCard);
 				currentDragCard = argCardView;
+				didCurrentDragCardStartInHand = currentCardsInHand.Contains(currentDragCard);
 				currentDragCard.OnStartDragging();
+
+				ClearAllRotationGizmos();
 			}
 		}
 		
@@ -169,6 +171,7 @@ namespace HiveRise
 				{
 					if (GameBoardController.instance.IsPieceValid(currentDragCard.linkedPieceView))
 					{
+						currentDragCard.SetPieceValidState(true);
 						if (currentCardsInHand.Contains(currentDragCard))
 						{
 							currentCardsInHand.Remove(currentDragCard);
@@ -176,17 +179,19 @@ namespace HiveRise
 						if (pendingPlacementCardViews.Contains(currentDragCard) == false)
 						{
 							pendingPlacementCardViews.Add(currentDragCard);
-							GameBoardController.instance.PlacePendingCard(currentDragCard);
+							//GameBoardController.instance.PlacePendingCard(currentDragCard);
 						}
-					
+						GameBoardController.instance.PlacePendingCard(currentDragCard);
+						
 						OnCardPlacedAsPendingPiece(currentDragCard);
 					}
 					else
 					{
 						// ToDo: Update as invalid placement state.
+						currentDragCard.SetPieceValidState(false);
+						UIManager.instance.OnPendingPieceUpdated();
 					}
 				}
-
 				
 				currentDragCard = null;
 				didCurrentDragCardStartInHand = false;
@@ -213,10 +218,11 @@ namespace HiveRise
 
 			if (didCurrentDragCardStartInHand)
 			{
-				// ToDo: Show rotation gizmo, etc.
+				// Show rotation gizmo, etc.
+				argCardView.SetRotationGizmoShown(true);
 			}
 			
-			// ToDo: Tint cards, etc.
+			// ToDo: Tint cards if full, etc.
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -230,6 +236,16 @@ namespace HiveRise
 				 Destroy(cardView.gameObject);
 			 }
 			 pendingPlacementCardViews.Clear();
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void ClearAllRotationGizmos()
+		{
+			foreach (CardView cardView in pendingPlacementCardViews)
+			{
+				cardView.SetRotationGizmoShown(false);
+			}
 		}
 
 #endregion // Pending Cards

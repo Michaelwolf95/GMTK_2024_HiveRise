@@ -43,5 +43,12 @@ namespace HiveRise
 
 			return null;
 		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public int GetNumRemainingInDeck()
+		{
+			return activeDeckCardsData.Count;
+		}
 	}
 }

@@ -27,6 +27,7 @@ namespace HiveRise
 		public SpriteRenderer mainSpriteRenderer => _mainSpriteRenderer;
 		
 		[SerializeField] private Transform _gimbal = null;
+		[SerializeField] private GameObject errorContainer = null;
 
 		[SerializeField] private HexCellColorConfig[] colorConfigs = null;
 
@@ -75,6 +76,13 @@ namespace HiveRise
 
 			collider.enabled = wasColliderEnabled;
 			return result;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetValidState(bool argValid)
+		{
+			errorContainer.gameObject.SetActive(argValid == false);
 		}
 	}
 }
