@@ -19,6 +19,9 @@ namespace HiveRise
 		[SerializeField] private CardDefinitions _cardDefinitions = null;
 		public CardDefinitions cardDefinitions => _cardDefinitions;
 		
+		[SerializeField] private AudioHooks _audioHooks = null;
+		public AudioHooks audioHooks => _audioHooks;
+		
 		public const int MAX_CARDS_PER_PLAY = 3;
 		public const int MAX_CARDS_IN_HAND = 5;
 
