@@ -1,5 +1,6 @@
 ﻿using System;
 using MichaelWolfGames;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,10 @@ namespace HiveRise
 		public bool isPendingPlacement { get; set; }
 
 		[SerializeField] private CanvasGroup cardCanvasGroup = null;
+		[SerializeField] private Image cardImage = null;
+		[SerializeField] private Color[] cardTintColors = null;
+		[SerializeField] private TextMeshProUGUI cardTextLabel = null;
+		[Space]
 		[SerializeField] private GameObject pieceContainer = null;
 		[Space]
 		[SerializeField] private CanvasGroup rotationGizmoCanvasGroup = null;
@@ -48,6 +53,10 @@ namespace HiveRise
 			}
 			linkedPieceView = Instantiate(CardDefinitions.instance.GetPiecePrefabForID(argCardData.pieceShapeID),pieceContainer.transform);
 			linkedPieceView.SetPieceCardData(argCardData);
+
+			cardImage.sprite = CardDefinitions.instance.GetPieceDataForID(argCardData.pieceShapeID).pieceShapeSprite;
+			cardImage.color = cardTintColors[(int) argCardData.color];
+			cardTextLabel.text = argCardData.GetCardDescriptionForData();
 			
 			Init();
 		}

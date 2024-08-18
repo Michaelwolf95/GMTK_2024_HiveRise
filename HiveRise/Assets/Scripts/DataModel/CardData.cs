@@ -52,9 +52,16 @@ namespace HiveRise
 		public CardRarity rarity;
 		public PieceColor color;
 		public WeightType weightType;
-		public ScoreMultiplier ScoreMultiplier;
+		public ScoreMultiplier scoreMultiplier;
 		public bool sticky;
 
 		public PieceShapeData pieceData => CardDefinitions.instance.GetPieceDataForID(pieceShapeID);
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public string GetCardDescriptionForData()
+		{
+			return "Basic";
+		}
 	}
 }

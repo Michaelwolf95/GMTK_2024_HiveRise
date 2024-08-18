@@ -15,6 +15,9 @@ namespace HiveRise
 		public HexCell[] hexCells => _hexCells;
 
 		public CardData pieceCardData { get; private set; }
+
+		private List<Joint2D> currentStickJoints = new List<Joint2D>();
+		private List<PieceView> currentAttachedPieces = new List<PieceView>();
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -110,6 +113,29 @@ namespace HiveRise
 			}
 
 			return uniquePieces;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void TryStickToPiece(PieceView argPieceView)
+		{
+			if (argPieceView != this && currentAttachedPieces.Contains(argPieceView) == false)
+			{
+				// Stick!
+				FixedJoint2D joint = this.gameObject.AddComponent<FixedJoint2D>();
+				currentStickJoints.Add(joint);
+				joint.connectedBody = argPieceView.rigidbody2D;
+				
+				AddAttachedPiece(argPieceView);
+				argPieceView.AddAttachedPiece(this);
+			}
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void AddAttachedPiece(PieceView argPieceView)
+		{
+			currentAttachedPieces.Add(argPieceView);
 		}
 		
 		// //-///////////////////////////////////////////////////////////

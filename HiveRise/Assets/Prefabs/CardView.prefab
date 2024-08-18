@@ -80,6 +80,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardCanvasGroup: {fileID: 5441839306859317014}
+  cardImage: {fileID: 4697890752429325971}
+  cardTintColors:
+  - {r: 1, g: 0.8612033, b: 0, a: 1}
+  - {r: 0.09786034, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0.74655247, a: 1}
+  - {r: 0.57040644, g: 0, b: 1, a: 1}
+  cardTextLabel: {fileID: 7530742027130841014}
   pieceContainer: {fileID: 51638638525479687}
   rotationGizmoCanvasGroup: {fileID: 1196920484064836107}
   leftRotationButton: {fileID: 2204829651851913711}
@@ -810,14 +817,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
+  m_Color: {r: 0, g: 0.033422947, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4727785230328530462, guid: 167394190885d304d9c5a678ce3a0ad0, type: 3}
+  m_Sprite: {fileID: -965244746555795524, guid: 8f69d512ea085704e84692b7a665064d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

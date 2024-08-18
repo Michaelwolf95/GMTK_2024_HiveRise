@@ -176,6 +176,10 @@ namespace HiveRise
 				}
 				yield return new WaitForSeconds(0.5f);
 			}
+
+			yield return new WaitForFixedUpdate();
+			StickAllSameColorPiecesAtRest();
+			yield return new WaitForFixedUpdate();
 			
 			// ToDo: Wait for height tracker to finish moving?
 			CalculateCurrentTowerHeight();
@@ -198,9 +202,27 @@ namespace HiveRise
 			{
 				if (nearbyPiece.pieceCardData.color == argPieceView.pieceCardData.color)
 				{
-					// Stick!
-					FixedJoint2D joint = argPieceView.gameObject.AddComponent<FixedJoint2D>();
-					joint.connectedBody = nearbyPiece.rigidbody2D;
+					argPieceView.TryStickToPiece(nearbyPiece);
+					// // Stick!
+					// FixedJoint2D joint = argPieceView.gameObject.AddComponent<FixedJoint2D>();
+					// joint.connectedBody = nearbyPiece.rigidbody2D;
+				}
+			}
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void StickAllSameColorPiecesAtRest()
+		{
+			foreach (PieceView pieceView in allPieceViewsOnBoard)
+			{
+				HashSet<PieceView> nearbyPieces = pieceView.GetNearbyPieces();
+				foreach (PieceView nearbyPiece in nearbyPieces)
+				{
+					if (nearbyPiece.pieceCardData.color == pieceView.pieceCardData.color)
+					{
+						pieceView.TryStickToPiece(nearbyPiece);
+					}
 				}
 			}
 		}
