@@ -50,9 +50,12 @@ namespace HiveRise
 		private void Start()
 		{
 			// ToDo: Change this to work in menu flow.
-			StartNewRun();
+			//StartNewRun();
+			currentHoneyCount = 0;
+			currentProgressionTierIndex = 0;
+			InitOnMainMenu();
 		}
-
+		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		private void Update()
@@ -62,6 +65,27 @@ namespace HiveRise
 
 #region High-Level Game Logic
 
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void InitOnMainMenu()
+		{
+			UIManager.instance.SetGameUIVisible(false);
+			CameraRigController.instance.JumpToMainMenuHeight();
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void OnMainMenuStartPressed()
+		{
+			UIManager.instance.SetGameUIVisible(true);
+			
+			CameraRigController.instance.SetCurrentHeight(0f);
+			
+			this.InvokeAction((() =>
+			{
+				StartNewRun();
+			}), 1.5f);
+		}
 		
 		//-///////////////////////////////////////////////////////////
 		/// 

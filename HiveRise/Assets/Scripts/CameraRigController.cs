@@ -1,4 +1,5 @@
-﻿using MichaelWolfGames;
+﻿using System;
+using MichaelWolfGames;
 using UnityEngine;
 
 namespace HiveRise
@@ -14,14 +15,45 @@ namespace HiveRise
 		[SerializeField] private float topOffset = 5f;
 		[SerializeField] private float minHeight = 5f;
 		[SerializeField] private float moveSpeed = 5f;
+		[Space]
+		[SerializeField] private float mainMenuHeight = 75f;
 		
 		private float currentHeight;
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void Start()
+		{
+			
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		///
+		public void JumpToMainMenuHeight()
+		{
+			SetToMainMenuHeight();
+			JumpToCurrentHeight();
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetToMainMenuHeight()
+		{
+			SetCurrentHeight(mainMenuHeight - topOffset);
+		}
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void SetCurrentHeight(float argCurrentHeight)
 		{
 			currentHeight = argCurrentHeight;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void JumpToCurrentHeight()
+		{
+			_mainCameraContainer.localPosition = new Vector3(0f, GetTargetHeight(), 0f);
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -30,11 +62,24 @@ namespace HiveRise
 		{
 			float currentPositionHeight = _mainCameraContainer.localPosition.y;
 
-			float targetHeight = Mathf.Max(minHeight, currentHeight + topOffset);
-			currentPositionHeight = Mathf.MoveTowards(currentPositionHeight, targetHeight, moveSpeed * Time.deltaTime);
+			float targetHeight = GetTargetHeight();
+			currentPositionHeight = Mathf.MoveTowards(currentPositionHeight, targetHeight, GetMoveSpeed() * Time.deltaTime);
 
 			_mainCameraContainer.localPosition = new Vector3(0f, currentPositionHeight, 0f);
-			
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private float GetTargetHeight()
+		{
+			return Mathf.Max(minHeight, currentHeight + topOffset);
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private float GetMoveSpeed()
+		{
+			return moveSpeed;
 		}
 	}
 }

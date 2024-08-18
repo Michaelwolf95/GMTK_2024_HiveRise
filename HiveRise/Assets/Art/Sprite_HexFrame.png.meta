@@ -169,7 +169,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sprite_HexFrame_0: -6542675152093133996
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

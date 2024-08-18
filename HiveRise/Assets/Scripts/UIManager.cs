@@ -12,6 +12,8 @@ namespace HiveRise
 	{
 		[SerializeField] private RectTransform _handContainerRect = null;
 		public RectTransform handContainerRect => _handContainerRect;
+
+		[SerializeField] private CanvasGroup mainCanvasGroup = null;
 		
 		[Header("Buttons")]
 		[SerializeField] private Button submitButton = null;
@@ -28,6 +30,8 @@ namespace HiveRise
 		[Space]
 		[SerializeField] private ShopMenu shopMenu;
 		[SerializeField] private DeckPreviewMenu deckPreviewMenu;
+		[Header("MainMenu")]
+		[SerializeField] private Button mainMenuStartButton;
 		
 		public bool isMenuOpen { get; private set; }
 		
@@ -53,6 +57,18 @@ namespace HiveRise
 					deckPreviewMenu.DismissMenu();
 				}
 			}));
+			
+			mainMenuStartButton.onClick.AddListener((() =>
+			{
+				GameManager.instance.OnMainMenuStartPressed();
+			}));
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetGameUIVisible(bool argVisible)
+		{
+			mainCanvasGroup.gameObject.SetActive(argVisible);
 		}
 		
 		//-///////////////////////////////////////////////////////////
