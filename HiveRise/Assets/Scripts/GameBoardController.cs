@@ -31,6 +31,10 @@ namespace HiveRise
 		public void OnNewGameStarted()
 		{
 			heightTracker.SetTargetHeight(GameManager.instance.GetCurrentTargetHeight());
+			
+			currentTowerHeight = 0f;
+			heightTracker.SetCurrentHeight(currentTowerHeight);
+			CameraRigController.instance.SetCurrentHeight(currentTowerHeight);
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -241,6 +245,8 @@ namespace HiveRise
 				FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Height", currentTowerHeight);
 
 				heightTracker.SetCurrentHeight(currentTowerHeight);
+				
+				CameraRigController.instance.SetCurrentHeight(currentTowerHeight);
 			}
 		}
 

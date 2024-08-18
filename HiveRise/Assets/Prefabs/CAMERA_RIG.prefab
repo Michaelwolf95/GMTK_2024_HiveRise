@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 4375939625613385899}
+  _mainCameraContainer: {fileID: 6956352515302085112}
+  topOffset: 1.5
+  minHeight: 5
+  moveSpeed: 5
 --- !u!1 &2588340891405242109
 GameObject:
   m_ObjectHideFlags: 0

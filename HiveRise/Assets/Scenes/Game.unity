@@ -1671,13 +1671,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6956352515302085112, guid: 186462d97809efe4f93bd4eb49cc4a97, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7468409299115052694, guid: 186462d97809efe4f93bd4eb49cc4a97, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7468409299115052694, guid: 186462d97809efe4f93bd4eb49cc4a97, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 7468409299115052694, guid: 186462d97809efe4f93bd4eb49cc4a97, type: 3}
       propertyPath: m_LocalPosition.z
