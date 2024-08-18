@@ -50,6 +50,8 @@ MonoBehaviour:
   topOffset: 1.5
   minHeight: 5
   moveSpeed: 5
+  mainMenuHeight: 82
+  moveFromMainMenuSpeed: 50
 --- !u!1 &2588340891405242109
 GameObject:
   m_ObjectHideFlags: 0

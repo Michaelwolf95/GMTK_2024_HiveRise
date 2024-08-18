@@ -79,12 +79,14 @@ namespace HiveRise
 		{
 			UIManager.instance.SetGameUIVisible(true);
 			
-			CameraRigController.instance.SetCurrentHeight(0f);
-			
-			this.InvokeAction((() =>
+			CameraRigController.instance.SetCurrentHeight(0f, () =>
 			{
-				StartNewRun();
-			}), 1.5f);
+				this.InvokeAction((() =>
+				{
+					StartNewRun();
+				}), 0.5f);
+			});
+			
 		}
 		
 		//-///////////////////////////////////////////////////////////
