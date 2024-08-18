@@ -62,7 +62,25 @@ namespace HiveRise
 		/// 
 		public string GetCardDescriptionForData()
 		{
-			return "Basic";
+			return $"Basic  +${GetScoringValue()}";
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public int GetScoringValue()
+		{
+			int value = pieceData.shapePointValue;
+			switch (scoreMultiplier)
+			{
+				case ScoreMultiplier.Double:
+					value *= 2;
+					break;
+				case ScoreMultiplier.Tripple:
+					value *= 3;
+					break;
+			}
+
+			return value;
 		}
 	}
 }

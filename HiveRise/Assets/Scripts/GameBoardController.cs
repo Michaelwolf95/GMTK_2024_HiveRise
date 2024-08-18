@@ -20,7 +20,7 @@ namespace HiveRise
 		public HeightTracker heightTracker => _heightTracker;
 
 		private List<PieceView> allPieceViewsOnBoard = new List<PieceView>();
-		private List<List<PieceView>> pieceViewsAddedPerRound = new List<List<PieceView>>();
+		private List<List<PieceView>> pieceViewsAddedPerGame = new List<List<PieceView>>();
 		//private List<PieceView> pendingPieceViews = new List<PieceView>();
 
 		public float currentTowerHeight { get; private set; }
@@ -34,13 +34,14 @@ namespace HiveRise
 		public void OnNewRunStarted()
 		{
 			currentTowerHeight = 0f;
-			pieceViewsAddedPerRound = new List<List<PieceView>>();
+			pieceViewsAddedPerGame = new List<List<PieceView>>();
 		}
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void OnNewGameStarted()
 		{
+			pieceViewsAddedPerGame.Add(new List<PieceView>());
 			heightTracker.SetTargetHeight(GameManager.instance.GetCurrentTargetHeight());
 			
 			heightTracker.SetCurrentHeight(currentTowerHeight);
@@ -95,6 +96,8 @@ namespace HiveRise
 			bool valid = IsPieceValid(argCardView.linkedPieceView);
 			argCardView.SetPieceValidState(valid);
 			UIManager.instance.OnPendingPieceUpdated();
+			
+			AudioHooks.instance.pieceRotate.PlayOneShot();
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -181,13 +184,13 @@ namespace HiveRise
 				cardView.OnLinkedPiecePlayed();
 			}
 			HandController.instance.ClearPendingPlacementCardViews();
+			pieceViewsAddedPerGame[pieceViewsAddedPerGame.Count-1].AddRange(placedPieceViews);
 			
 			foreach (PieceView pieceView in placedPieceViews)
 			{
 				yield return StartCoroutine(CoApplyPiece(pieceView));
 			}
 			
-			pieceViewsAddedPerRound.Add(placedPieceViews);
 			//pendingPieceViews.Clear();
 			
 			// ToDo: Wait for a coroutine of effects.
@@ -286,7 +289,7 @@ namespace HiveRise
 		public int CalculateHoneyScore()
 		{
 			int score = 0;
-			List<PieceView> scoredPieces = pieceViewsAddedPerRound[pieceViewsAddedPerRound.Count - 1];
+			List<PieceView> scoredPieces = pieceViewsAddedPerGame[pieceViewsAddedPerGame.Count - 1];
 			Debug.Log(scoredPieces.Count);
 			foreach (PieceView pieceView in scoredPieces)
 			{

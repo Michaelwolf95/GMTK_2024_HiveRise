@@ -160,6 +160,7 @@ namespace HiveRise
 			{
 				currentDragCard = argCardView;
 				didCurrentDragCardStartInHand = currentCardsInHand.Contains(currentDragCard);
+				
 				currentDragCard.OnStartDragging();
 
 				ClearAllRotationGizmos();

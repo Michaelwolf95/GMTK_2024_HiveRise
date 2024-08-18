@@ -16,9 +16,6 @@ namespace HiveRise
 		[SerializeField] private PieceShapeData[] pieceShapeDefinitions;
 		private Dictionary<int, PieceShapeData> pieceDataDict = null;
 		
-		[SerializeField] private CardData[] shopCards = null;
-		
-		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public PieceView GetPiecePrefabForID(int argID)

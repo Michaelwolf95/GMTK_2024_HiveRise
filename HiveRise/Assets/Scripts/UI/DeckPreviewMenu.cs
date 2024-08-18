@@ -49,10 +49,16 @@ namespace HiveRise
 			{
 				case DeckPreviewMode.Preview:
 					// Nothing?
-					closeButton.gameObject.SetActive(true);
+					if (closeButton != null)
+					{
+						closeButton.gameObject.SetActive(true);
+					}
 					break;
 				case DeckPreviewMode.RemoveCard:
-					closeButton.gameObject.SetActive(false);
+					if (closeButton != null)
+					{
+						closeButton.gameObject.SetActive(false);
+					}
 					break;
 			}
 		}
@@ -62,6 +68,7 @@ namespace HiveRise
 		public void DismissMenu()
 		{
 			gameObject.SetActive(false);
+			UIManager.instance.OnDeckPreviewMenuClosed();
 		}
 
 		//-///////////////////////////////////////////////////////////

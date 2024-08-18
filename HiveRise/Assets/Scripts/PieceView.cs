@@ -145,6 +145,8 @@ namespace HiveRise
 				
 				AddAttachedPiece(argPieceView);
 				argPieceView.AddAttachedPiece(this);
+				
+				AudioHooks.instance.pieceStick.PlayOneShot();
 			}
 		}
 		

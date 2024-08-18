@@ -18,72 +18,59 @@ MonoBehaviour:
     pieceShapeID: 0
     pieceShapeSprite: {fileID: -9205712465732691280, guid: 8f69d512ea085704e84692b7a665064d, type: 3}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: 565930252d35e944582d91733409eef3, type: 3}
-    shapePointValue: 5
+    shapePointValue: 2
   - pieceName: I4
     pieceShapeID: 1
     pieceShapeSprite: {fileID: -965244746555795524, guid: 8f69d512ea085704e84692b7a665064d, type: 3}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: fa26b3eca208cd543912124abf2b3390, type: 3}
-    shapePointValue: 4
+    shapePointValue: 1
   - pieceName: J
     pieceShapeID: 2
     pieceShapeSprite: {fileID: 4599008144777574066, guid: 8f69d512ea085704e84692b7a665064d, type: 3}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: 2241dff9358365148b43f50ff8162def, type: 3}
-    shapePointValue: 4
+    shapePointValue: 1
   - pieceName: L
     pieceShapeID: 3
     pieceShapeSprite: {fileID: -5676561549595250517, guid: 8f69d512ea085704e84692b7a665064d, type: 3}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: 7df688d6cb18b2d4dbdaa4603ece0434, type: 3}
-    shapePointValue: 4
+    shapePointValue: 1
   - pieceName: P
     pieceShapeID: 4
     pieceShapeSprite: {fileID: 1962220508170591826, guid: 8f69d512ea085704e84692b7a665064d, type: 3}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: 9df719eb2ff98f54f9ab664956ea53fd, type: 3}
-    shapePointValue: 4
+    shapePointValue: 1
   - pieceName: Quad
     pieceShapeID: 5
     pieceShapeSprite: {fileID: -2887642931182715775, guid: 8f69d512ea085704e84692b7a665064d, type: 3}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: ef2d279c531539f4cbf4b7114cd40a48, type: 3}
-    shapePointValue: 4
+    shapePointValue: 1
   - pieceName: S
     pieceShapeID: 6
     pieceShapeSprite: {fileID: 1056518786387087073, guid: 8f69d512ea085704e84692b7a665064d, type: 3}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: 7cd2ff6eb6c3f8442acfcccb63246864, type: 3}
-    shapePointValue: 4
+    shapePointValue: 1
   - pieceName: Tri
     pieceShapeID: 7
     pieceShapeSprite: {fileID: 3610861883004144139, guid: 8f69d512ea085704e84692b7a665064d, type: 3}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: ee59b56774a7f2245b28c69ad35e8e86, type: 3}
-    shapePointValue: 5
+    shapePointValue: 2
   - pieceName: U
     pieceShapeID: 8
     pieceShapeSprite: {fileID: 91405316331410089, guid: 8f69d512ea085704e84692b7a665064d, type: 3}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: 0aa315de2381efe478c86f3b19430c29, type: 3}
-    shapePointValue: 4
+    shapePointValue: 1
   - pieceName: V
     pieceShapeID: 9
     pieceShapeSprite: {fileID: -1744732694280672951, guid: 8f69d512ea085704e84692b7a665064d, type: 3}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: 6f9e1069fb8761b439a83da3429e34e8, type: 3}
-    shapePointValue: 5
+    shapePointValue: 2
   - pieceName: X
     pieceShapeID: 10
     pieceShapeSprite: {fileID: 1447907786314441125, guid: ecc7969e342f83541a82459e0326e16c, type: 3}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: d9de1f304069add4b9e42a21e40965fc, type: 3}
-    shapePointValue: 6
+    shapePointValue: 2
   - pieceName: Y
     pieceShapeID: 11
     pieceShapeSprite: {fileID: 8172142209791932135, guid: 8f69d512ea085704e84692b7a665064d, type: 3}
     pieceViewPrefab: {fileID: 3377259213405375527, guid: 2ad63b17378efcc41a1bc46ed6c77253, type: 3}
-    shapePointValue: 5
-  shopCards:
-  - pieceShapeID: 3
-    rarity: 1
-    color: 0
-    weightType: 0
-    scoreMultiplier: 0
-    sticky: 0
-  - pieceShapeID: 3
-    rarity: 1
-    color: 0
-    weightType: 0
-    scoreMultiplier: 0
-    sticky: 0
+    shapePointValue: 2

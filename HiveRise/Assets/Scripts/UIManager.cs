@@ -24,6 +24,7 @@ namespace HiveRise
 		[SerializeField] private string deckCounterFormatString = "{0}/{1}";
 		[Space]
 		[SerializeField] private ShopMenu shopMenu;
+		[SerializeField] private DeckPreviewMenu deckPreviewMenu;
 		
 		public bool isMenuOpen { get; private set; }
 		
@@ -36,6 +37,7 @@ namespace HiveRise
 			submitButton.interactable = false;
 			
 			shopMenu.gameObject.SetActive(false);
+			deckPreviewMenu.gameObject.SetActive(false);
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -132,6 +134,7 @@ namespace HiveRise
 		/// 
 		public void ShowDeckPreviewMenu(DeckPreviewMode argPreviewMode)
 		{
+			deckPreviewMenu.ShowMenu(argPreviewMode);
 			// ToDo: Open this menu
 			isMenuOpen = true;
 		}

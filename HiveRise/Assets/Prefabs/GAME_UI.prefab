@@ -1309,6 +1309,7 @@ MonoBehaviour:
   deckCounter2: {fileID: 4981125827712096333}
   deckCounterFormatString: '{0}/{1}'
   shopMenu: {fileID: 4215805370096065785}
+  deckPreviewMenu: {fileID: 5988136084504594386}
 --- !u!1 &5193892634406827644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,7 +1582,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9079322149698087196}
+  - component: {fileID: 5988136084504594386}
   - component: {fileID: 7445120840939879617}
+  - component: {fileID: 5114573122073003212}
   m_Layer: 5
   m_Name: DeckTrackerContainer
   m_TagString: Untagged
@@ -1610,6 +1613,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5988136084504594386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6450866942886390484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e201263b6fd48a38ac33a77c54ae5ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 5114573122073003212}
+  _cardsContainer: {fileID: 7223336718578014937}
+  _cardViewPrefab: {fileID: 1956112428776919608, guid: bf867285fc654034bb604e734933d228, type: 3}
+  _closeButton: {fileID: 6517273707852109494}
 --- !u!222 &7445120840939879617
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1618,6 +1637,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6450866942886390484}
   m_CullTransparentMesh: 1
+--- !u!225 &5114573122073003212
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6450866942886390484}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6585291246737412281
 GameObject:
   m_ObjectHideFlags: 0
@@ -3353,6 +3384,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e620a712c7085dc4fbd915ed4023a79d, type: 3}
+--- !u!114 &6517273707852109494 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8461608328284086562, guid: e620a712c7085dc4fbd915ed4023a79d, type: 3}
+  m_PrefabInstance: {fileID: 3395619669205890964}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7234666055825313218 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5438404874097392214, guid: e620a712c7085dc4fbd915ed4023a79d, type: 3}
