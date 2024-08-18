@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace HiveRise
 {
+	//-///////////////////////////////////////////////////////////
+	/// 
 	[Serializable]
 	public class ShopCardData
 	{
@@ -20,6 +23,14 @@ namespace HiveRise
 		
 		[SerializeField] private TextAsset shopDataCSV = null;
 		[SerializeField] private List<ShopCardData> shopCards = null;
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public ShopCardData GetRandomShopCardData(CardRarity argRarity)
+		{
+			List<ShopCardData> set = shopCards.Where(x => x.cardData.rarity == argRarity).ToList();
+			return set[UnityEngine.Random.Range(0, set.Count)];
+		}
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -51,6 +62,8 @@ namespace HiveRise
 				shopCardData.cardData.weightType = (WeightType)int.Parse(dataEntries[4]);
 				shopCardData.cardData.scoreMultiplier = (ScoreMultiplier)int.Parse(dataEntries[5]);
 				shopCardData.cardData.sticky = int.Parse(dataEntries[6]) == 1;
+				
+				shopCards.Add(shopCardData);
 			}
 
 		}
