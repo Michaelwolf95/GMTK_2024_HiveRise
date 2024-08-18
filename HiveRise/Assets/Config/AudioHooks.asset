@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardDraw:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 357975664
+      Data2: 1116824437
+      Data3: -1563586409
+      Data4: 976606063
+    Path: event:/SFX/Card/SFX_Card_Draw
   cardPlace:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1495025106
+      Data2: 1171027631
+      Data3: 1820612744
+      Data4: -1023912537
+    Path: event:/SFX/Card/SFX_Card_Place
   cardDiscard:
     Guid:
       Data1: 0
@@ -42,19 +42,40 @@ MonoBehaviour:
     Path: 
   pieceBump:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 67273556
+      Data2: 1316425110
+      Data3: 223166353
+      Data4: -1055071121
+    Path: event:/SFX/Tet/SFX_Tet_Bump
   pieceStick:
+    Guid:
+      Data1: -190782147
+      Data2: 1296802235
+      Data3: 1470694287
+      Data4: -1492131722
+    Path: event:/SFX/Tet/SFX_Tet_Stick
+  piecePaint:
     Guid:
       Data1: 0
       Data2: 0
       Data3: 0
       Data4: 0
     Path: 
-  piecePaint:
+  pieceRotate:
+    Guid:
+      Data1: 1487953893
+      Data2: 1338765913
+      Data3: 1952776617
+      Data4: -2031258474
+    Path: event:/SFX/Tet/SFX_Tet_Rotate
+  shopOpen:
+    Guid:
+      Data1: -1665885413
+      Data2: 1335022240
+      Data3: -628960639
+      Data4: 1018301927
+    Path: event:/SFX/Shop/SFX_Shop_Open
+  shopClose:
     Guid:
       Data1: 0
       Data2: 0
@@ -63,18 +84,18 @@ MonoBehaviour:
     Path: 
   shopBuy:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -503469560
+      Data2: 1260833380
+      Data3: 968537249
+      Data4: 1811252091
+    Path: event:/SFX/Shop/SFX_Shop_Buy
   moneyPayout:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1896290986
+      Data2: 1288738105
+      Data3: -2123424882
+      Data4: -996678506
+    Path: event:/SFX/Shop/SFX_Shop_Payout
   winGame:
     Guid:
       Data1: 0
