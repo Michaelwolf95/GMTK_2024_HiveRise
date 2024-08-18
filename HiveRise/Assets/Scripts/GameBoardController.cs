@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using MichaelWolfGames;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace HiveRise
 		public HeightTracker heightTracker => _heightTracker;
 
 		private List<PieceView> allPieceViewsOnBoard = new List<PieceView>();
+		private List<List<PieceView>> pieceViewsAddedPerRound = new List<List<PieceView>>();
 		//private List<PieceView> pendingPieceViews = new List<PieceView>();
 
 		public float currentTowerHeight { get; private set; }
@@ -32,6 +34,7 @@ namespace HiveRise
 		public void OnNewRunStarted()
 		{
 			currentTowerHeight = 0f;
+			pieceViewsAddedPerRound = new List<List<PieceView>>();
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -174,11 +177,13 @@ namespace HiveRise
 				cardView.OnLinkedPiecePlayed();
 			}
 			HandController.instance.ClearPendingPlacementCardViews();
-
+			
 			foreach (PieceView pieceView in placedPieceViews)
 			{
 				yield return StartCoroutine(CoApplyPiece(pieceView));
 			}
+			
+			pieceViewsAddedPerRound.Add(placedPieceViews);
 			//pendingPieceViews.Clear();
 			
 			// ToDo: Wait for a coroutine of effects.
@@ -276,7 +281,35 @@ namespace HiveRise
 		/// 
 		public int CalculateHoneyScore()
 		{
-			return 10;
+			int score = 0;
+			List<PieceView> scoredPieces = pieceViewsAddedPerRound[pieceViewsAddedPerRound.Count - 1];
+			Debug.Log(scoredPieces.Count);
+			foreach (PieceView pieceView in scoredPieces)
+			{
+				if (IsPieceValidForScoring(pieceView))
+				{
+					int value = pieceView.pieceCardData.pieceData.shapePointValue;
+					switch ( pieceView.pieceCardData.scoreMultiplier)
+					{
+						case ScoreMultiplier.Double:
+							value *= 2;
+							break;
+						case ScoreMultiplier.Tripple:
+							value *= 3;
+							break;
+					}
+					score += value;
+				}
+			}
+			return score;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public bool IsPieceValidForScoring(PieceView argPieceView)
+		{
+			// ToDo: Check for valid for scoring.
+			return true;
 		}
 
 #endregion // Progress Tracking

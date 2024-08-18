@@ -109,6 +109,8 @@ namespace HiveRise
 					{
 						//Debug.Log($"{i}/{numCardsInHand}: {t}, {pos}");
 						Vector3 targetPos = new Vector3(pos.x, pos.y, pos.z);
+						targetPos.z += (i * 0.2f);
+						
 						currentCardsInHand[i].transform.position = Vector3.MoveTowards(currentCardsInHand[i].transform.position, targetPos, CARD_MOVE_SPEED * Time.deltaTime);
 
 						Vector3 upVector = new Vector3(up.x, up.y, up.z);

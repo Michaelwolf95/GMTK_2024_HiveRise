@@ -20,7 +20,9 @@ namespace HiveRise
 		public EventReference pieceBump;
 		public EventReference pieceStick;
 		public EventReference piecePaint;
+		public EventReference pieceRotate;
 		[Space]
+		public EventReference shopOpen;
 		public EventReference shopBuy;
 		public EventReference moneyPayout;
 		[Space]
