@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c2edea1bd2e4c9a9eb57c9a9dcf18d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardButton: {fileID: 6813912016215319034}
+  _cardButton: {fileID: 6813912016215319034}
   _canvasGroup: {fileID: 339375364134752860}
   cardImage: {fileID: 2858955236872201280}
   cardTintColors:

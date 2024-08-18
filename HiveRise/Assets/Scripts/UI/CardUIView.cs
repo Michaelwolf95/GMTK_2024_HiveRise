@@ -8,7 +8,8 @@ namespace HiveRise
 	/// 
 	public class CardUIView : MonoBehaviour
 	{
-		[SerializeField] private Button cardButton = null;
+		[SerializeField] private Button _cardButton = null;
+		public Button cardButton => _cardButton;
 		[SerializeField] private CanvasGroup _canvasGroup = null;
 		public CanvasGroup canvasGroup => _canvasGroup;
 		[SerializeField] private Image cardImage = null;
@@ -26,7 +27,6 @@ namespace HiveRise
 			cardImage.sprite = CardDefinitions.instance.GetPieceDataForID(argCardData.pieceShapeID).pieceShapeSprite;
 			cardImage.color = cardTintColors[(int) argCardData.color];
 			cardTextLabel.text = argCardData.GetCardDescriptionForData();
-			
 		}
 	}
 }
