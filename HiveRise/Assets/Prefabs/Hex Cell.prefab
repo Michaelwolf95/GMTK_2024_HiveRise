@@ -220,7 +220,7 @@ MonoBehaviour:
       Data2: 1316425110
       Data3: 223166353
       Data4: -1055071121
-    Path: event:/SFX/SFX_Tet_Bump
+    Path: event:/SFX/Tet/SFX_Tet_Bump
   Event: 
   PlayEvent: 9
   StopEvent: 10
