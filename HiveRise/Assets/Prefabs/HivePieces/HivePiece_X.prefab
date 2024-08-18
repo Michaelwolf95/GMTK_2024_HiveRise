@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4498383658483991941, guid: a4fab0fecf384b94d98fc9c078815cc9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.867
+      value: 0.43449998
       objectReference: {fileID: 0}
     - target: {fileID: 4498383658483991941, guid: a4fab0fecf384b94d98fc9c078815cc9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -91,7 +91,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4498383658483991941, guid: a4fab0fecf384b94d98fc9c078815cc9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.867
+      value: 0.43449998
       objectReference: {fileID: 0}
     - target: {fileID: 4498383658483991941, guid: a4fab0fecf384b94d98fc9c078815cc9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -160,8 +160,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2380149472019026090, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4335
+      value: 0.0009999871
       objectReference: {fileID: 0}
+    - target: {fileID: 4416174837144462429, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 4416174837144462429, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
       propertyPath: m_Name
       value: HivePiece_X
@@ -208,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6242192996660436035, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4335
+      value: -0.866
       objectReference: {fileID: 0}
     - target: {fileID: 8878792803062758772, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
       propertyPath: _hexCells.Array.size

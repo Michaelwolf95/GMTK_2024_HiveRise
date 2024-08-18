@@ -10,12 +10,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1684332205860354926, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3005
+      value: -0.857
       objectReference: {fileID: 0}
     - target: {fileID: 2380149472019026090, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4335
+      value: 0.87700003
       objectReference: {fileID: 0}
+    - target: {fileID: 4416174837144462429, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 4416174837144462429, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
       propertyPath: m_Name
       value: HivePiece_I3
@@ -62,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6242192996660436035, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4335
+      value: 0.01000005
       objectReference: {fileID: 0}
     - target: {fileID: 8878792803062758772, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
       propertyPath: _hexCells.Array.size

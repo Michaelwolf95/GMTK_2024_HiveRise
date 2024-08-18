@@ -21,6 +21,10 @@ PrefabInstance:
       value: 0.4335
       objectReference: {fileID: 0}
     - target: {fileID: 4416174837144462429, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 4416174837144462429, guid: 37c2cb9a8b33fbd4988cf88aacd8eced, type: 3}
       propertyPath: m_Name
       value: HivePiece_V
       objectReference: {fileID: 0}
