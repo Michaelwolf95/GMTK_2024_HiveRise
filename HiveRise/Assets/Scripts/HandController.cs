@@ -136,11 +136,16 @@ namespace HiveRise
 		/// 
 		public void TryStartDraggingCard(CardView argCardView)
 		{
-			if (currentDragCard == null && pendingPlacementCardViews.Count < GameManager.MAX_CARDS_PER_PLAY)
+			if (currentDragCard == null && (pendingPlacementCardViews.Contains(argCardView) || pendingPlacementCardViews.Count < GameManager.MAX_CARDS_PER_PLAY))
 			{
-				didCurrentDragCardStartInHand = currentCardsInHand.Contains(currentDragCard);
 				currentDragCard = argCardView;
+				didCurrentDragCardStartInHand = currentCardsInHand.Contains(currentDragCard);
 				currentDragCard.OnStartDragging();
+
+				foreach (CardView cardView in pendingPlacementCardViews)
+				{
+					cardView.SetRotationGizmoShown(false);
+				}
 			}
 		}
 		
@@ -186,7 +191,6 @@ namespace HiveRise
 						// ToDo: Update as invalid placement state.
 					}
 				}
-
 				
 				currentDragCard = null;
 				didCurrentDragCardStartInHand = false;
@@ -211,12 +215,15 @@ namespace HiveRise
 		{
 			argCardView.OnLinkedPiecePlaced();
 
+			Debug.Log(didCurrentDragCardStartInHand);
 			if (didCurrentDragCardStartInHand)
 			{
-				// ToDo: Show rotation gizmo, etc.
+				// Show rotation gizmo, etc.
+				argCardView.SetRotationGizmoShown(true);
 			}
+			//argCardView.SetRotationGizmoShown(true);
 			
-			// ToDo: Tint cards, etc.
+			// ToDo: Tint cards if full, etc.
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -230,6 +237,16 @@ namespace HiveRise
 				 Destroy(cardView.gameObject);
 			 }
 			 pendingPlacementCardViews.Clear();
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void ClearAllRotationGizmos()
+		{
+			foreach (CardView cardView in pendingPlacementCardViews)
+			{
+				cardView.SetRotationGizmoShown(false);
+			}
 		}
 
 #endregion // Pending Cards

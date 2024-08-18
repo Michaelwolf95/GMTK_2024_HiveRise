@@ -51,13 +51,6 @@ namespace HiveRise
 					checkColliders.AddRange(cardView.linkedPieceView.GetAllColliders());
 				}
 			}
-			// foreach (PieceView pieceView in pendingPieceViews)
-			// {
-			// 	if (pieceView != argPieceView)
-			// 	{
-			// 		checkColliders.AddRange(pieceView.GetAllColliders());
-			// 	}
-			// }
 			bool result = argPieceView.DoesPieceOverlapColliders(checkColliders) == false;
 			return result;
 		}
@@ -68,7 +61,6 @@ namespace HiveRise
 		public bool AreAllPendingPiecesValid()
 		{
 			foreach (CardView cardView in HandController.instance.pendingPlacementCardViews)
-			//foreach (PieceView pieceView in pendingPieceViews)
 			{
 				if (IsPieceValid(cardView.linkedPieceView) == false)
 				{
@@ -138,6 +130,7 @@ namespace HiveRise
 			{
 				cardView.linkedPieceView.transform.SetParent(pieceContainer);
 				placedPieceViews.Add(cardView.linkedPieceView);
+				cardView.OnLinkedPiecePlayed();
 			}
 			HandController.instance.ClearPendingPlacementCardViews();
 

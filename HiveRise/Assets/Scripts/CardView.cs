@@ -1,6 +1,7 @@
 ﻿using System;
 using MichaelWolfGames;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace HiveRise
 {
@@ -12,18 +13,24 @@ namespace HiveRise
 		public bool isCardMode { get; private set; }
 		public bool isPendingPlacement { get; set; }
 
-		[SerializeField] private CanvasGroup canvasGroup = null;
+		[SerializeField] private CanvasGroup cardCanvasGroup = null;
 		[SerializeField] private GameObject pieceContainer = null;
-		[SerializeField] private PieceView _linkedPieceView = null;
-		public PieceView linkedPieceView => _linkedPieceView;
+		[Space]
+		[SerializeField] private CanvasGroup rotationGizmoCanvasGroup = null;
+		[SerializeField] private Button leftRotationButton = null; 
+		[SerializeField] private Button rightRotationButton = null; 
 		
+		public PieceView linkedPieceView { get; private set; }
 		public CardData pieceCardData { get; private set; }
+		
+		private Vector2 clickStartPos = Vector2.zero;
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		private void Awake()
 		{
-			//Init();
+			leftRotationButton.onClick.AddListener(RotatePieceLeft);
+			rightRotationButton.onClick.AddListener(RotatePieceRight);
 		}
 
 		
@@ -35,11 +42,11 @@ namespace HiveRise
 		{
 			pieceCardData = argCardData;
 			
-			if (_linkedPieceView != null)
+			if (linkedPieceView != null)
 			{
-				Destroy(_linkedPieceView.gameObject);
+				Destroy(linkedPieceView.gameObject);
 			}
-			_linkedPieceView = Instantiate(CardDefinitions.instance.GetPiecePrefabForID(argCardData.pieceShapeID),pieceContainer.transform);
+			linkedPieceView = Instantiate(CardDefinitions.instance.GetPiecePrefabForID(argCardData.pieceShapeID),pieceContainer.transform);
 			linkedPieceView.SetPieceCardData(argCardData);
 			
 			Init();
@@ -62,6 +69,7 @@ namespace HiveRise
 		public void OnStartDragging()
 		{
 			isBeingDragged = true;
+			SetRotationGizmoShown(false);
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -70,14 +78,24 @@ namespace HiveRise
 		{
 			isBeingDragged = false;
 		}
-
+		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		private void OnMouseDown()
 		{
-			if (HandController.instance.currentDragCard == null)
+			clickStartPos = Input.mousePosition;
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void OnMouseDrag()
+		{
+			if (isBeingDragged == false && Vector2.Distance(Input.mousePosition, clickStartPos) > 20)
 			{
-				HandController.instance.TryStartDraggingCard(this);
+				if (HandController.instance.currentDragCard == null)
+				{
+					HandController.instance.TryStartDraggingCard(this);
+				}
 			}
 		}
 
@@ -88,6 +106,10 @@ namespace HiveRise
 			if (isBeingDragged)
 			{
 				HandController.instance.TryStopDraggingCard(this);
+			}
+			else if (isPendingPlacement)
+			{
+				SetRotationGizmoShown(true);
 			}
 		}
 
@@ -146,16 +168,17 @@ namespace HiveRise
 				pieceContainer.gameObject.SetActive(false);
 				
 				// ToDo: Fade this
-				canvasGroup.alpha = 1f;
+				cardCanvasGroup.alpha = 1f;
 
 				isPendingPlacement = false;
+				SetRotationGizmoShown(false);
 			}
 			else
 			{
 				pieceContainer.gameObject.SetActive(true);
 				
 				// ToDo: Fade this
-				canvasGroup.alpha = 0f;
+				cardCanvasGroup.alpha = 0f;
 			}
 		}
 		
@@ -172,10 +195,45 @@ namespace HiveRise
 		{
 			// ToDo: Hook this up!
 			isPendingPlacement = false;
+			SetRotationGizmoShown(false);
 		}
 		
 #endregion //Interaction
 
+#region Rotation Gizmo
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void SetRotationGizmoShown(bool argShow)
+		{
+			if (argShow)
+			{
+				HandController.instance.ClearAllRotationGizmos();
+			}
+			rotationGizmoCanvasGroup.gameObject.SetActive(argShow);
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void RotatePieceLeft()
+		{
+			if (rotationGizmoCanvasGroup.gameObject.activeSelf)
+			{
+				linkedPieceView.transform.Rotate(new Vector3(0f, 0f, 30f), Space.Self);
+			}
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		private void RotatePieceRight()
+		{
+			if (rotationGizmoCanvasGroup.gameObject.activeSelf)
+			{
+				linkedPieceView.transform.Rotate(new Vector3(0f, 0f, -30f), Space.Self);
+			}
+		}
+
+#endregion //Rotation Gizmo
 
 #region Debug
 
