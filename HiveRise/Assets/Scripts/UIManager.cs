@@ -20,6 +20,7 @@ namespace HiveRise
 		[Space]
 		[SerializeField] private TextMeshProUGUI honeyCounter = null;
 		[SerializeField] private TextMeshProUGUI deckCounter = null;
+		[SerializeField] private TextMeshProUGUI deckCounter2 = null;
 		[SerializeField] private string deckCounterFormatString = "{0}/{1}";
 		[Space]
 		[SerializeField] private ShopMenu shopMenu;
@@ -85,6 +86,7 @@ namespace HiveRise
 		public void UpdateDeckTrackerLabel()
 		{
 			deckCounter.text = string.Format(deckCounterFormatString, DeckController.instance.GetNumRemainingInDeck(), DeckController.instance.GetTotalCardsInDeck());
+			deckCounter2.text = string.Format(deckCounterFormatString, DeckController.instance.GetNumRemainingInDeck(), DeckController.instance.GetTotalCardsInDeck());
 		}
 		
 		//-///////////////////////////////////////////////////////////
