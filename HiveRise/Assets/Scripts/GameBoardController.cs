@@ -229,6 +229,11 @@ namespace HiveRise
 				settled = true;
 				foreach (PieceView pieceView in allPieceViewsOnBoard)
 				{
+					if ((CameraRigController.instance.mainCamera.transform.position.y - pieceView.transform.position.y) >
+					    ((CameraRigController.instance.mainCamera.orthographicSize) + 4f))
+					{
+						continue;
+					}
 					//pieceView.rigidbody2D.IsSleeping()
 					if (pieceView.rigidbody2D.velocity.sqrMagnitude > 0.1f || pieceView.rigidbody2D.angularVelocity > 0.1f)
 					{
