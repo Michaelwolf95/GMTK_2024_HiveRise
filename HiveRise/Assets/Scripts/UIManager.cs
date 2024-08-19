@@ -52,6 +52,8 @@ namespace HiveRise
 			shopMenu.gameObject.SetActive(false);
 			deckPreviewMenu.gameObject.SetActive(false);
 			
+			SetHoneyCount(0);
+			
 			deckCounterButton.onClick.AddListener((() =>
 			{
 				if (isMenuOpen == false)
