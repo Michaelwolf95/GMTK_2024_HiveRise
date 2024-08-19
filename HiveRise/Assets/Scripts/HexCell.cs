@@ -56,9 +56,23 @@ namespace HiveRise
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
+		public void SetColliderScale(float argScale)
+		{
+			collider.transform.localScale = Vector3.one * argScale;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
 		public bool DoesCellOverlapColliders(List<Collider2D> argOtherColliders)
 		{
 			bool result = false;
+
+			bool[] otherCollidersEnabledState = new bool[argOtherColliders.Count];
+			for (int i = 0; i < argOtherColliders.Count; i++)
+			{
+				otherCollidersEnabledState[i] = argOtherColliders[i].enabled;
+				argOtherColliders[i].enabled = true;
+			}
 
 			bool wasColliderEnabled = collider.enabled;
 			collider.enabled = true;
@@ -72,6 +86,11 @@ namespace HiveRise
 						result = true;
 					}
 				}
+			}
+			
+			for (int i = 0; i < argOtherColliders.Count; i++)
+			{
+				argOtherColliders[i].enabled = otherCollidersEnabledState[i];
 			}
 
 			collider.enabled = wasColliderEnabled;

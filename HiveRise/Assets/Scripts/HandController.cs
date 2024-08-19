@@ -178,7 +178,7 @@ namespace HiveRise
 			{
 				currentDragCard.OnStopDragging();
 
-				if (IsPointWithinHandContainer(currentDragCard.transform.position))
+				if (IsWorldPointWithinHandContainer(currentDragCard.transform.position) || (IsWorldPointWithinScreenBounds(currentDragCard.transform.position) == false))
 				{
 					// Add back to hand if it wasn't already.
 					if (currentCardsInHand.Contains(currentDragCard) == false)
@@ -190,6 +190,8 @@ namespace HiveRise
 						pendingPlacementCardViews.Remove(currentDragCard);
 						GameBoardController.instance.RemovePendingCard(currentDragCard);
 					}
+					
+					GameBoardController.instance.RefreshValidStateOfPendingPieces();
 				}
 				else
 				{
@@ -214,6 +216,11 @@ namespace HiveRise
 						// ToDo: Update as invalid placement state.
 						currentDragCard.SetPieceValidState(false);
 						UIManager.instance.OnPendingPieceUpdated();
+						
+						if (currentCardsInHand.Contains(currentDragCard))
+						{
+							currentDragCard.linkedPieceView.SetAllCollidersEnabled(false);
+						}
 					}
 					GameBoardController.instance.RefreshValidStateOfPendingPieces();
 				}
@@ -225,7 +232,15 @@ namespace HiveRise
 
 		//-///////////////////////////////////////////////////////////
 		/// 
-		public bool IsPointWithinHandContainer(Vector3 argWorldPoint)
+		public bool IsWorldPointWithinScreenBounds(Vector3 argWorldPoint)
+		{
+			Vector2 screenPoint = CameraRigController.instance.mainCamera.WorldToScreenPoint(argWorldPoint);
+			return screenPoint.x < Screen.width && screenPoint.x >= 0 && screenPoint.y < Screen.height && screenPoint.y >= 0;
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public bool IsWorldPointWithinHandContainer(Vector3 argWorldPoint)
 		{
 			Vector2 screenPoint = CameraRigController.instance.mainCamera.WorldToScreenPoint(argWorldPoint);
 			return RectTransformUtility.RectangleContainsScreenPoint(UIManager.instance.handContainerRect, screenPoint);

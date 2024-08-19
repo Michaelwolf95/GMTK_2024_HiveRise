@@ -30,7 +30,6 @@ namespace HiveRise
 		private Vector2 dragStartWorldSpaceOffset = Vector2.zero;
 		private const float MIN_DRAG_PIXEL_DIST = 5f;
 		
-		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		private void Awake()
@@ -189,14 +188,14 @@ namespace HiveRise
 		{
 			if (isCardMode)
 			{
-				if (HandController.instance.IsPointWithinHandContainer(this.transform.position) == false)
+				if (HandController.instance.IsWorldPointWithinHandContainer(this.transform.position) == false)
 				{
 					SetCardMode(false);
 				}
 			}
 			else
 			{
-				if (HandController.instance.IsPointWithinHandContainer(this.transform.position))
+				if (HandController.instance.IsWorldPointWithinHandContainer(this.transform.position))
 				{
 					SetCardMode(true);
 				}
@@ -224,10 +223,13 @@ namespace HiveRise
 				isPendingPlacement = false;
 				SetRotationGizmoShown(false);
 				SetPieceValidState(true);
+				
+				linkedPieceView.OnCancelPlacing();
 			}
 			else
 			{
 				pieceContainer.gameObject.SetActive(true);
+				linkedPieceView.OnBeginPlacing();
 				
 				// ToDo: Fade this
 				//cardCanvasGroup.alpha = 0f;
@@ -246,8 +248,8 @@ namespace HiveRise
 		/// 
 		public void OnLinkedPiecePlayed()
 		{
-			// ToDo: Hook this up!
 			isPendingPlacement = false;
+			linkedPieceView.OnPiecePlaced();
 			SetRotationGizmoShown(false);
 		}
 		

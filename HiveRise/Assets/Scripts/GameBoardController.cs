@@ -163,6 +163,8 @@ namespace HiveRise
 			// ToDo: Is this necessary?
 			// This is necessary for checking overlaps between colliders!
 			argCardView.linkedPieceView.SetAllCollidersEnabled(true);
+			
+			//argCardView.linkedPieceView.OnPiecePlaced();
 
 			UIManager.instance.OnPendingPiecePlaced();
 			

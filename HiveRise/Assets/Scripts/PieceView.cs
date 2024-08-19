@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MichaelWolfGames;
 using UnityEngine;
 
 namespace HiveRise
@@ -19,7 +20,8 @@ namespace HiveRise
 
 		private List<Joint2D> currentStickJoints = new List<Joint2D>();
 		private List<PieceView> currentAttachedPieces = new List<PieceView>();
-		
+
+		private const float HEX_CELL_PLACING_SCALE = 0.9f;
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -39,11 +41,6 @@ namespace HiveRise
 		{
 			rigidbody2D.isKinematic = !argIsPhysical;
 			SetAllCollidersEnabled(argIsPhysical);
-			
-			// foreach (HexCell hexCell in hexCells)
-			// {
-			// 	//hexCell.gameObject.layer = (argIsPhysical)? 0 : 6;
-			// }
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -84,12 +81,44 @@ namespace HiveRise
 				rigidbody2D.constraints = RigidbodyConstraints2D.None;
 			}
 		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void OnBeginPlacing()
+		{
+			foreach (HexCell hexCell in hexCells)
+			{
+				hexCell.SetColliderScale(HEX_CELL_PLACING_SCALE);
+			}
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void OnCancelPlacing()
+		{
+			foreach (HexCell hexCell in hexCells)
+			{
+				hexCell.SetColliderScale(1f);
+			}
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void OnPiecePlaced()
+		{
+			this.DoTween(lerp =>
+			{
+				foreach (HexCell hexCell in hexCells)
+				{
+					hexCell.SetColliderScale(Mathf.Lerp(HEX_CELL_PLACING_SCALE, 1f, lerp));
+				}
+			}, null, 0.1f, 0f);
+		}
 
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void SetAllCollidersEnabled(bool argEnabled)
 		{
-			//Debug.Log(argEnabled);
 			foreach (HexCell hexCell in hexCells)
 			{
 				hexCell.SetColliderEnabled(argEnabled);
