@@ -25,6 +25,8 @@ namespace HiveRise
 			cardView.cardButton.enabled = true;	
 			cardView.cardButton.onClick.RemoveAllListeners();
 			cardView.cardButton.onClick.AddListener(TryPurchaseCard);
+
+			cardView.cardButton.interactable = CanPurchaseCard();
 		}
 		
 		//-///////////////////////////////////////////////////////////
