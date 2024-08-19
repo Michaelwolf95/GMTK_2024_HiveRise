@@ -17,12 +17,33 @@ namespace HiveRise
 
 		public CardData pieceCardData { get; private set; }
 		public bool isPermanentlyFrozen { get; private set; }
+		public bool canStickToOtherPieces { get; private set; }
 
 		private List<Joint2D> currentStickJoints = new List<Joint2D>();
 		private List<PieceView> currentAttachedPieces = new List<PieceView>();
 
 		private const float HEX_CELL_PLACING_SCALE = 0.9f;
 		
+		//-//////////////////////////////////////////////////////////////////////
+		///
+		private void OnCollisionEnter2D(Collision2D col)
+		{
+			if (col.rigidbody != null && col.rigidbody != rigidbody2D)
+			{
+				PieceView otherPiece = col.rigidbody.GetComponent<PieceView>();
+				if (otherPiece != null)
+				{
+					if (otherPiece.pieceCardData.color == pieceCardData.color)
+					{
+						if (TryStickToPiece(otherPiece))
+						{
+							//Debug.Log("Stick To Piece!".RichText(Color.cyan));
+						}
+					}
+				}
+			}
+		}
+
 		//-///////////////////////////////////////////////////////////
 		/// 
 		public void SetPieceCardData(CardData argCardData)
@@ -106,13 +127,18 @@ namespace HiveRise
 		/// 
 		public void OnPiecePlaced()
 		{
+			canStickToOtherPieces = false;
 			this.DoTween(lerp =>
 			{
 				foreach (HexCell hexCell in hexCells)
 				{
 					hexCell.SetColliderScale(Mathf.Lerp(HEX_CELL_PLACING_SCALE, 1f, lerp));
 				}
-			}, null, 0.1f, 0f);
+			}, (() =>
+			{
+				canStickToOtherPieces = true;
+				TryStickToSameColorNeighbors();
+			}), 0.1f, 0f);
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -184,12 +210,26 @@ namespace HiveRise
 
 			return uniquePieces;
 		}
+
+		//-//////////////////////////////////////////////////////////////////////
+		///
+		public void TryStickToSameColorNeighbors()
+		{
+			HashSet<PieceView> nearbyPieces = GetNearbyPieces();
+			foreach (PieceView nearbyPiece in nearbyPieces)
+			{
+				if (nearbyPiece.pieceCardData.color == pieceCardData.color)
+				{
+					TryStickToPiece(nearbyPiece);
+				}
+			}
+		}
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
-		public void TryStickToPiece(PieceView argPieceView)
+		public bool TryStickToPiece(PieceView argPieceView)
 		{
-			if (argPieceView != this && currentAttachedPieces.Contains(argPieceView) == false)
+			if (canStickToOtherPieces && argPieceView != this && currentAttachedPieces.Contains(argPieceView) == false)
 			{
 				// Stick!
 				FixedJoint2D joint = this.gameObject.AddComponent<FixedJoint2D>();
@@ -200,7 +240,9 @@ namespace HiveRise
 				argPieceView.AddAttachedPiece(this);
 				
 				AudioHooks.instance.pieceStick.PlayOneShot();
+				return true;
 			}
+			return false;
 		}
 		
 		//-///////////////////////////////////////////////////////////

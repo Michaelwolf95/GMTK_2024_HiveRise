@@ -285,14 +285,15 @@ namespace HiveRise
 		{
 			foreach (PieceView pieceView in allPieceViewsOnBoard)
 			{
-				HashSet<PieceView> nearbyPieces = pieceView.GetNearbyPieces();
-				foreach (PieceView nearbyPiece in nearbyPieces)
-				{
-					if (nearbyPiece.pieceCardData.color == pieceView.pieceCardData.color)
-					{
-						pieceView.TryStickToPiece(nearbyPiece);
-					}
-				}
+				pieceView.TryStickToSameColorNeighbors();
+				// HashSet<PieceView> nearbyPieces = pieceView.GetNearbyPieces();
+				// foreach (PieceView nearbyPiece in nearbyPieces)
+				// {
+				// 	if (nearbyPiece.pieceCardData.color == pieceView.pieceCardData.color)
+				// 	{
+				// 		pieceView.TryStickToPiece(nearbyPiece);
+				// 	}
+				// }
 			}
 		}
 
