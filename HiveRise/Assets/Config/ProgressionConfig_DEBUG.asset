@@ -10,14 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37e3f45dbde54d85a97842a872b782dc, type: 3}
-  m_Name: ProgressionConfig
+  m_Name: ProgressionConfig_DEBUG
   m_EditorClassIdentifier: 
   progressionTiers:
   - heightRequirement: 10
-  - heightRequirement: 15
-  - heightRequirement: 15
-  - heightRequirement: 20
-  - heightRequirement: 20
-  - heightRequirement: 25
-  - heightRequirement: 25
-  - heightRequirement: 30
+  - heightRequirement: 10

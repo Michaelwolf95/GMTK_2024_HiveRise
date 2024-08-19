@@ -136,35 +136,34 @@ namespace HiveRise
 			HandController.instance.ClearCurrentCards();
 			
 			currentProgressionTierIndex++;
-			if (currentProgressionTierIndex > progressionConfig.progressionTiers.Length)
+			
+			GameBoardController.instance.OnGameWon();
+			
+			
+			// ToDo: Animate this before showing shop
+			AddHoney(GameBoardController.instance.CalculateHoneyScore());
+				
+			AudioHooks.instance.checkpoint.PlayOneShot();
+			
+			this.InvokeAction((() =>
 			{
-				OnRunComplete();
-			}
-			else
-			{
-				GameBoardController.instance.OnGameWon();
+				AudioHooks.instance.moneyPayout.PlayOneShot();
 				
-				// ToDo: UI popup for winning the game.
-				
-				// ToDo: Animate this before showing shop
-				AddHoney(GameBoardController.instance.CalculateHoneyScore());
-				
-				AudioHooks.instance.checkpoint.PlayOneShot();
-				
-				this.InvokeAction((() =>
+				CameraRigController.instance.SetCurrentHeight(GameBoardController.instance.currentTowerHeight, (() =>
 				{
-					AudioHooks.instance.moneyPayout.PlayOneShot();
-					
-					CameraRigController.instance.SetCurrentHeight(GameBoardController.instance.currentTowerHeight, (() =>
+					if (currentProgressionTierIndex >= progressionConfig.progressionTiers.Length)
+					{
+						OnRunComplete();
+					}
+					else
 					{
 						UIManager.instance.ShowShopMenu((() =>
 						{
 							StartNewGame();
 						}));
-					}));
-				}), 0.2f);
-				
-			}
+					}
+				}));
+			}), 0.2f);
 		}
 
 		//-///////////////////////////////////////////////////////////
