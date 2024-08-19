@@ -2167,10 +2167,12 @@ MonoBehaviour:
   mainMenuStartButton: {fileID: 0}
   gameOverScreenCanvasGroup: {fileID: 7017119663018833537}
   retryButton: {fileID: 3007322004661638323}
+  gameOverViewDeckButton: {fileID: 8613475353464687647}
   gameOverScreenTextLabel: {fileID: 4125575642353926089}
   gameOverScreenTextFormatString: Your hive was {0}m tall
   gameWonScreenCanvasGroup: {fileID: 1881915796791400788}
   retryWinButton: {fileID: 2155303081683905087}
+  gameWonViewDeckButton: {fileID: 5115900358115789499}
   gameWonScreenTextLabel: {fileID: 600767304863279695}
   gameWonScreenTextFormatString: Your hive was {0}m tall
 --- !u!1 &5047566391682917486
@@ -3805,6 +3807,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5438404874097392214, guid: e620a712c7085dc4fbd915ed4023a79d, type: 3}
   m_PrefabInstance: {fileID: 208464947083242813}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8613475353464687647 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8461608328284086562, guid: e620a712c7085dc4fbd915ed4023a79d, type: 3}
+  m_PrefabInstance: {fileID: 208464947083242813}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &268390226422809226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4963,6 +4976,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e620a712c7085dc4fbd915ed4023a79d, type: 3}
+--- !u!114 &5115900358115789499 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8461608328284086562, guid: e620a712c7085dc4fbd915ed4023a79d, type: 3}
+  m_PrefabInstance: {fileID: 3716313792503950233}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8713312849533260239 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5438404874097392214, guid: e620a712c7085dc4fbd915ed4023a79d, type: 3}

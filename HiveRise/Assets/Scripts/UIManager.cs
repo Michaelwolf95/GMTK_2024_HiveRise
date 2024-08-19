@@ -36,11 +36,13 @@ namespace HiveRise
 		[Header("Game Over")]
 		[SerializeField] private CanvasGroup gameOverScreenCanvasGroup;
 		[SerializeField] private Button retryButton;
+		[SerializeField] private Button gameOverViewDeckButton;
 		[SerializeField] private TextMeshProUGUI gameOverScreenTextLabel;
 		[SerializeField] private string gameOverScreenTextFormatString = "Your hive was {0}m tall";
 		[Header("Game Won")]
 		[SerializeField] private CanvasGroup gameWonScreenCanvasGroup;
 		[SerializeField] private Button retryWinButton;
+		[SerializeField] private Button gameWonViewDeckButton;
 		[SerializeField] private TextMeshProUGUI gameWonScreenTextLabel;
 		[SerializeField] private string gameWonScreenTextFormatString = "Your hive was {0}m tall";
 
@@ -87,11 +89,19 @@ namespace HiveRise
 			{
 				GameManager.instance.OnGameOverScreenRetryPressed();
 			});
+			gameOverViewDeckButton.onClick.AddListener((() =>
+			{
+				ShowDeckPreviewMenu(DeckPreviewMode.Preview);
+			}));
 			
 			retryWinButton.onClick.AddListener(() =>
 			{
 				GameManager.instance.OnGameOverScreenRetryPressed();
 			});
+			gameWonViewDeckButton.onClick.AddListener((() =>
+			{
+				ShowDeckPreviewMenu(DeckPreviewMode.Preview);
+			}));
 		}
 		
 		//-///////////////////////////////////////////////////////////

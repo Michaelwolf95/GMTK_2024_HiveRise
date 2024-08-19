@@ -415,73 +415,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 4375939625613385899, guid: 186462d97809efe4f93bd4eb49cc4a97, type: 3}
   m_PrefabInstance: {fileID: 571751064294968024}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1525791340 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 608484512243666144, guid: d3e9a63d2375b344b86281f169600f70, type: 3}
-  m_PrefabInstance: {fileID: 4647094901927828985}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1525791343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1525791340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 563735265
-      Data2: 1089200706
-      Data3: -1661343092
-      Data4: 1325983114
-    Path: event:/UI/UI_Hover
-  Event: 
-  PlayEvent: 17
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
---- !u!114 &1525791344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1525791340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -1256569751
-      Data2: 1179630582
-      Data3: -1682606970
-      Data4: -1768114950
-    Path: event:/UI/UI_Click
-  Event: 
-  PlayEvent: 19
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1001 &571751064294968024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1332,12 +1265,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5193892634406827644, guid: d3e9a63d2375b344b86281f169600f70, type: 3}
       insertIndex: -1
       addedObject: {fileID: 125889144}
-    - targetCorrespondingSourceObject: {fileID: 608484512243666144, guid: d3e9a63d2375b344b86281f169600f70, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1525791344}
-    - targetCorrespondingSourceObject: {fileID: 608484512243666144, guid: d3e9a63d2375b344b86281f169600f70, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1525791343}
   m_SourcePrefab: {fileID: 100100000, guid: d3e9a63d2375b344b86281f169600f70, type: 3}
 --- !u!1001 &4981947257398173960
 PrefabInstance:
