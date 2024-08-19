@@ -344,7 +344,7 @@ MonoBehaviour:
   viewDeckButton: {fileID: 816885155789731347}
   removeCardButton: {fileID: 6370329457975977632}
   removeCardCostText: {fileID: 4076189194735813559}
-  removeCardCost: 10
+  removeCardCost: 2
   shopCards:
   - {fileID: 826642733943504733}
   - {fileID: 619198653879854787}
