@@ -34,6 +34,8 @@ namespace MichaelWolfGames
         [MenuItem("Build/WebGL (Dev)/Build and Publish")]
         public static void BuildAndPublishWebGL()
         {
+            IncrementVersionNumber();
+            
             // Update version text file used when publishing with butler.
             string buildFolderPath = Application.dataPath.Replace("/Assets", "/Builds/WebGL/");
             File.WriteAllText(buildFolderPath + "buildnumber.txt", string.Format("v{0}", Application.version));
@@ -134,6 +136,29 @@ namespace MichaelWolfGames
 
             proc.StartInfo = procStartInfo;
             proc.Start();
+        }
+        
+        
+        //-//////////////////////////////////////////////////////////////////////
+        ///
+        private static void IncrementVersionNumber()
+        {
+            // Note: PlayerSettings.bundleVersion == Application.version
+            string[] versionNums = PlayerSettings.bundleVersion.Split('.');
+            if(Int32.TryParse(versionNums[versionNums.Length-1], out int patch))
+            {
+                versionNums[versionNums.Length - 1] = (++patch).ToString();
+            }
+            string version = "";
+            for (int i = 0; i < versionNums.Length; i++)
+            {
+                version += versionNums[i].ToString();
+                if (i < versionNums.Length - 1)
+                {
+                    version += ".";
+                }
+            }
+            PlayerSettings.bundleVersion = version;
         }
 
     }
