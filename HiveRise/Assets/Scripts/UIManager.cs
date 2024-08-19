@@ -44,7 +44,9 @@ namespace HiveRise
 		[SerializeField] private TextMeshProUGUI gameWonScreenTextLabel;
 		[SerializeField] private string gameWonScreenTextFormatString = "Your hive was {0}m tall";
 
-		public bool isMenuOpen { get; private set; }
+		public int numMenusOpen { get; private set; }
+		public bool isMenuOpen => numMenusOpen > 0;
+
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -82,6 +84,11 @@ namespace HiveRise
 			}));
 			
 			retryButton.onClick.AddListener(() =>
+			{
+				GameManager.instance.OnGameOverScreenRetryPressed();
+			});
+			
+			retryWinButton.onClick.AddListener(() =>
 			{
 				GameManager.instance.OnGameOverScreenRetryPressed();
 			});
@@ -173,7 +180,7 @@ namespace HiveRise
 		{
 			shopMenu.ShowMenu(argOnDismiss);
 			honeyCounterContainer.gameObject.SetActive(false);
-			isMenuOpen = true;
+			numMenusOpen++;
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -182,7 +189,7 @@ namespace HiveRise
 		{
 			//shopMenu.HideMenu();
 			honeyCounterContainer.gameObject.SetActive(true);
-			isMenuOpen = false;
+			numMenusOpen--;
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -190,7 +197,7 @@ namespace HiveRise
 		public void ShowRunLostMenu()
 		{
 			// ToDo: Open this menu
-			isMenuOpen = true;
+			numMenusOpen++;
 			gameOverScreenCanvasGroup.gameObject.SetActive(true);
 
 			gameOverScreenTextLabel.text = string.Format(gameOverScreenTextFormatString, GameBoardController.instance.currentTowerHeight.ToString("F1"));
@@ -203,7 +210,7 @@ namespace HiveRise
 		public void ShowRunWonMenu()
 		{
 			// ToDo: Open this menu
-			isMenuOpen = true;
+			numMenusOpen++;
 			gameWonScreenCanvasGroup.gameObject.SetActive(true);
 
 			gameWonScreenTextLabel.text = string.Format(gameWonScreenTextFormatString, GameBoardController.instance.currentTowerHeight.ToString("F1"));
@@ -216,7 +223,7 @@ namespace HiveRise
 		public void OnRunLostMenuClosed()
 		{
 			// ToDo: Close this menu
-			isMenuOpen = false;
+			numMenusOpen--;
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -224,7 +231,7 @@ namespace HiveRise
 		public void OnRunWonMenuClosed()
 		{
 			// ToDo: Close this menu
-			isMenuOpen = false;
+			numMenusOpen--;
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -232,8 +239,7 @@ namespace HiveRise
 		public void ShowDeckPreviewMenu(DeckPreviewMode argPreviewMode)
 		{
 			deckPreviewMenu.ShowMenu(argPreviewMode);
-			// ToDo: Open this menu
-			isMenuOpen = true;
+			numMenusOpen++;
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -241,7 +247,7 @@ namespace HiveRise
 		public void OnDeckPreviewMenuClosed()
 		{
 			// ToDo: Close this menu
-			isMenuOpen = false;
+			numMenusOpen--;
 		}
 		
 	}

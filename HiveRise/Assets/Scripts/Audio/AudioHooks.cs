@@ -29,6 +29,7 @@ namespace HiveRise
 		[Space]
 		public EventReference winGame;
 		public EventReference loseGame;
+		public EventReference checkpoint;
 		//public EventReference loseGame;
 
 	}

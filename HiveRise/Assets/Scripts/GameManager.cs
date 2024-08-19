@@ -149,15 +149,20 @@ namespace HiveRise
 				// ToDo: Animate this before showing shop
 				AddHoney(GameBoardController.instance.CalculateHoneyScore());
 				
-				AudioHooks.instance.moneyPayout.PlayOneShot();
+				AudioHooks.instance.checkpoint.PlayOneShot();
 				
-				CameraRigController.instance.SetCurrentHeight(GameBoardController.instance.currentTowerHeight, (() =>
+				this.InvokeAction((() =>
 				{
-					UIManager.instance.ShowShopMenu((() =>
+					AudioHooks.instance.moneyPayout.PlayOneShot();
+					
+					CameraRigController.instance.SetCurrentHeight(GameBoardController.instance.currentTowerHeight, (() =>
 					{
-						StartNewGame();
+						UIManager.instance.ShowShopMenu((() =>
+						{
+							StartNewGame();
+						}));
 					}));
-				}));
+				}), 0.2f);
 				
 			}
 		}
@@ -197,6 +202,8 @@ namespace HiveRise
 		private void OnRunComplete()
 		{
 			// ToDo: UI popup for winning the run.
+			
+			UIManager.instance.ShowRunWonMenu();
 		}
 		
 #endregion //High-Level Game Logic

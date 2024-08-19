@@ -14,6 +14,7 @@ namespace HiveRise
 		[SerializeField] private Button closeButton;
 		[SerializeField] private TextMeshProUGUI currentMoneyCountLabel;
 		[Space]
+		[SerializeField] private Button viewDeckButton;
 		[SerializeField] private Button removeCardButton;
 		[SerializeField] private TextMeshProUGUI removeCardCostText;
 		[SerializeField] private int removeCardCost = 10;
@@ -21,6 +22,8 @@ namespace HiveRise
 		[SerializeField] private ShopCardView[] shopCards;
 		
 
+		
+		
 		private Action onDismiss = null;
 
 		//-///////////////////////////////////////////////////////////
@@ -31,6 +34,11 @@ namespace HiveRise
 			{
 				HideMenu();
 			});
+			
+			viewDeckButton.onClick.AddListener((() =>
+			{
+				UIManager.instance.ShowDeckPreviewMenu(DeckPreviewMode.Preview);
+			}));
 			
 			removeCardButton.onClick.AddListener((() =>
 			{
@@ -47,11 +55,11 @@ namespace HiveRise
 		/// 
 		public void ShowMenu(Action argOnDismiss = null)
 		{
-			
 			onDismiss = argOnDismiss;
 			gameObject.SetActive(true);
 			InitNewShop();
 			
+			removeCardButton.interactable = (GameManager.instance.currentHoneyCount >= removeCardCost);
 			AudioHooks.instance.shopOpen.PlayOneShot();
 		}
 		

@@ -341,6 +341,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 1459946715071319278}
   closeButton: {fileID: 612519603917618861}
   currentMoneyCountLabel: {fileID: 4388858638868121437}
+  viewDeckButton: {fileID: 816885155789731347}
   removeCardButton: {fileID: 6370329457975977632}
   removeCardCostText: {fileID: 4076189194735813559}
   removeCardCost: 10
@@ -3489,6 +3490,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e620a712c7085dc4fbd915ed4023a79d, type: 3}
+--- !u!114 &816885155789731347 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8461608328284086562, guid: e620a712c7085dc4fbd915ed4023a79d, type: 3}
+  m_PrefabInstance: {fileID: 9096008226104596273}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3837800406020074855 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5438404874097392214, guid: e620a712c7085dc4fbd915ed4023a79d, type: 3}
