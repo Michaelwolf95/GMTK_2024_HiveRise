@@ -106,9 +106,19 @@ namespace HiveRise
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
-		public void SetGameUIVisible(bool argVisible)
+		public void SetGameUIVisible(bool argVisible, bool argAnimate = false)
 		{
 			mainCanvasGroup.gameObject.SetActive(argVisible);
+
+			if (argAnimate)
+			{
+				float start = argVisible ? 0f : 1f;
+				float end = argVisible ? 1f : 0f;
+				this.DoTween(lerp =>
+				{
+					mainCanvasGroup.alpha = Mathf.Lerp(start, end, lerp);
+				}, null, 1f, 0f, EaseType.easeOutQuad);
+			}
 		}
 		
 		//-///////////////////////////////////////////////////////////

@@ -77,6 +77,8 @@ namespace HiveRise
 			{
 				CardView cardView = Instantiate(CardDefinitions.instance.cardViewPrefab, handContainer);
 				cardView.transform.rotation = GetDefaultCardRotation();
+
+				cardView.transform.position = handContainer.position + new Vector3(0f, CameraRigController.instance.mainCamera.orthographicSize + 3f, 0f);
 				cardView.SetData(cardData);
 				currentCardsInHand.Add(cardView);
 				return cardView;

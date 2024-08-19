@@ -82,7 +82,7 @@ namespace HiveRise
 			{
 				this.InvokeAction((() =>
 				{
-					UIManager.instance.SetGameUIVisible(true);
+					UIManager.instance.SetGameUIVisible(true, true);
 					StartNewRun();
 				}), 0.5f);
 			});

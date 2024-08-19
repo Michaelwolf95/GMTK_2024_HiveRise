@@ -14,7 +14,7 @@ namespace HiveRise
 		[SerializeField] private float moveSpeed = 10f;
 
 		private float targetHeight;
-		private float currentHeight;
+		private float currentHeight = -1f;
 		
 		
 		//-///////////////////////////////////////////////////////////
@@ -31,11 +31,24 @@ namespace HiveRise
 		{
 			currentHeight = argCurrentHeight;
 		}
+		
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void JumpToCurrentHeight()
+		{
+			heightBarRoot.transform.localPosition = new Vector3(0f, currentHeight, 0f);
+		}
 
 		//-///////////////////////////////////////////////////////////
 		/// 
 		private void Update()
 		{
+			if (currentHeight <= 0f)
+			{
+				return;
+			}
+			
 			float currentPositionHeight = heightBarRoot.localPosition.y;
 
 			currentPositionHeight = Mathf.MoveTowards(currentPositionHeight, currentHeight, moveSpeed * Time.deltaTime);
