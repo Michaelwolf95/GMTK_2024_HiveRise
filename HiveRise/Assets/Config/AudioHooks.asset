@@ -105,8 +105,15 @@ MonoBehaviour:
     Path: event:/UI/UI_Win
   loseGame:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 385791501
+      Data2: 1249914004
+      Data3: 2032223166
+      Data4: 1314311440
+    Path: event:/UI/UI_Lose
+  checkpoint:
+    Guid:
+      Data1: 812824372
+      Data2: 1139319747
+      Data3: 1303694526
+      Data4: 1982554940
+    Path: event:/UI/UI_Checkpoint
