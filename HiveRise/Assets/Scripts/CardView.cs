@@ -167,7 +167,7 @@ namespace HiveRise
             worldPoint.z = transform.position.z;
 			if (isCardMode)
 			{
-                transform.position = worldPoint + (Vector3)dragStartWorldSpaceOffset;
+                transform.position = worldPoint - (Vector3)dragStartWorldSpaceOffset;
                 
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, HandController.instance.GetDefaultCardRotation(), HandController.CARD_ROTATION_SPEED * Time.deltaTime);
                 // ToDo: Transition when dragged onto board
@@ -176,7 +176,7 @@ namespace HiveRise
 			}
 			else
 			{
-				transform.position = worldPoint + (Vector3)dragStartWorldSpaceOffset;
+				transform.position = worldPoint - (Vector3)dragStartWorldSpaceOffset;
 				transform.rotation = HandController.instance.GetDefaultCardRotation();
 				
 				CheckForStateChange();
