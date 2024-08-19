@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_Sprite: {fileID: -98883410, guid: 3c4615093ac9ad540acef96ca83bc7be, type: 3}
-  m_Color: {r: 0.99607843, g: 0.8599908, b: 0.3019608, a: 1}
+  m_Color: {r: 0.99607843, g: 0.85882354, b: 0.3019608, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -141,13 +141,13 @@ MonoBehaviour:
   errorContainer: {fileID: 5719471975366522749}
   colorConfigs:
   - mainSprite: {fileID: -8523427821724400591, guid: 3c4615093ac9ad540acef96ca83bc7be, type: 3}
-    outlineColor: {r: 1, g: 0.8735534, b: 0, a: 1}
+    outlineColor: {r: 0.99607843, g: 0.85882354, b: 0.3019608, a: 1}
   - mainSprite: {fileID: -1195131456, guid: 3c4615093ac9ad540acef96ca83bc7be, type: 3}
-    outlineColor: {r: 0, g: 0.18542242, b: 1, a: 1}
+    outlineColor: {r: 0.45597476, g: 0.98365825, b: 1, a: 1}
   - mainSprite: {fileID: -2034334160, guid: 3c4615093ac9ad540acef96ca83bc7be, type: 3}
-    outlineColor: {r: 1, g: 0, b: 0.80166054, a: 1}
+    outlineColor: {r: 1, g: 0.55660367, b: 0.8595912, a: 1}
   - mainSprite: {fileID: -1535677976, guid: 3c4615093ac9ad540acef96ca83bc7be, type: 3}
-    outlineColor: {r: 0.56523514, g: 0, b: 1, a: 1}
+    outlineColor: {r: 0.5942547, g: 0.31760997, b: 1, a: 1}
 --- !u!60 &5718858919084336997
 PolygonCollider2D:
   m_ObjectHideFlags: 0

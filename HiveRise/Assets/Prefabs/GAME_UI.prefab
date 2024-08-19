@@ -2316,7 +2316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 5114573122073003212}
   _cardsContainer: {fileID: 7223336718578014937}
-  _cardViewPrefab: {fileID: 1956112428776919608, guid: bf867285fc654034bb604e734933d228, type: 3}
+  _cardViewPrefab: {fileID: 5396415044044807745, guid: fe41e21351e78cc4082b0d20917be3f4, type: 3}
   _closeButton: {fileID: 6517273707852109494}
 --- !u!222 &7445120840939879617
 CanvasRenderer:

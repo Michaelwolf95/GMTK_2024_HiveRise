@@ -62,7 +62,7 @@ namespace HiveRise
 		/// 
 		public string GetCardDescriptionForData()
 		{
-			return $"Basic  +${GetScoringValue()}";
+			return color.ToString() + " " + pieceData.pieceName;
 		}
 		
 		//-///////////////////////////////////////////////////////////

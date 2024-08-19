@@ -15,6 +15,7 @@ namespace HiveRise
 		[SerializeField] private Image cardImage = null;
 		[SerializeField] private Color[] cardTintColors = null;
 		[SerializeField] private TextMeshProUGUI cardTextLabel = null;
+		[SerializeField] private TextMeshProUGUI cardValueLabel = null;
 		
 		public CardData pieceCardData { get; private set; }
 		
@@ -27,6 +28,7 @@ namespace HiveRise
 			cardImage.sprite = CardDefinitions.instance.GetPieceDataForID(argCardData.pieceShapeID).pieceShapeSprite;
 			cardImage.color = cardTintColors[(int) argCardData.color];
 			cardTextLabel.text = argCardData.GetCardDescriptionForData();
+			cardValueLabel.text = argCardData.GetScoringValue().ToString();
 		}
 	}
 }
