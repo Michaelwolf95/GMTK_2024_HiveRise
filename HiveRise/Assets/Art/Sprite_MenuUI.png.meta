@@ -1,16 +1,37 @@
 fileFormatVersion: 2
-guid: 3c4615093ac9ad540acef96ca83bc7be
+guid: b73d05a7d2aa0c34c92e33f05386043b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3557863296966445696
-    second: Sprite_Hex_0
+      213: -1949108340567142304
+    second: Sprite_MenuUI_0
   - first:
-      213: -8523427821724400591
-    second: Sprite_Hex_1
+      213: 446378756940822574
+    second: Sprite_MenuUI_1
   - first:
-      213: 7644508964077841834
-    second: Sprite_Hex_2
+      213: -1719208494643821511
+    second: Sprite_MenuUI_2
+  - first:
+      213: -3976905091936041808
+    second: Sprite_MenuUI_3
+  - first:
+      213: -3382787766776297846
+    second: Sprite_MenuUI_4
+  - first:
+      213: 427789962486369167
+    second: Sprite_MenuUI_5
+  - first:
+      213: 6996814610216796877
+    second: Sprite_MenuUI_6
+  - first:
+      213: -6228180658055088045
+    second: Sprite_MenuUI_7
+  - first:
+      213: 3460299247197851907
+    second: Sprite_MenuUI_8
+  - first:
+      213: -8170922023288864700
+    second: Sprite_MenuUI_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -78,7 +99,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -145,127 +166,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite_Hex_Frame
+      name: Sprite_MenuUI_0
       rect:
         serializedVersion: 2
         x: 3
-        y: 139
-        width: 108
-        height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63e39541969ac2949977bb2f4e13b685
-      internalID: -98883410
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_Hex_Yellow
-      rect:
-        serializedVersion: 2
-        x: 121
-        y: 128
-        width: 116
-        height: 116
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7487a428d0dbb774d880d9e3d880a4ce
-      internalID: -8523427821724400591
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_Hex_Mask
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 23
-        width: 108
-        height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0654f3dcbc932cf44a7d105a3b4d0a26
-      internalID: 7644508964077841834
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_Hex_Pink
-      rect:
-        serializedVersion: 2
-        x: 241
-        y: 129
-        width: 116
-        height: 116
+        y: 9
+        width: 244
+        height: 241
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 822b9e93085149145a936923957842a5
-      internalID: -2034334160
+      spriteID: 0609eb38a4063f4e0800000000000000
+      internalID: -1949108340567142304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Hex_Blue
+      name: Sprite_MenuUI_2
       rect:
         serializedVersion: 2
-        x: 241
-        y: 11
-        width: 116
-        height: 116
+        x: 291
+        y: 9
+        width: 195
+        height: 241
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 07d7dcbc77385974d8daebefed72b13b
-      internalID: -1195131456
+      spriteID: 934cbed9bf42428e0800000000000000
+      internalID: -1719208494643821511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Hex_Purple
+      name: Sprite_MenuUI_3
       rect:
         serializedVersion: 2
-        x: 121
-        y: 12
-        width: 116
-        height: 116
+        x: 578
+        y: 10
+        width: 240
+        height: 242
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: c742e81504b9d06419972da31c93750d
-      internalID: -1535677976
+      spriteID: 0b4c5b1b3e13fc8c0800000000000000
+      internalID: -3976905091936041808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_MenuUI_4
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 9
+        width: 239
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8603cae27ced01d0800000000000000
+      internalID: -3382787766776297846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_MenuUI_5
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 10
+        width: 242
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8b4a7054b0dfe500800000000000000
+      internalID: 427789962486369167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_MenuUI_6
+      rect:
+        serializedVersion: 2
+        x: 1435
+        y: 10
+        width: 242
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc24c3931dda91160800000000000000
+      internalID: 6996814610216796877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_MenuUI_7
+      rect:
+        serializedVersion: 2
+        x: 1723
+        y: 10
+        width: 239
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 358faa790be0199a0800000000000000
+      internalID: -6228180658055088045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_MenuUI_8
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 9
+        width: 239
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30197c5f4d3750030800000000000000
+      internalID: 3460299247197851907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_MenuUI_9
+      rect:
+        serializedVersion: 2
+        x: 2253
+        y: 4
+        width: 221
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 440837216bd0b9e80800000000000000
+      internalID: -8170922023288864700
       vertices: []
       indices: 
       edges: []
@@ -273,7 +357,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 71a063da070ff5c4a83a0160505c91c9
+    spriteID: c5beb5eaa581e7c40b41057ac4fa4c89
     internalID: 0
     vertices: []
     indices: 
@@ -281,12 +365,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sprite_Hex_Blue: -1195131456
-      Sprite_Hex_Frame: -98883410
-      Sprite_Hex_Mask: 7644508964077841834
-      Sprite_Hex_Pink: -2034334160
-      Sprite_Hex_Purple: -1535677976
-      Sprite_Hex_Yellow: -8523427821724400591
+      Sprite_MenuUI_0: -1949108340567142304
+      Sprite_MenuUI_1: 446378756940822574
+      Sprite_MenuUI_2: -1719208494643821511
+      Sprite_MenuUI_3: -3976905091936041808
+      Sprite_MenuUI_4: -3382787766776297846
+      Sprite_MenuUI_5: 427789962486369167
+      Sprite_MenuUI_6: 6996814610216796877
+      Sprite_MenuUI_7: -6228180658055088045
+      Sprite_MenuUI_8: 3460299247197851907
+      Sprite_MenuUI_9: -8170922023288864700
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
