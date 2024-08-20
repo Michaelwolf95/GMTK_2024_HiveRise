@@ -151,7 +151,7 @@ namespace HiveRise
 				
 				CameraRigController.instance.SetCurrentHeight(GameBoardController.instance.currentTowerHeight, (() =>
 				{
-					if (currentProgressionTierIndex >= progressionConfig.progressionTiers.Length)
+					if (currentProgressionTierIndex == progressionConfig.progressionTiers.Length)
 					{
 						OnRunComplete();
 					}
@@ -164,6 +164,16 @@ namespace HiveRise
 					}
 				}));
 			}), 0.2f);
+		}
+
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void OnContinueAfterRunComplete()
+		{
+			UIManager.instance.ShowShopMenu((() =>
+			{
+				StartNewGame();
+			}));
 		}
 
 		//-///////////////////////////////////////////////////////////

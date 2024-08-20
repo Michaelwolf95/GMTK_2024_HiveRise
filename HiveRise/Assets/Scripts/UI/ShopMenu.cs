@@ -47,6 +47,7 @@ namespace HiveRise
 					GameManager.instance.SpendHoney(removeCardCost);
 					UIManager.instance.ShowDeckPreviewMenu(DeckPreviewMode.RemoveCard);
 					removeCardButton.interactable = false;
+					AudioHooks.instance.shopBuy.PlayOneShot();
 				}
 			}));
 		}
