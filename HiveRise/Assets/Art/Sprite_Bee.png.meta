@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 85bcd13fcdc66974a9c141410d463fb1
+guid: a315c3873b510824d9b746ee8bf788ee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4143546899216930783
-    second: Sprite_HoneyMoney_0
+      213: 2638772241612731829
+    second: Sprite_Bee_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite_HoneyMoney_0
+      name: Sprite_Bee_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 15
-        width: 256
-        height: 226
+        x: 5
+        y: 8
+        width: 240
+        height: 234
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd71ffd83f5d08930800000000000000
-      internalID: 4143546899216930783
+      spriteID: 5b5fc787f5dce9420800000000000000
+      internalID: 2638772241612731829
       vertices: []
       indices: 
       edges: []
@@ -170,7 +170,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sprite_HoneyMoney_0: 4143546899216930783
+      Sprite_Bee_0: 2638772241612731829
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
