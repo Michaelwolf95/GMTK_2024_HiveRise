@@ -21,8 +21,6 @@ namespace HiveRise
 		[Space]
 		[SerializeField] private ShopCardView[] shopCards;
 		
-
-		
 		
 		private Action onDismiss = null;
 
@@ -50,6 +48,18 @@ namespace HiveRise
 					AudioHooks.instance.shopBuy.PlayOneShot();
 				}
 			}));
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void RefreshAfterPurchase()
+		{
+			removeCardButton.interactable = (GameManager.instance.currentHoneyCount >= removeCardCost);
+			
+			foreach (ShopCardView shopCardView in shopCards)
+			{
+				shopCardView.RefreshAfterPurchase();
+			}
 		}
 
 		//-///////////////////////////////////////////////////////////
@@ -88,6 +98,7 @@ namespace HiveRise
 				shopCardView.SetData(data);
 			}
 		}
+		
 		
 		//-///////////////////////////////////////////////////////////
 		/// 

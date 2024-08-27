@@ -272,6 +272,7 @@ namespace HiveRise
 		{
 			currentHoneyCount -= argCount;
 			UIManager.instance.SetHoneyCount(currentHoneyCount);
+			UIManager.instance.RefreshShopAfterPurchase();
 		}
 
 #endregion //Economy

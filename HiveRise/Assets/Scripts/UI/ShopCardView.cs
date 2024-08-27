@@ -31,6 +31,13 @@ namespace HiveRise
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
+		public void RefreshAfterPurchase()
+		{
+			cardView.cardButton.interactable = CanPurchaseCard();
+		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
 		private void TryPurchaseCard()
 		{
 			if (CanPurchaseCard())

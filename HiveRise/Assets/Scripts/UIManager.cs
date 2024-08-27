@@ -218,6 +218,13 @@ namespace HiveRise
 			honeyCounterContainer.gameObject.SetActive(true);
 			numMenusOpen--;
 		}
+		
+		//-///////////////////////////////////////////////////////////
+		/// 
+		public void RefreshShopAfterPurchase()
+		{
+			shopMenu.RefreshAfterPurchase();
+		}
 
 		//-///////////////////////////////////////////////////////////
 		/// 

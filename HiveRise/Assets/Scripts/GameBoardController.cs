@@ -265,7 +265,9 @@ namespace HiveRise
 			allPieceViewsOnBoard.Add(argPieceView);
 			argPieceView.SetPhysical(true);
 			yield return new WaitForSeconds(0.15f);
-
+			
+			// TEMP: Disabling auto sticking after applying.
+			/*
 			HashSet<PieceView> nearbyPieces = argPieceView.GetNearbyPieces();
 			foreach (PieceView nearbyPiece in nearbyPieces)
 			{
@@ -277,6 +279,7 @@ namespace HiveRise
 					// joint.connectedBody = nearbyPiece.rigidbody2D;
 				}
 			}
+			*/
 		}
 		
 		//-///////////////////////////////////////////////////////////
@@ -323,11 +326,32 @@ namespace HiveRise
 		
 #region Progress Tracking
 
+		private RaycastHit2D[] heightCheckBoxCastResults = new RaycastHit2D[32];
+		private ContactFilter2D heightCheckContactFilter = new ContactFilter2D() { useTriggers = false };
 		
 		//-///////////////////////////////////////////////////////////
 		/// 
 		private void CalculateCurrentTowerHeight()
 		{
+			int size = Physics2D.BoxCast(new Vector2(0, 9999f), new Vector2(10f, 1f), 0f, Vector2.down, heightCheckContactFilter, heightCheckBoxCastResults);
+			for (int i = 0; i < size; i++)
+			{
+				if (heightCheckBoxCastResults[i].collider != null)
+				{
+					HexCell hexCell = heightCheckBoxCastResults[i].collider.gameObject.GetComponentInParent<HexCell>();
+					if (hexCell != null)
+					{
+						currentTowerHeight = heightCheckBoxCastResults[i].point.y - heightTracker.transform.position.y;
+						FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Height", currentTowerHeight);
+
+						heightTracker.SetCurrentHeight(currentTowerHeight);
+				
+						CameraRigController.instance.SetCurrentHeight(currentTowerHeight);
+						break;
+					}
+				}
+			}
+			/*
 			RaycastHit2D hit = Physics2D.BoxCast(new Vector2(0, 9999f), new Vector2(10f, 1f), 0f, Vector2.down);
 			if (hit.collider != null)
 			{
@@ -338,6 +362,7 @@ namespace HiveRise
 				
 				CameraRigController.instance.SetCurrentHeight(currentTowerHeight);
 			}
+			*/
 		}
 		
 		//-///////////////////////////////////////////////////////////

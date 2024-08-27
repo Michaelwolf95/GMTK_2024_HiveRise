@@ -43,6 +43,26 @@ namespace HiveRise
 				}
 			}
 		}
+		
+		//-//////////////////////////////////////////////////////////////////////
+		///
+		private void OnCollisionStay2D(Collision2D col)
+		{
+			if (col.rigidbody != null && col.rigidbody != rigidbody2D)
+			{
+				PieceView otherPiece = col.rigidbody.GetComponent<PieceView>();
+				if (otherPiece != null)
+				{
+					if (otherPiece.pieceCardData.color == pieceCardData.color)
+					{
+						if (TryStickToPiece(otherPiece))
+						{
+							//Debug.Log("Stick To Piece!".RichText(Color.cyan));
+						}
+					}
+				}
+			}
+		}
 
 		//-///////////////////////////////////////////////////////////
 		/// 
@@ -229,7 +249,7 @@ namespace HiveRise
 		/// 
 		public bool TryStickToPiece(PieceView argPieceView)
 		{
-			if (canStickToOtherPieces && argPieceView != this && currentAttachedPieces.Contains(argPieceView) == false)
+			if (canStickToOtherPieces && argPieceView != this && argPieceView.canStickToOtherPieces && currentAttachedPieces.Contains(argPieceView) == false)
 			{
 				// Stick!
 				FixedJoint2D joint = this.gameObject.AddComponent<FixedJoint2D>();
